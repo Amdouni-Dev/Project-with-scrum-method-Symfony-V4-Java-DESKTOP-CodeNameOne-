@@ -1,0 +1,350 @@
+{% extends 'views/layouts/contentLayoutMaster.html.twig' %}
+
+{% block title %} Avatar {% endblock %}
+
+{% block content %}
+<!-- Avatar Sizes Starts -->
+<section id="default-avatar-sizes">
+  <div class="row match-height">
+    <div class="col-xl-6 col-lg-12">
+      <div class="card">
+        <div class="card-header">
+          <h4 class="card-title">Sizes</h4>
+        </div>
+        <div class="card-body">
+          <p class="card-text mb-0">
+            For default avatar, You have to use inline <code>attributes</code> to set height and width of image. Use
+            class <code>.avatar-{sm|lg|xl}</code> to modify size of your avatar.
+          </p>
+          <div class="demo-inline-spacing">
+            <div class="avatar avatar-sm">
+              <img src="{{asset("images/portrait/small/avatar-s-20.jpg")}}" alt="avatar" />
+            </div>
+            <div class="avatar">
+              <img
+                src="{{asset('images/portrait/small/avatar-s-20.jpg')}}"
+                alt="avatar"
+                width="32"
+                height="32"
+              />
+            </div>
+            <div class="avatar avatar-lg">
+              <img src="{{asset('images/portrait/small/avatar-s-20.jpg')}}" alt="avatar" />
+            </div>
+            <div class="avatar avatar-xl">
+              <img src="{{asset('images/portrait/small/avatar-s-20.jpg')}}" alt="avatar" />
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Avatar Sizes Ends -->
+
+    <!-- Avatar Content/Initials Starts -->
+    <div class="col-xl-6 col-lg-12">
+      <div class="card">
+        <div class="card-header">
+          <h4 class="card-title">Initials</h4>
+        </div>
+        <div class="card-body">
+          <p class="card-text mb-0">
+            Wrap your content with <code>.avatar</code> class and wrap your text in <code>.avatar-content</code> to
+            create a avatar with initials. You can also use solid color initials.
+          </p>
+          <div class="demo-inline-spacing">
+            <div class="avatar bg-light-primary avatar-sm">
+              <span class="avatar-content">PI</span>
+            </div>
+            <div class="avatar bg-light-secondary">
+              <span class="avatar-content">PI</span>
+            </div>
+            <div class="avatar bg-light-success avatar-lg">
+              <span class="avatar-content">PI</span>
+            </div>
+            <div class="avatar bg-light-danger avatar-xl">
+              <span class="avatar-content">PI</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- Avatar Content/Initials Ends -->
+
+<!-- Avatar Colors Starts-->
+<section id="avatar-colors">
+  <div class="row match-height">
+    <div class="col-xl-6 col-lg-12">
+      <div class="card">
+        <div class="card-header">
+          <h4 class="card-title">Colors</h4>
+        </div>
+        <div class="card-body">
+          <p class="card-text mb-0">
+            Use class <code>bg-{color-name}</code> to change background color of your avatar.
+          </p>
+          <div class="demo-inline-spacing">
+            <div class="avatar bg-primary">
+              <div class="avatar-content">PI</div>
+            </div>
+            <div class="avatar bg-secondary">
+              <div class="avatar-content">PI</div>
+            </div>
+            <div class="avatar bg-success">
+              <div class="avatar-content">PI</div>
+            </div>
+            <div class="avatar bg-danger">
+              <div class="avatar-content">PI</div>
+            </div>
+            <div class="avatar bg-warning">
+              <div class="avatar-content">PI</div>
+            </div>
+            <div class="avatar bg-info">
+              <div class="avatar-content">PI</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Avatar Colors Ends -->
+
+    <!-- Avatar Light Colors Starts-->
+    <div class="col-xl-6 col-lg-12">
+      <div class="card">
+        <div class="card-header">
+          <h4 class="card-title">Light Colors</h4>
+        </div>
+        <div class="card-body">
+          <p class="card-text mb-0">
+            Use class <code>bg-light-{color-name}</code> to change background color of your avatar.
+          </p>
+          <div class="demo-inline-spacing">
+            <div class="avatar bg-light-primary">
+              <div class="avatar-content">PI</div>
+            </div>
+            <div class="avatar bg-light-secondary">
+              <div class="avatar-content">PI</div>
+            </div>
+            <div class="avatar bg-light-success">
+              <div class="avatar-content">PI</div>
+            </div>
+            <div class="avatar bg-light-danger">
+              <div class="avatar-content">PI</div>
+            </div>
+            <div class="avatar bg-light-warning">
+              <div class="avatar-content">PI</div>
+            </div>
+            <div class="avatar bg-light-info">
+              <div class="avatar-content">PI</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- Avatar Light Colors Ends -->
+<!-- Avatar Icons Starts -->
+<section id="avatar-icons-status">
+  <div class="row match-height">
+    <div class="col-xl-6 col-lg-12">
+      <div class="card">
+        <div class="card-header">
+          <h4 class="card-title">Icons</h4>
+        </div>
+        <div class="card-body">
+          <p class="card-text mb-0">Use <code>.avatar-icon</code> class for Icon variant</p>
+          <div class="demo-inline-spacing">
+            <div class="avatar bg-primary">
+              <div class="avatar-content">
+                <i data-feather="calendar" class="avatar-icon"></i>
+              </div>
+            </div>
+            <div class="avatar bg-secondary">
+              <div class="avatar-content">
+                <i data-feather="github" class="avatar-icon"></i>
+              </div>
+            </div>
+            <div class="avatar bg-success">
+              <div class="avatar-content">
+                <i data-feather="inbox" class="avatar-icon"></i>
+              </div>
+            </div>
+            <div class="avatar bg-light-danger">
+              <div class="avatar-content">
+                <i data-feather="camera" class="avatar-icon"></i>
+              </div>
+            </div>
+            <div class="avatar bg-light-warning">
+              <div class="avatar-content">
+                <i data-feather="award" class="avatar-icon"></i>
+              </div>
+            </div>
+            <div class="avatar bg-light-info">
+              <div class="avatar-content">
+                <i data-feather="star" class="avatar-icon"></i>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Avatar Icons Ends -->
+
+    <!-- Avatar Status Starts -->
+    <div class="col-xl-6 col-lg-12">
+      <div class="card">
+        <div class="card-header">
+          <h4 class="card-title">Status</h4>
+        </div>
+        <div class="card-body">
+          <p class="card-text mb-0">
+            Use class <code>.avatar-status-{online | offline | away | busy}</code> after <code>.avatar-content</code>.
+          </p>
+          <div class="demo-inline-spacing">
+            <div class="avatar">
+              <img
+                src="{{asset('images/portrait/small/avatar-s-20.jpg')}}"
+                alt="avatar"
+                width="32"
+                height="32"
+              />
+              <span class="avatar-status-offline"></span>
+            </div>
+            <div class="avatar bg-info">
+              <span class="avatar-content">BV</span>
+              <span class="avatar-status-busy"></span>
+            </div>
+            <div class="avatar bg-light-primary">
+              <span class="avatar-content"><i data-feather="github" class="avatar-icon"></i></span>
+              <span class="avatar-status-away"></span>
+            </div>
+            <div class="avatar bg-light-success">
+              <span class="avatar-content">AB</span>
+              <span class="avatar-status-online"></span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- Avatar Status Ends -->
+<!-- Avatar Group Starts -->
+<section id="avatar-group">
+  <div class="row match-height">
+    <!-- Avatar Group -->
+    <div class="col-xl-6 col-lg-12">
+      <div class="card">
+        <div class="card-header">
+          <h4 class="card-title">Avatar Group</h4>
+        </div>
+        <div class="card-body">
+          <p class="card-text">Wrap bunch of avatars with <code>.avatar-group</code> class.</p>
+          <div class="avatar-group">
+            <div class="avatar pull-up">
+              <img src="{{asset('images/portrait/small/avatar-s-5.jpg')}}" alt="Avatar" height="32" width="32" />
+            </div>
+            <div class="avatar pull-up">
+              <img src="{{asset('images/portrait/small/avatar-s-7.jpg')}}" alt="Avatar" height="32" width="32" />
+            </div>
+            <div class="avatar pull-up">
+              <img
+                src="{{asset('images/portrait/small/avatar-s-10.jpg')}}"
+                alt="Avatar"
+                height="32"
+                width="32"
+              />
+            </div>
+            <div class="avatar pull-up">
+              <img src="{{asset('images/portrait/small/avatar-s-8.jpg')}}" alt="Avatar" height="32" width="32" />
+            </div>
+            <div class="avatar pull-up">
+              <img
+                src="{{asset('images/portrait/small/avatar-s-20.jpg')}}"
+                alt="Avatar"
+                height="32"
+                width="32"
+              />
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Avatar Group Ends -->
+
+    <!-- Avatar Group with tooltip -->
+    <div class="col-xl-6 col-lg-12">
+      <div class="card">
+        <div class="card-header">
+          <h4 class="card-title">Avatar Group with tooltip</h4>
+        </div>
+        <div class="card-body">
+          <p class="card-text">Avatar info inside tooltip variant</p>
+          <div class="avatar-group">
+            <div
+              data-bs-toggle="tooltip"
+              data-popup="tooltip-custom"
+              data-bs-placement="top"
+              title="Vinnie Mostowy"
+              class="avatar pull-up"
+            >
+              <img src="{{asset('images/portrait/small/avatar-s-5.jpg')}}" alt="Avatar" height="32" width="32" />
+            </div>
+            <div
+              data-bs-toggle="tooltip"
+              data-popup="tooltip-custom"
+              data-bs-placement="top"
+              title="Elicia Rieske"
+              class="avatar pull-up"
+            >
+              <img src="{{asset('images/portrait/small/avatar-s-7.jpg')}}" alt="Avatar" height="32" width="32" />
+            </div>
+            <div
+              data-bs-toggle="tooltip"
+              data-popup="tooltip-custom"
+              data-bs-placement="top"
+              title="Julee Rossignol"
+              class="avatar pull-up"
+            >
+              <img
+                src="{{asset('images/portrait/small/avatar-s-10.jpg')}}"
+                alt="Avatar"
+                height="32"
+                width="32"
+              />
+            </div>
+            <div
+              data-bs-toggle="tooltip"
+              data-popup="tooltip-custom"
+              data-bs-placement="top"
+              title="Darcey Nooner"
+              class="avatar pull-up"
+            >
+              <img src="{{asset('images/portrait/small/avatar-s-8.jpg')}}" alt="Avatar" height="32" width="32" />
+            </div>
+            <div
+              data-bs-toggle="tooltip"
+              data-popup="tooltip-custom"
+              data-bs-placement="top"
+              title="Jenny Looper"
+              class="avatar pull-up"
+            >
+              <img
+                src="{{asset('images/portrait/small/avatar-s-20.jpg')}}"
+                alt="Avatar"
+                height="32"
+                width="32"
+              />
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Avatar Group with tooltip -->
+  </div>
+</section>
+<!-- Avatar Group Ends -->
+{% endblock %}
+

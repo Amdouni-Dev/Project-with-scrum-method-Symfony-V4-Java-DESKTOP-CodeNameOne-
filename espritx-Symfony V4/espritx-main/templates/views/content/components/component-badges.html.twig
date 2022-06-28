@@ -1,0 +1,180 @@
+{% extends 'views/layouts/contentLayoutMaster.html.twig' %}
+
+{% block title %} Badges {% endblock %}
+
+{% block content %}
+<!-- Basic Badges Start -->
+<section id="basic-badges">
+  <div class="row">
+    <div class="col-12">
+      <div class="card">
+        <div class="card-header">
+          <h4 class="card-title">Contextual Badges</h4>
+        </div>
+        <div class="card-body">
+          <p class="card-text m-0">
+            Use the <code>.badge</code> class, followed by<code>.bg-&#123;color&#125;</code>class within element to
+            create primary badge.
+          </p>
+          <div class="demo-inline-spacing">
+            <span class="badge bg-primary">Primary</span>
+            <span class="badge bg-secondary">Secondary</span>
+            <span class="badge bg-success">Success</span>
+            <span class="badge bg-danger">Danger</span>
+            <span class="badge bg-warning">Warning</span>
+            <span class="badge bg-info">Info</span>
+            <span class="badge bg-dark">Dark</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- Basic Badges End -->
+
+<!-- Badge Glow Starts -->
+<section id="glow-badges">
+  <div class="row">
+    <div class="col-12">
+      <div class="card">
+        <div class="card-header">
+          <h4 class="card-title">Glow Badges</h4>
+        </div>
+        <div class="card-body">
+          <p class="card-text m-0">Use class <code>.badge-glow</code> to add glow effect to contextual badge.</p>
+          <div class="demo-inline-spacing">
+            <span class="badge badge-glow bg-primary">Primary</span>
+            <span class="badge badge-glow bg-secondary">Secondary</span>
+            <span class="badge badge-glow bg-success">Success</span>
+            <span class="badge badge-glow bg-danger">Danger</span>
+            <span class="badge badge-glow bg-warning">Warning</span>
+            <span class="badge badge-glow bg-info">Info</span>
+            <span class="badge badge-glow bg-dark">Dark</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- Badge Glow Starts -->
+
+<!-- Badge light Starts -->
+<section id="badge-light">
+  <div class="row">
+    <div class="col-12">
+      <div class="card">
+        <div class="card-header">
+          <h4 class="card-title">Light Badges</h4>
+        </div>
+        <div class="card-body">
+          <p class="card-text m-0">
+            Use class <code>.badge</code> class with <code>.badge-light-&#123;color&#125;</code> to add light effect to
+            your badge.
+          </p>
+          <div class="demo-inline-spacing">
+            <span class="badge badge-light-primary">Primary</span>
+            <span class="badge badge-light-secondary">Secondary</span>
+            <span class="badge badge-light-success">Success</span>
+            <span class="badge badge-light-danger">Danger</span>
+            <span class="badge badge-light-warning">Warning</span>
+            <span class="badge badge-light-info">Info</span>
+            <span class="badge badge-light-dark">Dark</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- Badge light Ends -->
+
+<!-- Badges With Icons Starts -->
+<section id="badges-with-icons">
+  <div class="row">
+    <div class="col-12">
+      <div class="card">
+        <div class="card-header">
+          <h4 class="card-title">Badges With Icons</h4>
+        </div>
+        <div class="card-body">
+          <div class="demo-inline-spacing">
+            <span class="badge bg-primary">
+              <i data-feather="star" class="me-25"></i>
+              <span>Primary</span>
+            </span>
+            <span class="badge bg-secondary">
+              <i data-feather="star" class="me-25"></i>
+              <span>Secondary</span>
+            </span>
+            <span class="badge bg-success">
+              <i data-feather="star" class="me-25"></i>
+              <span>Success</span>
+            </span>
+            <span class="badge bg-danger">
+              <i data-feather="star" class="me-25"></i>
+              <span>Danger</span>
+            </span>
+            <span class="badge bg-warning">
+              <i data-feather="star" class="me-25"></i>
+              <span>Warning</span>
+            </span>
+            <span class="badge bg-info">
+              <i data-feather="star" class="me-25"></i>
+              <span>Info</span>
+            </span>
+            <span class="badge bg-dark">
+              <i data-feather="star" class="me-25"></i>
+              <span>Info</span>
+            </span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- Badges With Icons End -->
+
+<section id="badges-with-links">
+  <div class="row match-height">
+    <!-- Badges With Links starts -->
+    <div class="col-md-6 col-sm-12">
+      <div class="card">
+        <div class="card-header">
+          <h4 class="card-title">Link Badge</h4>
+        </div>
+        <div class="card-body">
+          <p class="card-text">
+            Use <code>&lt;a&gt;</code> tag inside your <code>.badge</code> to create a badge with icon
+          </p>
+          <span class="badge bg-primary">
+            <a href="https://pixinvent.com/" target="_blank">
+              <i data-feather="link" class="me-25"></i>
+              <span>Link Badge</span>
+            </a>
+          </span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Badges With Links ends -->
+
+    <!-- Block Badges start -->
+    <div class="col-md-6 col-sm-12">
+      <div class="card">
+        <div class="card-header">
+          <h4 class="card-title">Block Badge</h4>
+        </div>
+        <div class="card-body">
+          <p class="card-text">
+            Use <code>.d-block</code> class with <code>.badge</code>, to display badge as a block element.
+          </p>
+          <span class="badge d-block bg-primary">
+            <span>Badge</span>
+          </span>
+        </div>
+      </div>
+    </div>
+    <!-- Block Badges end -->
+  </div>
+</section>
+{% endblock %}
+

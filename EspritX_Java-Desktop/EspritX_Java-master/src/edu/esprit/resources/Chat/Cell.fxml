@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="315.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.esprit.controller.CellController">
+   <children>
+      <ImageView fitHeight="60.0" fitWidth="69.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@Img/icons8_user_80px_2.png" />
+         </image>
+         <HBox.margin>
+            <Insets left="20.0" />
+         </HBox.margin>
+      </ImageView>
+      <VBox alignment="CENTER_LEFT" prefHeight="80.0" prefWidth="206.0">
+         <children>
+            <Label fx:id="IdLabel" text="Label" />
+            <Label fx:id="Name" prefHeight="26.0" prefWidth="153.0" text="Moetez" textFill="WHITE">
+               <font>
+                  <Font name="Ebrima Bold" size="19.0" />
+               </font>
+            </Label>
+            <Label fx:id="TextPlaceholder" prefHeight="27.0" prefWidth="206.0" text="You: Thank you , I will see you tomorrow" textFill="#9da7a7">
+               <font>
+                  <Font name="Ebrima" size="18.0" />
+               </font>
+            </Label>
+         </children>
+         <opaqueInsets>
+            <Insets left="10.0" />
+         </opaqueInsets>
+      </VBox>
+   </children>
+</HBox>

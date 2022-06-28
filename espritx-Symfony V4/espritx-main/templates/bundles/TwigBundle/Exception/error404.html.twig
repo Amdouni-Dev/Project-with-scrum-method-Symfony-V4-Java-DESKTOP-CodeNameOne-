@@ -1,0 +1,31 @@
+{% extends 'views/layouts/fullLayoutMaster.html.twig' %}
+
+{% block title %} Error 404 {% endblock %}
+
+{% block page_style %}
+  {# Page Css files #}
+  <link rel="stylesheet" href="{{ asset('css/base/pages/page-misc.css') }}">
+{% endblock %}
+
+{% block content %}
+  <!-- Error page-->
+  <div class="misc-wrapper">
+    <div class="brand-logo" style="width: 25%;height: 105px;">
+      <img class="img-fluid" style="width: 80px;" src="{{ asset('images/pages/Logo.png') }}" alt="Logo"/>
+    </div>
+    <div class="misc-inner p-2 p-sm-3">
+      <div class="w-100 text-center">
+        <h2 class="mb-1">Page Not Found 🕵🏻‍♀️</h2>
+        <p class="mb-2">Oops! 😖 The requested URL was not found on this server.</p>
+        <a class="btn btn-primary mb-2 btn-sm-block" href="{{ url('app_home') }}">Back to home</a>
+        {% if configData['theme'] == 'dark' %}
+          <img class="img-fluid" src="{{ asset('images/pages/error-dark.svg') }}" alt="Error page"/>
+        {% else %}
+          <img class="img-fluid" src="{{ asset('images/pages/error.svg') }}" alt="Error page"/>
+        {% endif %}
+      </div>
+    </div>
+  </div>
+  <!-- / Error page-->
+{% endblock %}
+

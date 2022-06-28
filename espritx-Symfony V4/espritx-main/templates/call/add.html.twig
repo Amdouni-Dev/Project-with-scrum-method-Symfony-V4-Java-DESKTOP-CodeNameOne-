@@ -1,0 +1,72 @@
+{% extends 'views/layouts/contentLayoutMaster.html.twig' %}
+
+{% block title %}{% endblock %}
+
+{% block vendor_style %}
+    <link rel="stylesheet" href="{{ asset('vendors/css/calendars/fullcalendar.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('vendors/css/forms/select/select2.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('vendors/css/pickers/flatpickr/flatpickr.min.css') }}">
+{% endblock %}
+
+
+{% block page_style %}
+    <link rel="stylesheet" href="{{ asset('css/base/plugins/forms/pickers/form-flat-pickr.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/base/pages/app-calendar.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/base/plugins/forms/form-validation.css') }}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/selectize.js/0.13.3/css/selectize.css" 
+    integrity="sha512-85w5tjZHguXpvARsBrIg9NWdNy5UBK16rAL8VWgnWXK2vMtcRKCBsHWSUbmMu0qHfXW2FVUDiWr6crA+IFdd1A==" 
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/selectize.js/0.13.3/css/selectize.bootstrap4.min.css" 
+    integrity="sha512-MMojOrCQrqLg4Iarid2YMYyZ7pzjPeXKRvhW9nZqLo6kPBBTuvNET9DBVWptAo/Q20Fy11EIHM5ig4WlIrJfQw==" 
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+{% endblock %}
+
+
+{% block content %}
+    <section>
+
+        {{ form_start(form) }}
+
+        {{ form_row(form.title) }}
+        {{ form_row(form.start) }}
+        {{ form_row(form.end) }}
+        {{ form_row(form.description) }}
+        
+
+        <button class="btn btn-primary btn-toggle-sidebar w-100">{{ button_label|default('Ajouter un appel') }}</button>
+
+
+        {{ form_end(form) }}
+     
+    </section>
+
+{% endblock %}
+
+
+{% block vendor_script %}
+    <script src="{{ asset('vendors/js/calendar/fullcalendar.min.js') }}"></script>
+    <script src="{{ asset('vendors/js/extensions/moment.min.js') }}"></script>
+    <script src="{{ asset('vendors/js/forms/select/select2.full.min.js') }}"></script>
+    <script src="{{ asset('vendors/js/forms/validation/jquery.validate.min.js') }}"></script>
+    <script src="{{ asset('vendors/js/pickers/flatpickr/flatpickr.min.js') }}"></script>
+{% endblock %}
+
+
+{% block page_script %}
+    <script src="{{ asset('js/scripts/pages/app-calendar-events.js') }}"></script>
+    <script src="{{ asset('js/scripts/pages/app-calendar.js') }}"></script>
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" 
+    integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ==" 
+    crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/selectize.js/0.12.6/js/standalone/selectize.min.js"
+     integrity="sha256-+C0A5Ilqmu4QcSPxrlGpaZxJ04VjsRjKu+G82kl5UJk=" crossorigin="anonymous"></script>
+        
+<script>
+$("#call_users").selectize({
+  maxItems: 20,
+});
+</script>
+        
+{% endblock %}
+

@@ -1,0 +1,369 @@
+
+{% for post in posts %}
+    {% if post.isValid ==1 %}
+
+
+
+
+        <div  class="row">
+            <div class="col-8">
+                <div class="card card-apply-job">
+                    <div class="card-body">
+                        <div class="d-flex flex-row justify-content-between align-items-center mb-2">
+                            <div class="d-flex">
+                                {% include "views/content/_partials/_fragments/user-avatar.html.twig" with {'user': post.user} %}
+                                <div class="user-info ms-1">
+                                    <h5 class="mb-0">{{ post.user.firstName ~ " " ~ post.user.lastName }}</h5>
+                                    <small class="text-muted">{{ post.createdAt|date("d-m-Y H:M:s") }}</small>
+                                </div>
+                            </div>
+
+
+                            <div class="d-flex">
+
+                                {% if post.groupPost !=null %}
+                                    <span class="badge rounded-pill badge-light-primary">{{ post.groupPost.nomGroupe }}</span>
+                                {% endif %}
+                                <div class="heading-elements">
+                                    <ul class="list-inline mb-0">
+                                        <li>
+                                            <a href="{{ path('editpost', {'id': post.id}) }}"  onclick="return confirm('Etes-vous sure de modifier ce post ?! ')"><i
+                                                        data-feather="edit"></i></a>
+                                        </li>
+                                        <li>
+                                            <a href="{{ path('changedelete_post', {'id': post.id}) }}"   onclick="return confirm('Etes-vous sure de supprimer ce post ?! ')"><i data-feather="x"></i></a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <h5 id="titre" class="apply-job-title">{{ post.title }}</h5>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                        <p class="card-text mb-2">
+                        <div  class="readmore js-read-more" data-rm-words="70">
+                            {{ post.content }}
+                        </div>
+                        </p>
+
+                        <div class="inner">
+                            {% if post.images | length == 4 %}
+                                <div class="my-gallery" itemscope>
+                                    <figure itemprop="associatedMedia" itemscope>
+                                        <table>
+                                            <tr>
+                                                <td>
+                                                    <figure itemprop="associatedMedia" itemscope>
+                                                        <a href="{{ asset('/uploads/brochures/'~post.images[0]) }}"
+                                                           itemprop="contentUrl" data-size="964x1024">
+                                                            <img class="inner rounded"
+                                                                 src="{{ asset('/uploads/brochures/'~post.images[0]) }}"
+                                                                 style="width: 280px;height: 200px;margin-left: 20px"
+                                                                 itemprop="thumbnail" alt="Image description"/>
+                                                        </a>
+                                                    </figure>
+                                                </td>
+                                                <td>
+                                                    <figure itemprop="associatedMedia" itemscope>
+                                                        <a href="{{ asset('/uploads/brochures/'~post.images[1]) }}"
+                                                           itemprop="contentUrl" data-size="964x1024">
+                                                            <img class="inner rounded"
+                                                                 src="{{ asset('/uploads/brochures/'~post.images[1]) }}"
+                                                                 style="width: 280px;height: 200px;margin-left: 150px"
+                                                                 itemprop="thumbnail" alt="Image description"/>
+                                                        </a>
+                                                    </figure>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>
+                                                    <figure itemprop="associatedMedia" itemscope>
+                                                        <a href="{{ asset('/uploads/brochures/'~post.images[2]) }}"
+                                                           itemprop="contentUrl" data-size="964x1024">
+                                                            <img class="inner rounded"
+                                                                 src="{{ asset('/uploads/brochures/'~post.images[2]) }}"
+                                                                 style="width: 280px;height: 200px;margin-left: 20px"
+                                                                 itemprop="thumbnail" alt="Image description"/>
+                                                        </a>
+                                                    </figure>
+                                                </td>
+                                                <td>
+                                                    <figure itemprop="associatedMedia" itemscope>
+                                                        <a href="{{ asset('/uploads/brochures/'~post.images[3]) }}"
+                                                           itemprop="contentUrl" data-size="1000x1024">
+                                                            <img class="inner rounded"
+                                                                 src="{{ asset('/uploads/brochures/'~post.images[3]) }}"
+                                                                 style="width: 280px;height: 200px;margin-left: 150px"
+                                                                 itemprop="thumbnail" alt="Image description"/>
+                                                        </a>
+                                                    </figure>
+                                                </td>
+                                            </tr>
+                                        </table>
+                                    </figure>
+                                </div>
+                            {% endif %}
+                            {% if post.images | length == 3 %}
+                                <div class="my-gallery" itemscope>
+                                    <figure itemprop="associatedMedia" itemscope>
+                                        <table>
+                                            <tr>
+                                                <td>
+                                                    <figure itemprop="associatedMedia" itemscope>
+                                                        <a href="{{ asset('/uploads/brochures/'~post.images[0]) }}"
+                                                           itemprop="contentUrl" data-size="964x1024">
+                                                            <img class="inner rounded"
+                                                                 src="{{ asset('/uploads/brochures/'~post.images[0]) }}"
+                                                                 style="width: 170px;height: 100px;margin-left: 20px"
+                                                                 itemprop="thumbnail" alt="Image description"/>
+                                                        </a>
+                                                    </figure>
+                                                </td>
+                                                <td>
+                                                    <figure itemprop="associatedMedia" itemscope>
+                                                        <a href="{{ asset('/uploads/brochures/'~post.images[1]) }}"
+                                                           itemprop="contentUrl" data-size="964x1024">
+                                                            <img class="inner rounded"
+                                                                 src="{{ asset('/uploads/brochures/'~post.images[1]) }}"
+                                                                 style="width: 50px;height: 50px;margin-left: 40px"
+                                                                 itemprop="thumbnail" alt="Image description"/>
+                                                        </a>
+                                                    </figure>
+                                                </td>
+
+                                                <td colspan="2">
+                                                    <figure itemprop="associatedMedia" itemscope
+                                                            itemtype="http://schema.org/ImageObject">
+                                                        <a href="{{ asset('/uploads/brochures/'~post.images[2]) }}"
+                                                           itemprop="contentUrl" data-size="964x1024">
+                                                            <img class="inner rounded"
+                                                                 src="{{ asset('/uploads/brochures/'~post.images[2]) }}"
+                                                                 style="width: 50px;height: 50px;margin-left: 60px"
+                                                                 itemprop="thumbnail" alt="Image description"/>
+                                                        </a>
+                                                    </figure>
+                                                </td>
+                                            </tr>
+                                        </table>
+                                    </figure>
+                                </div>
+                            {% endif %}
+
+
+                            {% if post.images | length == 2 %}
+                                <div class="my-gallery" itemscope itemtype="http://schema.org/ImageGallery">
+                                    <figure itemprop="associatedMedia" itemscope
+                                            itemtype="http://schema.org/ImageObject">
+                                        <table>
+                                            <tr>
+                                                <td>
+                                                    <figure itemprop="associatedMedia" itemscope
+                                                            itemtype="http://schema.org/ImageObject">
+                                                        <a href="{{ asset('/uploads/brochures/'~post.images[0]) }}"
+                                                           itemprop="contentUrl" data-size="964x1024">
+                                                            <div class="inner">
+                                                                <img class="inner rounded"
+                                                                     src="{{ asset('/uploads/brochures/'~post.images[0]) }}"
+                                                                     style="width: 280px;height: 200px;margin-left: 20px"
+                                                                     itemprop="thumbnail" alt="Image description"/>
+                                                            </div>
+                                                        </a>
+                                                    </figure>
+                                                </td>
+                                                <td>
+                                                    <figure itemprop="associatedMedia" itemscope
+                                                            itemtype="http://schema.org/ImageObject">
+                                                        <a href="{{ asset('/uploads/brochures/'~post.images[1]) }}"
+                                                           itemprop="contentUrl" data-size="964x1024">
+                                                            <div class="inner">
+                                                                <img class="rounded"
+                                                                     src="{{ asset('/uploads/brochures/'~post.images[1]) }}"
+                                                                     style="width: 280px;height: 200px;margin-left: 20px"
+                                                                     itemprop="thumbnail" alt="Image description"/>
+                                                            </div>
+                                                        </a>
+                                                    </figure>
+                                                </td>
+                                            </tr>
+                                        </table>
+                                    </figure>
+                                </div>
+                            {% endif %}
+
+                            {% if post.images | length == 1 %}
+                                <div class="my-gallery" itemscope itemtype="http://schema.org/ImageGallery">
+                                    <figure itemprop="associatedMedia" itemscope
+                                            itemtype="http://schema.org/ImageObject">
+
+                                            <a href="{{ asset('/uploads/brochures/'~post.images[0]) }}"
+                                               itemprop="contentUrl" data-size="1024x1024">
+                                                <img class="rounded"
+                                                     src="{{ asset('/uploads/brochures/'~post.images[0]) }}"
+                                                     style="width: 280px;height: 200px;margin-left: 20px"
+                                                     itemprop="thumbnail" alt="Image description"/>
+                                            </a>
+
+                                    </figure>
+                                </div>
+                            {% endif %}
+
+                            <br/>
+
+
+                        </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                        {% if post.longitude != null  and post .latitude != null %}
+                            <div class="col-md-6 thumbnail">
+                                <div id="{{ post.id }}" class="map1" style="height: 200px; width:600px"></div>
+                                <div  class="test">
+                                    <input id="tableau1" type="hidden" value="{{ post.longitude }}"/>
+                                    <input id="tableau2" type="hidden" value="{{ post.latitude }}"/>
+                                </div>
+                                </a>
+                            </div>
+                        {% endif %}
+
+
+                        <!-- Likes -->
+                        <div class="row d-flex justify-content-start align-items-center flex-wrap pb-50">
+                            <div class="col-sm-6 d-flex justify-content-between justify-content-sm-start mb-2">
+                                <a href="{{ path('post_like',{'id':post.id}) }}"
+                                   class="d-flex align-items-center text-muted text-nowrap js-like">
+                                    {% if app.user and post.isLikedByUser(app.user) %}
+                                        <i class="fa fa-thumbs-up"></i>
+                                    {% else %}
+                                        <i class="fa fa-thumbs-down"></i>
+                                    {% endif %}
+                                    <span class="js-likes">{{ post.likes | length }}</span>
+                                </a>
+                            </div>
+
+                            <!-- share and like count and icons -->
+                            <div class="col-sm-6 d-flex justify-content-between justify-content-sm-end align-items-center mb-2">
+                                <a href="{{ path('singlepost',{'id':post.id}) }}" class="text-nowrap">
+                                    <i data-feather="message-square" class="text-body font-medium-3 me-50"></i>
+                                    <span class="js-comments text-muted me-1">{{ post.commentaires | length }}</span>
+                                </a>
+                            </div>
+                            <!-- share and like count and icons -->
+                        </div>
+
+
+                        <!-- comments -->
+
+
+
+
+                        {% for comment in post.commentaires %}
+                            <div class="d-flex align-items-start mb-1">
+                                <div class="avatar mt-25 me-75">
+                                    {% include "views/content/_partials/_fragments/user-avatar.html.twig" with {'user': comment.user} %}
+                                </div>
+                                <div class="profile-user-info w-100">
+                                    <div class="d-flex align-items-center justify-content-between">
+                                        <h6 class="mb-0">{{ comment.user.firstName ~ " " ~ comment.user.lastName }}</h6>
+{% if app.user.id == comment.user.id %}
+                                        <ul class="list-inline mb-0">
+                                            <li>
+                                                <a href="{{ path('editcomment', {'id': comment.id}) }}"   onclick="return confirm('Etes-vous sure de modifier ce commentaire ?! ')" ><i class="text-body font-medium-3"
+                                                                                                           data-feather="edit"></i></a>
+                                            </li>
+                                            <li>
+                                                <a href="{{ path('delete_commnt_user', {'id': comment.id}) }}"   onclick="return confirm('Etes-vous sure de supprimer ce commentaire ?! ')"><i
+                                                            class="text-body font-medium-3" data-feather="x"></i></a>
+                                            </li>
+
+                                        </ul>
+                                        {% endif %}
+                                    </div>
+
+
+                                    <small>{{ comment.content }}</small>
+                                </div>
+                            </div>
+                        {% endfor %}
+
+                        <!--/ comments -->
+
+                        <!-- comment box -->
+                        <form name="form" method="get" id="{{ post.id }}" action="{{ path('newcomment',{'id':post.id}) }}"
+                              class="comment">
+                            <fieldset class="mb-75">
+                                <textarea class="form-control" name="aa" id="aa" rows="3" placeholder="Add Comment"></textarea>
+                            </fieldset>
+                            <!--/ comment box -->
+                            <button id="MyButton" type="submit" class="btn btn-sm btn-primary">Commenter ..</button>
+                            <p id="m" style="font-size: small;margin-left: 10px"></p>
+                        </form>
+
+
+
+
+
+
+                    </div>
+                </div>
+            </div>
+            <div class="col-3">
+                <div class="card">
+                    <div class="card-body">
+                        <div class="card-title"><h6 style="font-size: 12px">Contacter l'annonceur</h6></div>
+
+                        <div class="small-text-left">
+                            <h6 style="font-size: 12px">   Numéro de telephone: {{ post.user.phonenumber }}</h6> <br>
+
+                            <h6 style="font-size: 12px">        Email: {{ post.user.email }}</h6>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    {% endif %}
+
+{% endfor %}

@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "238302352329",
+    "project_id": "espritx-61f1f",
+    "storage_bucket": "espritx-61f1f.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:238302352329:android:c8eb4a578cc4af4e0f4e18",
+        "android_client_info": {
+          "package_name": "com.expritx.client"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "238302352329-6tr2059l0r1vju22h5jm1kg3vsjl6cjh.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.expritx.client",
+            "certificate_hash": "aa5f7fbababca8d658bbbfd28c2151ac02196a06"
+          }
+        },
+        {
+          "client_id": "238302352329-sktko5b137lck2dvbjugsd9k2veectfe.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCz7lE-_IgoMhCVaTk2zHxsYIt8Al-pNrI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "238302352329-sktko5b137lck2dvbjugsd9k2veectfe.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

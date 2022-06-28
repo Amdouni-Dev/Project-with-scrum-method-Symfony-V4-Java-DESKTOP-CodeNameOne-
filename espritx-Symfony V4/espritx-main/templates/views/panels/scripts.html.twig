@@ -1,0 +1,25 @@
+<!-- BEGIN: Vendor JS-->
+<script src="{{ asset('vendors/js/vendors.min.js') }}"></script>
+<!-- BEGIN Vendor JS-->
+<!-- BEGIN: Page Vendor JS-->
+<script src="{{ asset('vendors/js/ui/jquery.sticky.js') }}"></script>
+{% block vendor_script %}{% endblock %}
+<!-- END: Page Vendor JS-->
+<!-- BEGIN: Theme JS-->
+<script src="{{ asset('js/core/app-menu.js') }}"></script>
+<script src="{{ asset('js/core/app.js') }}"></script>
+
+<!-- custom scripts file for user -->
+<script src="{{ asset('js/core/scripts.js') }}"></script>
+<script src="{{ asset('bundles/tetranzselect2entity/js/select2entity.js') }}"></script>
+
+<script src="{{ asset('js/scripts/jquery.hoverIntent.js') }}"></script>
+<script src="{{ asset('js/scripts/jquery.simulate.js') }}"></script>
+<script src="{{ asset('js/scripts/notifications.js') }}"></script>
+{% if configData['blankPage'] == false %}
+    <script src="{{ asset('js/scripts/customizer.js') }}"></script>
+{% endif %}
+<!-- END: Theme JS-->
+<!-- BEGIN: Page JS-->
+{% block page_script %}{% endblock %}
+<!-- END: Page JS-->

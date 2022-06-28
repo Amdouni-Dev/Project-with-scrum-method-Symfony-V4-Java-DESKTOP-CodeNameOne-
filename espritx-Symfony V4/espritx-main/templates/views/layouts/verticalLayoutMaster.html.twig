@@ -1,0 +1,115 @@
+<html
+        class="loading {{ (configData['theme'] == 'light') ? '' : configData['layoutTheme'] }}"
+        {# lang="{% if session().has('locale')%}{{session()->get('locale')}}{% else %}{{configData['defaultLanguage']}}{% endif%}" #}
+        data-textdirection="ltr"
+        {% if configData['theme'] == 'dark' %} data-layout="dark-layout" {% endif %}>
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,user-scalable=0,minimal-ui">
+    {#
+    csrf token login wahib ki ykamel el user
+    <meta name="csrf-token" content="{{ csrf_token() }}">
+    #}
+    <meta name="description"
+          content="Vuexy admin is super flexible, powerful, clean &amp; modern responsive bootstrap 4 admin template with unlimited possibilities.">
+    <meta name="keywords"
+          content="admin template, Vuexy admin template, dashboard template, flat admin template, responsive admin template, web app">
+    <meta name="author" content="Mkadmi & Khemissi Ltd.">
+    <title>{% block title %}{% endblock %} | ESPRITx | Communiquer autrement.</title>
+    <link rel="apple-touch-icon" href="{{ asset('images/ico/apple-icon-120.png') }}">
+    <link rel="shortcut icon" type="image/x-icon" href="{{ asset('images/logo/favicon.ico') }}">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,300;0,400;0,500;0,600;1,400;1,500;1,600"
+          rel="stylesheet">
+
+    {% block vendor_style %}{% endblock %}
+    {% block page_style %}{% endblock %}
+    {# Include core + vendor Styles #}
+    {% include 'views/panels/styles.html.twig' %}
+
+
+</head>
+<body class="vertical-layout vertical-menu-modern {{ configData['verticalMenuNavbarType'] }} {{ configData['blankPageClass'] }} {{ configData['bodyClass'] }} {{ configData['sidebarClass'] }} {{ configData['footerType'] }} {{ configData['contentLayout'] }}"
+      data-open="click"
+      data-menu="vertical-menu-modern"
+      data-col="{{ configData['showMenu'] ? configData['contentLayout'] : '1-column' }}"
+      data-framework="laravel"
+      data-asset-path="{{ asset('/manifest.json') }}">
+<!-- BEGIN: Header-->
+{% include 'views/panels/navbar.html.twig' %}
+<!-- END: Header-->
+
+<!-- BEGIN: Main Menu-->
+{% if configData['showMenu'] is defined and configData['showMenu'] == true %}
+    {% include 'views/panels/sidebar.html.twig' %}
+{% endif %}
+<!-- END: Main Menu-->
+
+<!-- BEGIN: Content-->
+<div class="app-content content {{ configData['pageClass'] }}">
+    <!-- BEGIN: Header-->
+    <div class="content-overlay"></div>
+    <div class="header-navbar-shadow"></div>
+
+    {% if configData['contentLayout']!='default' and configData['contentLayout'] is defined %}
+    <div class="content-area-wrapper {{ configData['layoutWidth'] == 'boxed' ? 'container-xxl p-0' : '' }}">
+        <div class="{{ configData['sidebarPositionClass'] }}">
+            <div class="sidebar">
+                {# Include Sidebar Content #}
+                {% block content_sidebar %}{% endblock %}
+            </div>
+        </div>
+        <div class="{{ configData['contentsidebarClass'] }}">
+            <div class="content-wrapper">
+                {% else %}
+                    {% if configData['pageHeader'] == true and configData['pageHeader'] is defined %}
+                        {% include '/views/panels/breadcrumb.html.twig' %}
+                    {% endif %}
+                {% endif %}
+                <div class="content-body">
+                    {% block content %}{% endblock %}
+                </div>
+                {% if configData['contentLayout']!='default' and configData['contentLayout'] is defined %}
+
+            </div>
+        </div>
+    </div>
+    {% else %}
+
+</div>
+{% endif %}
+
+</div>
+<!-- End: Content-->
+
+{% if configData['blankPage'] == false and configData['blankPage'] is defined %}
+    <!-- BEGIN: Customizer-->
+    {% include 'views/content/pages/customizer.html.twig' %}
+    <!-- End: Customizer-->
+{% endif %}
+
+<div class="sidenav-overlay"></div>
+<div class="drag-target"></div>
+
+{# include footer #}
+{% include 'views/panels/footer.html.twig' %}
+
+{# include default scripts #}
+{% include 'views/panels/scripts.html.twig' %}
+
+{% block vendor_script %}{% endblock %}
+{% block page_script %}{% endblock %}
+
+<script type="text/javascript">
+    $(window).on('load', function () {
+        if (feather) {
+            feather.replace({
+                width: 14, height: 14
+            });
+        }
+    });
+
+</script>
+</body>
+</html>

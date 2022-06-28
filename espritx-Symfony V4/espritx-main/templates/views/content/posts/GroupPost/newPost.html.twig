@@ -1,0 +1,177 @@
+{% extends 'views/layouts/contentLayoutMaster.html.twig' %}
+
+{% block title %} Chat Application {% endblock %}
+
+{% block page_style %}
+    <!-- Page css files -->
+    <link rel="stylesheet" href="{{ asset('css/base/pages/app-chat.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/base/pages/app-chat-list.css') }}">
+
+    <style>
+
+        /* Set the size of the div element that contains the map */
+        #map {
+            height: 400px;
+            /* The height is 400 pixels */
+            width: 100%;
+            /* The width is the width of the web page */
+        }
+    </style>
+
+{% endblock %}
+
+
+{% block content_sidebar %}
+    {% include 'views/content/apps/chat/app-chat-sidebar.html.twig' %}
+{% endblock %}
+
+
+{% block content %}
+
+
+    <!-- Async script executes immediately and must be after any DOM elements used in callback. -->
+
+
+    <h3>Rédigez une publication</h3>
+    <p>Ecrivez quelque chose d'inspirant.</p>
+
+    <div class="card">
+        <div class="card-header">
+            <h4 class="card-title">Détails de la publication</h4>
+        </div>
+        <div class="card-body">
+            {{ form_start(form,{'attr': {'novalidate': 'novalidate'}} ) }}
+            <div class="row">
+                <div class="col-12">
+                    {{ form_row(form.title) }}
+                </div>
+                <div class="col-12">
+                    {{ form_row(form.content) }}
+                </div>
+
+                <div class="col-12">
+                    {{ form_row(form.image) }}
+                </div>
+
+
+
+
+                <div id="map" style="margin-left: 17px">
+                </div>
+            </div>
+            <br>     <br>
+
+            <input type="hidden" id="tableau1" name="markers1" value="">
+            <input type="hidden" id="tableau2" name="markers2" value="">
+            <div class="col-12 d-flex justify-content-end">
+                <button type="submit" class="btn btn-primary" style="width: 13.5rem;">{{ button_label|default('Publier') }}</button>
+            </div>
+        </div>
+        {{ form_end(form) }}
+
+    </div>
+    </div>
+{% endblock %}
+  {% block page_script %}
+      <script
+              src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDch6NmhxtcdIgcCRjZbblh5z16CK-a2Jo&callback=initMap&libraries=&v=weekly"
+              async
+      ></script>
+
+      <script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+
+      <script>
+
+          let map;
+          let markers = [];
+          var infowindow = new google.maps.InfoWindow();
+
+          function initMap() {
+              const haightAshbury = {lat: 36.77355514795189, lng: 9.088027850665279};
+              map = new google.maps.Map(document.getElementById("map"), {
+                  zoom: 10,
+                  center: haightAshbury,
+                  draggable: true
+
+              });
+              // This event listener will call addMarker() when the map is clicked.
+              map.addListener("click", (event) => {
+                  addMarker(event.latLng);
+              });
+          }
+
+          function GetAddress() {
+              var lat = markers[0].position.lat();
+              var lng = markers[0].position.lng();
+              var latlng = new google.maps.LatLng(lat, lng);
+              var geocoder = new google.maps.Geocoder();
+              geocoder.geocode({'latLng': latlng}, function (results, status) {
+                  if (status === google.maps.GeocoderStatus.OK) {
+                      if (results[1]) {
+                          alert("Location: " + results[1].formatted_address);
+                      }
+                  } else {
+                      alert("Location: not foound ");
+                  }
+              });
+          }
+
+
+          // Adds a marker to the map and push to the array.
+          function addMarker(location) {
+              deleteMarkers();
+              const marker = new google.maps.Marker({
+                  position: location,
+                  map: map,
+              });
+              markers.push(marker);
+
+              // if(markers.length===1){
+              //     alert('Vous devez choisir un seule localisation !\nVous pouvez supprimer la localisation choisie par le bouton Delete Markers !');
+              // }else{
+              //     if(markers.length===0){
+              //         const marker = new google.maps.Marker({
+              //             position: location,
+              //             map: map,
+              //         });
+              //         markers.push(marker);
+              //     }
+              // }
+              console.log(markers[0].title);
+              document.getElementById('tableau1').setAttribute("value", markers[0].position.lat());
+              document.getElementById('tableau2').setAttribute("value", markers[0].position.lng());
+              // console.log(geocoder.reverseGeocodeCoordinate(markers[0].position));
+              console.log(document.getElementById('tableau1'), document.getElementById('tableau2'));
+          }
+
+          function setMapOnAll(map) {
+              for (let i = 0; i < markers.length; i++) {
+                  markers[i].setMap(map);
+              }
+          }
+
+          // Removes the markers from the map, but keeps them in the array.
+          function clearMarkers() {
+              setMapOnAll(null);
+          }
+
+          // Shows any markers currently in the array.
+          function showMarkers() {
+              setMapOnAll(map);
+          }
+
+          // Deletes all markers in the array by removing references to them.
+          function deleteMarkers() {
+              clearMarkers();
+              markers = [];
+          }
+
+
+      </script>
+
+
+      <!-- Page js files -->
+      <script src="{{ asset('js/scripts/pages/app-chat.js') }}"></script>
+  {% endblock %}
+

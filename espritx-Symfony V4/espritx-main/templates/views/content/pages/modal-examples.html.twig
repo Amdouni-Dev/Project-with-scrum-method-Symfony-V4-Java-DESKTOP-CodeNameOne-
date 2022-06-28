@@ -1,0 +1,196 @@
+{% extends 'views/layouts/contentLayoutMaster.html.twig' %}
+
+{% block title %} Modal Examples {% endblock %}
+
+{% block vendor_style %}
+  <!-- vendor css files -->
+  <link rel='stylesheet' href="{{ asset('vendors/css/forms/wizard/bs-stepper.min.css') }}">
+  <link rel='stylesheet' href="{{ asset('vendors/css/forms/select/select2.min.css') }}">
+{% endblock %}
+
+{% block page_style %}
+  <!-- Page css files -->
+  <link rel="stylesheet" href="{{ asset('css/base/plugins/forms/form-wizard.css') }}">
+  <link rel="stylesheet" href="{{ asset('css/base/plugins/forms/form-validation.css') }}">
+  <link rel="stylesheet" href="{{ asset('css/base/pages/modal-create-app.css') }}">
+{% endblock %}
+
+
+{% block content %}
+<section id="modal-examples">
+  <div class="row">
+    <!-- share project card -->
+    <div class="col-md-4">
+      <div class="card">
+        <div class="card-body text-center">
+          <i data-feather="file-text" class="font-large-2 mb-1"></i>
+          <h5 class="card-title">Share Project</h5>
+          <p class="card-text">Elegant Share Project options modal popup example, easy to use in any page.</p>
+
+          <!-- modal trigger button -->
+          <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#shareProject">
+            Show
+          </button>
+        </div>
+      </div>
+    </div>
+    <!-- / share project card -->
+
+    <!-- add new card  -->
+    <div class="col-md-4">
+      <div class="card">
+        <div class="card-body text-center">
+          <i data-feather="credit-card" class="font-large-2 mb-1"></i>
+          <h5 class="card-title">Add New Card</h5>
+          <p class="card-text">
+            Quickly collect the credit card details, built in input mask and form validation support.
+          </p>
+
+          <!-- modal trigger button -->
+          <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#addNewCard">
+            Show
+          </button>
+        </div>
+      </div>
+    </div>
+    <!-- / add new card  -->
+
+    <!-- pricing card -->
+    <div class="col-md-4">
+      <div class="card">
+        <div class="card-body text-center">
+          <i data-feather="bar-chart-2" class="font-large-2 mb-1"></i>
+          <h5 class="card-title">Pricing</h5>
+          <p class="card-text">Elegant pricing options modal popup example, easy to use in any page.</p>
+
+          <!-- modal trigger button -->
+          <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#pricingModal">
+            Show
+          </button>
+        </div>
+      </div>
+    </div>
+    <!-- / pricing card -->
+
+    <!-- refer and earn card -->
+    <div class="col-md-4">
+      <div class="card">
+        <div class="card-body text-center">
+          <i data-feather="gift" class="font-large-2 mb-1"></i>
+          <h5 class="card-title">Refer & Earn</h5>
+          <p class="card-text">
+            Use Refer & Earn modal to encourage your exiting customers refer their friends & colleague.
+          </p>
+
+          <!-- modal trigger button -->
+          <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#referEarnModal">
+            Show
+          </button>
+        </div>
+      </div>
+    </div>
+    <!-- / refer and earn card -->
+
+    <!-- add new address card-->
+    <div class="col-md-4">
+      <div class="card">
+        <div class="card-body text-center">
+          <i data-feather="home" class="font-large-2 mb-1"></i>
+          <h5 class="card-title">Add New Address</h5>
+          <p class="card-text">
+            Ready to use form to collect user address data with validation and custom input support.
+          </p>
+
+          <!-- modal trigger button -->
+          <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#addNewAddressModal">
+            Show
+          </button>
+        </div>
+      </div>
+    </div>
+    <!-- / add new address card-->
+
+    <!-- create app card-->
+    <div class="col-md-4">
+      <div class="card">
+        <div class="card-body text-center">
+          <i data-feather="package" class="font-large-2 mb-1"></i>
+          <h5 class="card-title">Create App</h5>
+          <p class="card-text">Provide application data with this form modal popup example, easy to use in any page.</p>
+
+          <!-- modal trigger button -->
+          <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#createAppModal">
+            Show
+          </button>
+        </div>
+      </div>
+    </div>
+    <!-- / create app card-->
+
+    <!-- two factor auth -->
+    <div class="col-md-4">
+      <div class="card">
+        <div class="card-body text-center">
+          <i data-feather="key" class="font-large-2 mb-1"></i>
+          <h5 class="card-title">Two Factor Auth</h5>
+          <p class="card-text">
+            Use this modal to enhance your application security by enabling two factor authentication.
+          </p>
+
+          <!-- modal trigger button -->
+          <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#twoFactorAuthModal">
+            Show
+          </button>
+        </div>
+      </div>
+    </div>
+    <!-- / two factor auth  -->
+
+     <!-- edit user  -->
+    <div class="col-md-4">
+      <div class="card">
+        <div class="card-body text-center">
+          <i data-feather="user" class="font-large-2 mb-1"></i>
+          <h5 class="card-title">Edit User Info</h5>
+          <p class="card-text">Use this modal to modify the existing user's current information.</p>
+
+          <!-- modal trigger button -->
+          <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#editUser">Show</button>
+        </div>
+      </div>
+    </div>
+    <!-- / edit user  -->
+  </div>
+</section>
+
+{% include 'views/content/_partials/_modals/modal-share-project.html.twig' %}
+{% include 'views/content/_partials/_modals/modal-add-new-cc.html.twig' %}
+{% include 'views/content/_partials/_modals/modal-pricing.html.twig' %}
+{% include 'views/content/_partials/_modals/modal-refer-earn.html.twig' %}
+{% include 'views/content/_partials/_modals/modal-add-new-address.html.twig' %}
+{% include 'views/content/_partials/_modals/modal-create-app.html.twig' %}
+{% include 'views/content/_partials/_modals/modal-two-factor-auth.html.twig' %}
+{% include 'views/content/_partials/_modals/modal-edit-user.html.twig' %}
+{% endblock %}
+
+
+{% block vendor_script %}
+  <!-- vendor files -->
+  <script src="{{ asset('vendors/js/forms/wizard/bs-stepper.min.js') }}"></script>
+  <script src="{{ asset('vendors/js/forms/select/select2.full.min.js') }}"></script>
+  <script src="{{ asset('vendors/js/forms/cleave/cleave.min.js') }}"></script>
+  <script src="{{ asset('vendors/js/forms/cleave/addons/cleave-phone.us.js') }}"></script>
+  <script src="{{ asset('vendors/js/forms/validation/jquery.validate.min.js') }}"></script>
+{% endblock %}
+
+{% block page_script %}
+  <!-- Page js files -->
+  <script src="{{ asset('js/scripts/pages/modal-add-new-cc.js') }}"></script>
+  <script src="{{ asset('js/scripts/pages/page-pricing.js') }}"></script>
+  <script src="{{ asset('js/scripts/pages/modal-add-new-address.js') }}"></script>
+  <script src="{{ asset('js/scripts/pages/modal-create-app.js') }}"></script>
+  <script src="{{ asset('js/scripts/pages/modal-two-factor-auth.js') }}"></script>
+  <script src="{{ asset('js/scripts/pages/modal-edit-user.js') }}"></script>
+   <script src="{{ asset('js/scripts/pages/modal-share-project.js') }}"></script>
+{% endblock %}
+

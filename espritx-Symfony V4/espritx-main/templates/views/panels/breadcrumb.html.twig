@@ -1,0 +1,28 @@
+<div class="content-header row">
+  <div class="content-header-left col-md-9 col-12 mb-2">
+    <div class="row breadcrumbs-top">
+      <div class="col-12">
+        <h2 class="content-header-title float-start mb-0">{% block title %}{% endblock %}</h2>
+        <div class="breadcrumb-wrapper">
+          {% if breadcrumbs is defined %}
+          <ol class="breadcrumb">
+              {#  this will load breadcrumbs dynamically from controller #}
+            {% for breadcrumb in breadcrumbs%}
+              <li class="breadcrumb-item">
+                {% if breadcrumb['link'] is defined %}
+                {# {{ breadcrumb['link'] == 'javascript:void(0)' ? breadcrumb['link']:path(breadcrumb['link']) }} #}
+                  <a href="#">
+                    {% endif %}
+                      {{breadcrumb['name']}}
+                    {% if breadcrumb['link'] is defined %}
+                  </a>
+                  {% endif %}
+              </li>
+            {% endfor %}
+          </ol>
+          {% endif %}
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

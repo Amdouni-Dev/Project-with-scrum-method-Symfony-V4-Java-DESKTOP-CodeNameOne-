@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<?import javafx.geometry.Insets?>
+<AnchorPane prefHeight="603.0" prefWidth="1382.0" style="-fx-background-color: #171e31;" xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml"
+>
+    <Label fx:id="hello" text="Hello World">
+        <VBox.margin>
+            <Insets left="636.0" top="3.5" />
+        </VBox.margin>
+    </Label>
+</AnchorPane>

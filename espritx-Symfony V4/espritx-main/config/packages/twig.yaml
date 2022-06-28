@@ -1,0 +1,15 @@
+twig:
+    form_themes:
+        - 'form/bootstrap_5_layout.html.twig'
+        - 'form/fields.html.twig'
+    default_path: '%kernel.project_dir%/templates'
+    debug: '%kernel.debug%'
+    strict_variables: '%kernel.debug%'
+    exception_controller: null
+    globals:
+        menuData: '@App\Twig\MenuExtension'
+        configData: '@App\Twig\ConfigExtension'
+        chatStatus: 1
+    paths:
+        '%kernel.project_dir%/public/images': images
+        

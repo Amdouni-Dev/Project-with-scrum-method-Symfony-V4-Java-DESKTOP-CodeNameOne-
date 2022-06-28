@@ -1,0 +1,389 @@
+{% extends 'views/layouts/contentLayoutMaster.html.twig' %}
+
+{% block title %} Profile {% endblock %}
+
+{% block page_style %}
+    {# Page Css files #}
+    <link rel="stylesheet" href="{{ asset('css/base/plugins/extensions/ext-component-sweet-alerts.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/base/pages/page-profile.css') }}">
+    <style>
+        .profile-img .avatar-wrapper {
+            height: 100%;
+            width: 100%;
+        }
+
+        .avatar-wrapper .avatar {
+            height: 100%;
+            width: 100%;
+        }
+    </style>
+{% endblock %}
+{% block vendor_style %}
+    <link rel="stylesheet" href="{{ asset('vendors/css/animate/animate.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('vendors/css/extensions/sweetalert2.min.css') }}">
+{% endblock %}
+
+{% block content %}
+    <div id="user-profile">
+
+        <!-- profile info section -->
+        <section id="profile-info">
+            <div class="row">
+                <!-- left profile info section -->
+
+                <div class="col-lg-3 col-12 order-2 order-lg-1">
+                    <!-- about -->
+                    {% for group  in allgroups %}
+                    <div class="card">
+                        <div class="card-body">
+                            <h5 class="mb-75">About</h5>
+                            <p class="card-text">
+                                {{ group.nomGroupe }}
+                            </p>
+                            <div class="mt-2">
+                                {{ group.user.firstName }}
+                            </div>
+                            <div class="mt-2">
+                                <img class="card-img" src="{{ asset('/uploads/brochures/'~group.image) }}" alt="{{ group.image }}" draggable="false" oncontextmenu="return false;" />
+                            </div>
+                            <div class="mt-2">
+                                <h5 class="mb-75">
+                                    <a  href="{{ path('new_membre_group', {'id': group.id,'idU':app.user.id}) }}"  >
+                                        Rejoindre
+                                    </a>
+                                </h5>
+                            </div>
+                        </div>
+                    </div>
+                    <!--/ about -->
+                    {% endfor %}
+                </div>
+
+                <!--/ left profile info section -->
+
+                <!-- center profile info section -->
+                <div class="col-lg-6 col-12 order-1 order-lg-2">
+                    <!-- post 1 -->
+                    {% include "views/content/posts/User/contentPosts.html.twig" %}
+                </div>
+                <!--/ center profile info section -->
+            </div>
+
+            <!-- reload button -->
+            <div class="row">
+                <div class="col-12 text-center">
+                    <button type="button" class="btn btn-sm btn-primary block-element border-0 mb-1">Load More</button>
+                </div>
+            </div>
+            <!--/ reload button -->
+        </section>
+        <!--/ profile info section -->
+    </div>
+{% endblock %}
+
+{% block vendor_script %}
+    <script src="{{ asset('vendors/js/extensions/sweetalert2.all.min.js') }}"></script>
+    <script src="{{ asset('vendors/js/extensions/polyfill.min.js') }}"></script>
+{% endblock %}
+
+{% block page_script %}
+
+    <script src="{{ asset('js/scripts/extensions/ext-component-sweet-alerts.js') }}"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <!-- Page js files -->
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    {# bloc java script pour ajax #}
+    <script>
+        // fonction
+        function onClickBtnLike(event) {
+            event.preventDefault();
+
+            // nheb na7i lien mte3 like bech ki nekliki meyodhherlich lien
+            // this hiya l "a mte3 l href ili 9a3da nekliki aaliha "
+            const url = this.href;
+            const spanCount = this.querySelector('span.js-likes');
+
+            // nbadel l'icone
+            const icone = this.querySelector('i');
+            axios.get(url).then(function (response) {
+                //  console.log(response);
+                spanCount.textContent = response.data.likess;
+                // console.log(likess);
+
+                if (icone.classList.contains('fa')) {
+                    icone.classList.replace('fa', 'fa-o');
+
+                } else {
+                    icone.classList.replace('fa-o', 'fa');
+                }
+
+                // si il'ya une erreur
+            }).catch(function (error) {
+                if (error.response.status === 403) {
+                    window.alert('pardon!! vous ne pouvez pas liker un post si vous n\'etes pas connecté! ');
+                }
+            })
+
+
+        }
+
+        //recupere tous les lien de "a" qui contiennent la classe js-like
+        // forEach(function) ==> f kol a.js-like bch naamel fonction
+        document.querySelectorAll('a.js-like').forEach(function (link) {
+            link.addEventListener('click', onClickBtnLike)
+        })
+
+
+        function onClickBtnComment(event) {
+            event.preventDefault();
+            const url = this.action;
+            console.log(url);
+            var com = this.querySelector('.msg');
+            var span = this.querySelector('.c1');
+            var count = this.querySelector('.count');
+            var texte = this.querySelector('.texte');
+
+            var inputVal = document.getElementById("aa").value;
+
+            let data = new FormData(this);
+            axios.post(url, data).then(function (response) {
+                // $('#count').load(document.URL +  ' #count');
+                console.log(inputVal);
+                //  console.log(response.data);
+                count.textContent = response.data.nbrcomments;
+                span.textContent = response.data.message;
+                {% if app.user %}
+                com.textContent = " Ajouté par {{ app.user.firstName |upper }} " + "  à " + "  " + response.data.dateajout;
+                {% endif %}
+                // $('#aa').value = "";
+                // $('#msg').load(document.URL +  ' #msg');
+
+
+                // document.getElementById("msg1").innerHTML="dddd";
+            }).catch(function (error) {
+                console.log(error)
+            })
+            {% if app.user %}
+            document.getElementById("m").innerHTML = "Commentaire ajoutée avec succées ! <br/>" + inputVal;
+            window.alert('votre commentaire est bien ajoutée ');
+            {% endif %}
+        }
+
+        document.querySelectorAll('form.comment').forEach(function (link) {
+            link.addEventListener('submit', onClickBtnComment)
+        });
+        /////////***************************************Map***************************************////////////////
+
+
+    </script>
+
+    <script>
+        // $(document).ready(function() {
+        let map;
+        let markers = [];
+
+        function initMap() {
+            tab = document.querySelectorAll("div.map1");
+            tab2 = document.querySelectorAll("div.test");
+            long = tab2[0].childNodes;
+            console.log(tab2[0].childNodes);
+            console.log(long[1], long[3]);
+            for (let i = 0; i < tab.length; i++) {
+                var latit = Number(tab2[i].childNodes[3].value);
+                var long = Number(tab2[i].childNodes[1].value);
+                const haightAshbury = {lat: long, lng: latit};
+                map = new google.maps.Map(document.getElementById(tab[i].id), {
+                    zoom: 12,
+                    center: haightAshbury,
+                    draggable: true
+                });
+                new google.maps.Marker({
+                    position: haightAshbury,
+                    map,
+                    title: "Localisation",
+                });
+            }
+        }
+
+
+
+        const ReadMore = (() => {
+            let s;
+
+            return {
+
+                settings() {
+                    return {
+                        content: document.querySelectorAll('.js-read-more'),
+                        originalContentArr: [],
+                        truncatedContentArr: [],
+                        moreLink: "Voir plus",
+                        lessLink: "Voir moins",
+
+
+                    }
+                },
+
+                init() {
+                    s = this.settings();
+                    this.bindEvents();
+                },
+
+                bindEvents() {
+                    ReadMore.truncateText();
+                },
+
+                // ne7seb 9adeh 3andi men kelma
+                countWords(str) {
+                    return str.split(/\s+/).length;
+                },
+
+                // nombre des mots ili bch nchoufhom 9bal tronc
+                ellipseContent(str, wordsNum) {
+                    return str.split(/\s+/).slice(0, wordsNum).join(' ') + ' ...';
+
+                },
+
+                // n9asem text
+                truncateText() {
+
+                    for (let i = 0; i < s.content.length; i++) {
+                        //console.log(s.content)
+                        const originalContent = s.content[i].innerHTML;
+                        const numberOfWords = s.content[i].dataset.rmWords;
+                        const truncateContent = ReadMore.ellipseContent(originalContent, numberOfWords);
+                        const originalContentWords = ReadMore.countWords(originalContent);
+
+                        s.originalContentArr.push(originalContent);
+                        s.truncatedContentArr.push(truncateContent);
+
+
+                        if (numberOfWords < originalContentWords) {
+                            s.content[i].innerHTML = s.truncatedContentArr[i];
+                            let self = i;
+                            ReadMore.createLink(self)
+                        }
+                    }
+                    ReadMore.handleClick(s.content);
+                },
+
+                //
+                createLink(index) {
+                    const linkWrap = document.createElement('span');
+
+                    linkWrap.className = 'read-more__link-wrap';
+
+                    linkWrap.innerHTML = `<a id="read-more_${index}" class="read-more__link" style="cursor:pointer;">${s.moreLink}</a>`;
+
+                    // Inset created link
+                    s.content[index].parentNode.insertBefore(linkWrap, s.content[index].nextSibling);
+
+                },
+
+                //
+                handleClick(el) {
+                    const readMoreLink = document.querySelectorAll('.read-more__link');
+
+                    for (let j = 0, l = readMoreLink.length; j < l; j++) {
+
+                        readMoreLink[j].addEventListener('click', function() {
+
+                            const moreLinkID = this.getAttribute('id');
+                            let index = moreLinkID.split('_')[1];
+
+                            el[index].classList.toggle('is-expanded');
+
+                            if (this.dataset.clicked !== 'true') {
+                                el[index].innerHTML = s.originalContentArr[index];
+                                this.innerHTML = s.lessLink;
+                                this.dataset.clicked = true;
+                            } else {
+                                el[index].innerHTML = s.truncatedContentArr[index];
+                                this.innerHTML = s.moreLink;
+                                this.dataset.clicked = false;
+                            }
+                        });
+                    }
+                },
+
+                // lkol
+                openAll() {
+                    const instances = document.querySelectorAll('.read-more__link');
+                    for (let i = 0; i < instances.length; i++) {
+                        content[i].innerHTML = s.truncatedContentArr[i];
+                        instances[i].innerHTML = s.moreLink;
+                    }
+                }
+            }
+        })();
+
+        ReadMore.init()
+
+    </script>
+
+    <script
+            src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDch6NmhxtcdIgcCRjZbblh5z16CK-a2Jo&callback=initMap&libraries=&v=weekly"
+            async
+    ></script>
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+
+
+    <script>
+        // mes groupes
+        $(function() {
+            $('.material-card > .mc-btn-action').click(function () {
+                var card = $(this).parent('.material-card');
+                var icon = $(this).children('i');
+                icon.addClass('fa-spin-fast');
+
+                if (card.hasClass('mc-active')) {
+                    card.removeClass('mc-active');
+
+                    window.setTimeout(function() {
+                        icon
+                            .removeClass('fa-arrow-left ripple')
+                            .removeClass('fa-spin-fast')
+                            .addClass('fa-bars');
+
+                    }, 800);
+                } else {
+                    card.addClass('mc-active');
+
+                    window.setTimeout(function() {
+                        icon
+                            .removeClass('fa-bars')
+                            .removeClass('fa-spin-fast')
+                            .addClass('fa-arrow-left ripple');
+
+                    }, 800);
+                }
+            });
+        });
+
+
+    </script>
+    <script src="{{ asset('js/filters.js') }}">
+        // filtrage recherche
+    </script>
+
+
+
+{% endblock %}

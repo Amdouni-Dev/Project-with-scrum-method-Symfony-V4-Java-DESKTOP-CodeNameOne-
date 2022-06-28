@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
+    <SplitPane dividerPositions="0.2" AnchorPane.bottomAnchor="3.0" AnchorPane.leftAnchor="3.0" AnchorPane.rightAnchor="3.0" AnchorPane.topAnchor="3.0">
+        <AnchorPane fx:id="masterView" />
+        <GridPane maxHeight="Infinity" maxWidth="Infinity">
+            <columnConstraints>
+                <ColumnConstraints maxWidth="Infinity" />
+            </columnConstraints>
+            <rowConstraints>
+                <RowConstraints vgrow="ALWAYS"/>
+                <RowConstraints minHeight="50" maxHeight="50" vgrow="NEVER" />
+            </rowConstraints>
+            <ScrollPane fitToWidth="true" fitToHeight="true" maxWidth="Infinity" GridPane.hgrow="ALWAYS">
+                <AnchorPane fx:id="detailView" maxWidth="Infinity" GridPane.hgrow="ALWAYS" GridPane.rowIndex="0" />
+            </ScrollPane>
+            <HBox alignment="CENTER" GridPane.hgrow="ALWAYS" GridPane.vgrow="NEVER" GridPane.rowIndex="1">
+                <Button fx:id="submitButton" text="Commit" textAlignment="CENTER">
+                    <HBox.margin>
+                        <Insets left="5.0" right="5.0" />
+                    </HBox.margin>
+                </Button>
+                <Button fx:id="resetButton" text="Rollback" textAlignment="CENTER">
+                    <HBox.margin>
+                        <Insets left="5.0" right="5.0" />
+                    </HBox.margin>
+                </Button>
+                <Button fx:id="deleteButton" text="Delete" textAlignment="CENTER">
+                    <HBox.margin>
+                        <Insets left="5.0" right="5.0" />
+                    </HBox.margin>
+                </Button>
+            </HBox>
+        </GridPane>
+    </SplitPane>
+</AnchorPane>

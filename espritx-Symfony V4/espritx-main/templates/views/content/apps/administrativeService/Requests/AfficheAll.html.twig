@@ -1,0 +1,150 @@
+{% extends 'views/layouts/contentLayoutMaster.html.twig' %}
+
+{% block title %} Requests List {% endblock %}
+
+{% block vendor_style %}
+    <link rel="stylesheet" href="{{ asset('vendors/css/forms/select/select2.min.css') }}">
+{% endblock %}
+
+
+{% block page_style %}
+    <link rel="stylesheet" href="{{ asset('css/base/plugins/forms/form-validation.css') }}">
+{% endblock %}
+
+
+{% block content %}
+    <!-- requests list start -->
+    <section class="app-user-list">
+        <!-- list and filter start -->
+        <div class="card">
+            <div class="card-header">
+                <h4 class="card-title">Manage requests</h4>
+            </div>
+            <div class="card-body">
+                <div class="d-flex justify-content-between align-items-center mb-1">
+        <span class="card-text">
+          You can view and answer requests in the table below.
+        </span>
+                    <a class="btn btn-primary waves-effect waves-float waves-light" href="{{ url('SerivceReq_Add') }}">Add</a>
+                </div>
+                <div class="table-responsive row">
+                    <table class="table">
+                        <thead>
+                        <tr>
+                            <th{% if pagination.isSorted('sr.Title') %} class="sorted"{% endif %}>
+                                {{ knp_pagination_sortable(pagination, 'Title', 'sr.Title') }}
+                                <sub {% if pagination.isSorted('sr.createdAt') %}class="sorted"{% endif %}>
+                                    {{ knp_pagination_sortable(pagination, 'Creation Date', 'sr.createdAt') }}
+                                </sub>
+                            </th>
+
+                            <th>
+                                Type
+                            </th>
+
+                            <th>
+                                Sender
+                            </th>
+
+                            <th{% if pagination.isSorted('sr.Status') %} class="sorted"{% endif %}>
+                                {{ knp_pagination_sortable(pagination, 'Status', 'sr.Status') }}
+                                <sub {% if pagination.isSorted('sr.RespondedAt') %}class="sorted"{% endif %}>
+                                    {{ knp_pagination_sortable(pagination, 'Last Response Date', 'sr.RespondedAt') }}
+                                </sub>
+                            </th>
+
+
+                            <th>Actions</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        {% for requests in pagination %}
+                            <tr>
+                                <td>
+                                    <!-- BEGIN: Title and creation date-->
+
+                                    <a href="{{ url("SerivceReq_Show", {id: requests.id}) }}">
+                                        <div class="d-flex justify-content-left align-items-center">
+                                            <div class="d-flex flex-column">
+                                                <span class="fw-bolder fs-6">{{ requests.Title }}</span>
+
+                                                <small class="emp_post text-muted">{{ requests.createdAt|date('Y-m-d H:i:s') }}</small>
+                                            </div>
+                                        </div>
+                                    </a>
+                                    <!-- END: requests Title and Creation date-->
+                                </td>
+                                <td>
+                                    <div class="d-flex justify-content-left align-items-center">
+                                        <div class="d-flex flex-column">
+                                            <span class="fw-bolder fs-6">{{ requests.Type }}</span>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="d-flex justify-content-left align-items-center">
+                                        <div class="d-flex flex-column">
+                                            <span class="fw-bolder fs-6">{{ requests.Requester.firstName~" "~requests.Requester.lastName }}</span>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td>
+                                    <!-- BEGIN: requestStatus -->
+                                    {{ include('views/content/apps/administrativeService/Requests/request-status-pill.html.twig', {'requeststatus': requests.Status}) }}
+                                    {% if requests.RespondedAt is not null %}
+                                        <small class="emp_post text-muted">{{ requests.RespondedAt|date('Y-m-d H:i:s') }}</small>
+                                    {% endif %}
+                                    <!-- END: requestStatus -->
+                                </td>
+                                <td>
+                                    <div class="d-flex">
+                                        {% if (requests.Status != 'complete') %}
+                                            <a href="{{ url("SerivceReq_Respond", {id: requests.id}) }}">
+                                                <i data-feather="edit-2" class="me-50"></i>
+                                            </a>
+                                        {% endif %}
+                                        <a href="{{ url("SerivceReq_Del", {id: requests.id}) }}">
+                                            <i data-feather="trash" class="me-50"></i>
+                                        </a>
+                                    </div>
+                                </td>
+                            </tr>
+                        {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="d-flex justify-content-between my-2">
+                    <div class="col-sm-12 col-md-6 text-muted">
+                        Showing {{ ((pagination.currentPageNumber - 1) * pagination.itemNumberPerPage) + 1 }}
+                        to {{ min(pagination.currentPageNumber * pagination.itemNumberPerPage, pagination.getTotalItemCount) }}
+                        of {{ pagination.getTotalItemCount }} entries
+                    </div>
+                    <div class="col-sm-12 col-md-6 navigation">
+                        {{ knp_pagination_render(pagination) }}
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- list and filter end -->
+    </section>
+    <!-- users list ends -->
+{% endblock %}
+
+
+{% block vendor_script %}
+    <script src="{{ asset('vendors/js/forms/select/select2.full.min.js') }}"></script>
+    <script src="{{ asset('vendors/js/tables/datatable/jszip.min.js') }}"></script>
+    <script src="{{ asset('vendors/js/tables/datatable/vfs_fonts.js') }}"></script>
+    <script src="{{ asset('vendors/js/tables/datatable/buttons.html5.min.js') }}"></script>
+    <script src="{{ asset('vendors/js/tables/datatable/buttons.print.min.js') }}"></script>
+    <script src="{{ asset('vendors/js/forms/validation/jquery.validate.min.js') }}"></script>
+    <script src="{{ asset('vendors/js/forms/cleave/cleave.min.js') }}"></script>
+    <script src="{{ asset('vendors/js/forms/cleave/addons/cleave-phone.us.js') }}"></script>
+{% endblock %}
+
+
+{% block page_script %}
+    <script src="{{ asset('js/scripts/pages/app-user-list.js') }}"></script>
+{% endblock %}
+

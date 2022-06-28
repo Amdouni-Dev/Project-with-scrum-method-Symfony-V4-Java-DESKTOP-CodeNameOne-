@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.scene.web.*?>
+
+<AnchorPane fx:id="AnchorPane_Publication_User" prefHeight="772.0" prefWidth="656.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.esprit.controller.Template.feed.User.AjouterPostsController">
+            <TextField fx:id="tfTitle" layoutX="21.0" layoutY="54.0" prefHeight="25.0" prefWidth="562.0" promptText="Title">
+      <font>
+         <Font name="System Bold Italic" size="12.0" />
+      </font></TextField>
+
+    <Button fx:id="btnAjouter" layoutX="405.0" layoutY="719.0" mnemonicParsing="false" onAction="#handleButtonaction" prefHeight="42.0" prefWidth="183.0" style="-fx-background-color: #367BD8;" text="Publier">
+      <font>
+         <Font name="Times New Roman" size="21.0" />
+      </font></Button>
+
+
+        <WebView fx:id="webmap" layoutX="14.0" layoutY="428.0" prefHeight="286.0" prefWidth="622.0" />
+
+   <TextArea fx:id="tfContent" layoutX="21.0" layoutY="155.0" prefHeight="94.0" prefWidth="562.0" promptText="Decivez votre puplication .....">
+      <font>
+         <Font name="System Bold Italic" size="12.0" />
+      </font></TextArea>
+   <Label layoutX="108.0" layoutY="23.0" prefHeight="24.0" prefWidth="298.0" style="-fx-background-color: white;" text="Ajoutez un titre a votre publication" textFill="#4a4545" textOverrun="WORD_ELLIPSIS">
+      <font>
+         <Font name="Comic Sans MS Bold" size="17.0" />
+      </font>
+   </Label>
+   <Label layoutX="108.0" layoutY="122.0" prefHeight="24.0" prefWidth="298.0" text="Decriver votre publication .........." textFill="#4a4545" textOverrun="WORD_ELLIPSIS">
+      <font>
+         <Font name="Comic Sans MS Bold" size="17.0" />
+      </font>
+   </Label>
+   <Label layoutX="112.0" layoutY="404.0" prefHeight="24.0" prefWidth="381.0" style="-fx-background-color: white;" text="Ajoutez une localisation a votre publication" textFill="#4a4545" textOverrun="WORD_ELLIPSIS">
+      <font>
+         <Font name="Comic Sans MS Bold" size="17.0" />
+      </font>
+   </Label>
+   <Label layoutX="108.0" layoutY="259.0" prefHeight="24.0" prefWidth="339.0" style="-fx-background-color: white;" text="Ajoutez des images a votre publication" textFill="#4a4545" textOverrun="WORD_ELLIPSIS">
+      <font>
+         <Font name="Comic Sans MS Bold" size="17.0" />
+      </font>
+   </Label>
+    <Label fx:id="file_path" layoutX="320.0" layoutY="374.0" prefHeight="25.0" prefWidth="190.0" />
+    <Button fx:id="btnCharger" layoutX="452.0" layoutY="255.0" mnemonicParsing="false" onAction="#InsertImage" style="-fx-background-color: #7993B6;" text="Charger">
+      <font>
+         <Font name="Times New Roman" size="18.0" />
+      </font></Button>
+    <ImageView fx:id="imageview_Publication" fitHeight="122.0" fitWidth="228.0" layoutX="43.0" layoutY="281.0" pickOnBounds="true" preserveRatio="true" />
+    <Button fx:id="idRetour" layoutX="632.0" layoutY="10.0" mnemonicParsing="false" onAction="#back" text="Retour" />
+
+    <ProgressBar fx:id="idPB" layoutX="39.0" layoutY="731.0" prefHeight="18.0" prefWidth="347.0" progress="0.0" style="-fx-background-radius: 150;" />
+
+
+</AnchorPane>

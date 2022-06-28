@@ -1,0 +1,72 @@
+{% extends 'views/layouts/contentLayoutMaster.html.twig' %}
+
+{% block title %}
+  {{ 'Permission' }}
+{% endblock %}
+
+{% block vendor_style %}
+  <link rel="stylesheet" href="{{ asset('vendors/css/forms/select/select2.min.css') }}">
+{% endblock %}
+{% block page_style %}
+  <link rel="stylesheet" href="{{ asset('css/base/plugins/forms/form-validation.css') }}">
+{% endblock %}
+
+{% block content %}
+  <h3>Add Permission</h3>
+  <p>Add a new unit of case-by-case access</p>
+
+  <div class="card">
+    <div class="card-header">
+      <h4 class="card-title">Permission Details</h4>
+    </div>
+    <div class="card-body">
+      {{ form_start(form, {'attr':{'novalidate':'novalidate', 'method': 'POST'}} ) }}
+      <div class="row">
+        <div class="col-12 d-flex justify-content-end">
+          {{ form_widget(form.enabled, {attr: {"class" : ""}}) }}
+        </div>
+        <div class="col-md-6 col-12">
+          {{ form_row(form.title) }}
+        </div>
+        <div class="col-md-6 col-12">
+          {{ form_row(form.description) }}
+        </div>
+        <div class="col-md-6 col-12">
+          {{ form_row(form.subject) }}
+        </div>
+        <div class="col-md-6 col-12">
+          {{ form_row(form.attribute) }}
+        </div>
+
+        <div class="col-md-6 col-12">
+          {{ form_row(form.groups) }}
+        </div>
+        <div class="col-md-6 col-12">
+          {{ form_row(form.users) }}
+        </div>
+
+        <div class="col-12">
+          {{ form_row(form.expression) }}
+        </div>
+
+        <div class="d-flex justify-content-end gap-1 mt-1">
+          {{ form_widget(form.reset) }}
+          {{ form_widget(form.save) }}
+        </div>
+      </div>
+      {{ form_end(form) }}
+    </div>
+
+  </div>
+
+{% endblock %}
+
+{% block vendor_script %}
+  <script src="{{ asset('vendors/js/forms/validation/jquery.validate.min.js') }}"></script>
+  <script src="{{ asset('vendors/js/forms/select/select2.full.min.js') }}"></script>
+
+{% endblock %}
+{% block page_script %}
+  <script src="{{ asset('js/scripts/pages/app-access-permission.js') }}"></script>
+  <script src="{{ asset('js/scripts/forms/form-select2.js') }}"></script>
+{% endblock %}

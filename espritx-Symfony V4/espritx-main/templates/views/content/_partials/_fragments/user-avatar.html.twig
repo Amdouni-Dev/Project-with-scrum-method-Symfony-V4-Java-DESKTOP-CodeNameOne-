@@ -1,0 +1,18 @@
+{#
+This is not ideal. I know. An entity passed directory to a view should land me in prison.
+But hey, gotta KISS. #El3olba.
+#}
+<div class="avatar-wrapper">
+  {% if user.avatar.name is defined and user.avatar.name is not null %}
+    <div class="avatar {{ (size is defined and size is not null) ? "avatar-" ~ size : "" }}">
+      <img src="{{ vich_uploader_asset(user, 'avatarFile') }}" {{ (size is not defined or size is null) ? "width='32' height='32'" }}
+          alt="{{ user.firstName ~ " " ~ user.lastName }}">
+      <span class="avatar-status-{{ user.activeNow ? "online" : "offline" }}"></span>
+    </div>
+  {% else %}
+    <div class="avatar {{ initialsAvatarColor(user) }} {{ (size is defined and size is not null) ? "avatar-" ~ size : "" }}">
+      <span class="avatar-content avatar-content me-auto ms-auto mt-auto mb-auto">{{ user.firstName|first|upper~user.lastName|first|upper }}</span>
+      <span class="avatar-status-{{ user.activeNow ? "online" : "offline" }}"></span>
+    </div>
+  {% endif %}
+</div>

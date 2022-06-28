@@ -1,0 +1,257 @@
+{% extends 'views/layouts/contentLayoutMaster.html.twig' %}
+
+{% block title %} Popovers {% endblock %}
+
+{% block content %}
+<!-- Popover Positions start -->
+<section id="popover-positions">
+  <div class="row">
+    <div class="col-12">
+      <div class="card">
+        <div class="card-header">
+          <h4 class="card-title">Popover Positions</h4>
+        </div>
+        <div class="card-body">
+          <p class="card-text mb-0">Four options are available: top, right, bottom, and left aligned.</p>
+          <div class="demo-inline-spacing">
+            <button
+              type="button"
+              class="btn btn-outline-primary"
+              data-bs-toggle="popover"
+              data-bs-placement="top"
+              data-bs-container="body"
+              title="Popover on top"
+              data-bs-content="Macaroon chocolate candy. I love carrot cake gingerbread cake lemon drops. Muffin sugar plum marzipan pie."
+            >
+              Popover on top
+            </button>
+            <button
+              type="button"
+              class="btn btn-outline-primary"
+              data-bs-toggle="popover"
+              data-bs-placement="right"
+              data-bs-container="body"
+              title="Popover on right"
+              data-bs-content="Macaroon chocolate candy. I love carrot cake gingerbread cake lemon drops. Muffin sugar plum marzipan pie."
+            >
+              Popover on right
+            </button>
+            <button
+              type="button"
+              class="btn btn-outline-primary"
+              data-bs-toggle="popover"
+              data-bs-placement="bottom"
+              data-bs-container="body"
+              title="Popover on bottom"
+              data-bs-content="Macaroon chocolate candy. I love carrot cake gingerbread cake lemon drops. Muffin sugar plum marzipan pie."
+            >
+              Popover on bottom
+            </button>
+            <button
+              type="button"
+              class="btn btn-outline-primary"
+              data-bs-toggle="popover"
+              data-bs-placement="left"
+              data-bs-container="body"
+              title="Popover on left"
+              data-bs-content="Macaroon chocolate candy. I love carrot cake gingerbread cake lemon drops. Muffin sugar plum marzipan pie."
+            >
+              Popover on left
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- Popover Positions end -->
+
+<!-- Popover Triggers start -->
+<section id="popover-triggers">
+  <div class="row">
+    <div class="col-12">
+      <div class="card">
+        <div class="card-header">
+          <h4 class="card-title">Popover Triggers</h4>
+        </div>
+        <div class="card-body">
+          <p class="card-text mb-0">
+            Popover is triggered using - click | hover | focus | manual options. You may pass multiple triggers;
+            separate them with a space. "manual" cannot be combined with any other trigger.
+          </p>
+          <div class="demo-inline-spacing">
+            <button
+              type="button"
+              class="btn btn-outline-primary"
+              data-bs-toggle="popover"
+              data-bs-content="Tart macaroon marzipan I love soufflé apple pie wafer. Chocolate bar jelly caramels jujubes chocolate cake gummies."
+              data-bs-trigger="hover"
+              title="Hover Triggered"
+            >
+              On Hover Trigger
+            </button>
+            <button
+              type="button"
+              class="btn btn-outline-primary"
+              data-bs-toggle="popover"
+              data-bs-content="Tart macaroon marzipan I love soufflé apple pie wafer. Chocolate bar jelly caramels jujubes chocolate cake gummies."
+              title="Click Triggered"
+              data-bs-trigger="click"
+              data-bs-placement="bottom"
+            >
+              On Click Trigger
+            </button>
+            <button
+              type="button"
+              class="btn btn-outline-primary"
+              data-bs-toggle="popover"
+              data-bs-content="Tart macaroon marzipan I love soufflé apple pie wafer. Chocolate bar jelly caramels jujubes chocolate cake gummies."
+              title="Focus Triggered"
+              data-bs-trigger="focus"
+            >
+              On Focus Trigger
+            </button>
+            <button
+              type="button"
+              class="btn btn-outline-primary manual"
+              id="manual-popover"
+              data-bs-toggle="popover"
+              data-bs-placement="left"
+              data-bs-content="Tart macaroon marzipan I love soufflé apple pie wafer. Chocolate bar jelly caramels jujubes chocolate cake gummies."
+              title="Manual Triggered"
+              data-bs-trigger="manual"
+            >
+              On Manual Trigger
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- Popover Triggers end -->
+
+<!-- Popover Options start -->
+<section id="popover-options">
+  <div class="row">
+    <div class="col-12">
+      <div class="card">
+        <div class="card-header">
+          <h4 class="card-title">Popover Options</h4>
+        </div>
+        <div class="card-body">
+          <div class="demo-inline-spacing">
+            <button
+              type="button"
+              class="btn btn-outline-primary"
+              data-bs-toggle="popover"
+              data-bs-content="Tart macaroon marzipan I love soufflé apple pie wafer. Chocolate bar jelly caramels jujubes chocolate cake gummies."
+              title="Without Fade Animation"
+              data-bs-animation="false"
+              data-bs-placement="top"
+            >
+              No animation
+            </button>
+            <button
+              type="button"
+              class="btn btn-outline-primary delay"
+              data-bs-toggle="popover"
+              data-bs-content="Tart macaroon marzipan I love soufflé apple pie wafer. Chocolate bar jelly caramels jujubes chocolate cake gummies."
+              title="Click Triggered"
+              data-bs-delay="500"
+              data-bs-placement="left"
+            >
+              Delay Popover
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- Popover Options end -->
+
+<!-- Popover Methods start -->
+<section id="popover-methods">
+  <div class="row">
+    <div class="col-12">
+      <div class="card">
+        <div class="card-header">
+          <h4 class="card-title">Popover Methods</h4>
+        </div>
+        <div class="card-body">
+          <p class="card-text mb-0">
+            This is considered a “manual” triggering of the popover.Popovers whose both title and content are
+            zero-length are never displayed.
+          </p>
+          <div class="demo-inline-spacing">
+            <button
+              type="button"
+              class="btn btn-outline-primary"
+              id="show-method"
+              data-bs-placement="top"
+              title="Show Method Popover"
+              data-bs-content="Fruitcake candy cheesecake jelly beans cake gummies. Cotton candy I love sweet roll jujubes pastry cake halvah cake."
+              data-bs-trigger="manual"
+            >
+              Show Method <i data-feather="play-circle" class="ms-1"></i>
+            </button>
+            <button
+              type="button"
+              class="btn btn-outline-primary"
+              id="hide-method"
+              data-bs-placement="left"
+              title="Hide Method Popover"
+              data-bs-content="Fruitcake candy cheesecake jelly beans cake gummies. Cotton candy I love sweet roll jujubes pastry cake halvah cake."
+              data-bs-trigger="manual"
+            >
+              Hide Method <i data-feather="play-circle" class="ms-1"></i>
+            </button>
+            <button
+              type="button"
+              class="btn btn-outline-primary"
+              id="toggle-method"
+              title="Toggle Method Popover"
+              data-bs-placement="top"
+              data-bs-content="Fruitcake candy cheesecake jelly beans cake gummies. Cotton candy I love sweet roll jujubes pastry cake halvah cake."
+              data-bs-trigger="manual"
+            >
+              Toggle Method <i data-feather="play-circle" class="ms-1"></i>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- Popover Methods end -->
+
+<!-- Popover Events start -->
+<section id="popover-events">
+  <div class="row">
+    <div class="col-12">
+      <div class="card">
+        <div class="card-header">
+          <h4 class="card-title">Popover Events</h4>
+        </div>
+        <div class="card-body">
+          <div class="demo-inline-spacing">
+            <button type="button" class="btn btn-outline-primary" id="show-popover">Show Event Popover</button>
+            <button type="button" class="btn btn-outline-primary" id="shown-popover">Shown Event Popover</button>
+            <button type="button" class="btn btn-outline-primary" id="hide-popover">Hide Event Popover</button>
+            <button type="button" class="btn btn-outline-primary" id="hidden-popover">Hidden Event Popover</button>
+            <button type="button" class="btn btn-outline-primary" id="inserted-popover">Inserted Event Popover</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- Popover Events end -->
+{% endblock %}
+
+
+{% block page_script %}
+<script src="{{ asset('js/scripts/components/components-popovers.js')}}"></script>
+{% endblock %}
+

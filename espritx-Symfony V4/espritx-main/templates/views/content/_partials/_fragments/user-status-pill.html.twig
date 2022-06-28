@@ -1,0 +1,13 @@
+{% if userstatus | lower == constant('App\\Enum\\UserStatus::ACTIVE') %}
+  {% set color = 'success' %}
+{% elseif userstatus | lower == constant('App\\Enum\\UserStatus::PENDING') %}
+  {% set color = 'warning' %}
+{% elseif userstatus | lower == constant('App\\Enum\\UserStatus::RESTRICTED') %}
+  {% set color = 'danger' %}
+{% elseif userstatus | lower == constant('App\\Enum\\UserStatus::ALUMNUS') %}
+  {% set color = 'primary' %}
+{% else %}
+  {% set color = 'dark' %}
+{% endif %}
+
+<span class="badge rounded-pill badge-light-{{ color }} fw-bold" style="font-size: 12px">{{ userstatus|upper }}</span>

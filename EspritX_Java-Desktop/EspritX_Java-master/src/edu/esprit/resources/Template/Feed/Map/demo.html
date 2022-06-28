@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Java-Buddy: Google Maps</title>
+    <script             src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDch6NmhxtcdIgcCRjZbblh5z16CK-a2Jo&callback=initMap&libraries=&v=weekly"></script>
+    <style>#mapcanvas { height: 360px; width: 100%}</style>
+
+
+
+</head>
+<body>
+<h1>Java-Buddy: Google Maps</h1>
+<div id="mapcanvas">
+
+    <script type="text/javascript">
+
+
+        document.map = new google.maps.Map(document.getElementById("mapcanvas"));
+        var latlng = new google.maps.LatLng(35.857908, 10.598997);
+        var Options = {
+            zoom: 15,
+            center: latlng,
+            mapTypeId: google.maps.MapTypeId.ROADMAP
+        };
+        var map = new google.maps.Map(document.getElementById("mapcanvas"), Options);
+        //var carMarkerImage = new google.maps.MarkerImage('resources/images/car.png');
+        var marker = new google.maps.Marker({
+            position: new google.maps.LatLng(35.857908, 10.598997),
+            map: map,
+            draggable: false,
+//icon: carMarkerImage,
+            title: "",
+            autoPan: true
+
+        });
+        var infobulle = new google.maps.InfoWindow({
+            content: "ddddd"
+        });
+        google.maps.event.addListener(marker, 'mouseover', function() {
+            infobulle.open(map, marker);
+        });
+
+
+        document.goToLocation = function(x, y) {
+            alert("goToLocation, x: " + x +", y:" + y);
+            var latLng = new google.maps.LatLng(x, y);
+            marker.setPosition(latLng);
+            alert("llllllllllllooocccccccc"+marker.getPosition());
+            map.setCenter(latLng);
+        }
+
+
+    </script>
+
+
+</div>
+</body>
+</html>

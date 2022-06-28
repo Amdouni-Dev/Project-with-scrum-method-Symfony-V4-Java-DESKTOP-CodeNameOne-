@@ -1,0 +1,1090 @@
+{% extends 'views/layouts/contentLayoutMaster.html.twig' %}
+
+{% block title %} Acceuil Posts {% endblock %}
+
+{% block page_style %}
+
+  {#  <style>
+      @import url("https://fonts.googleapis.com/css?family=Rubik:300,400,500,700&display=swap");
+
+      .profile-likes {
+          fill: #ea5455;
+          stroke: #ea5455
+      }
+
+      .cardbox .cardbox-heading {
+          padding: 16px;
+          margin: 0;
+      }
+
+      .cardbox .btn-flat.btn-flat-icon {
+          border-radius: 50%;
+          font-size: 24px;
+          height: 32px;
+          width: 32px;
+          padding: 0;
+          overflow: hidden;
+          color: #fff !important;
+          background: #b5b6b6;
+
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+          align-items: center;
+          text-align: center;
+      }
+
+      .cardbox .float-right .dropdown-menu {
+          position: relative;
+          left: 13px !important;
+      }
+
+      .cardbox .float-right a:hover {
+          background: #f4f4f4 !important;
+      }
+
+      .cardbox .float-right a.dropdown-item {
+          display: block;
+          width: 100%;
+          padding: 4px 0px 4px 10px;
+          clear: both;
+          font-weight: 400;
+          font-family: 'Abhaya Libre', serif;
+          font-size: 14px !important;
+          color: #848484;
+          text-align: inherit;
+          white-space: nowrap;
+          background: 0 0;
+          border: 0;
+      }
+
+      /* ------------------------------- */
+      /* Media Section
+      ---------------------------------- */
+      .media {
+          display: -ms-flexbox;
+          display: flex;
+          -ms-flex-align: start;
+          align-items: flex-start;
+      }
+
+      .d-flex {
+          display: -ms-flexbox !important;
+          display: flex !important;
+      }
+
+      .media .mr-3 {
+          margin-right: 1rem !important;
+      }
+
+      .media img {
+          width: 48px !important;
+          height: 48px !important;
+          padding: 2px;
+          border: 2px solid #f4f4f4;
+      }
+
+      .media-body {
+          -ms-flex: 1;
+          flex: 1;
+          padding: .4rem !important;
+      }
+
+      .media-body p {
+          font-family: 'Rokkitt', serif;
+          font-weight: 500 !important;
+          font-size: 14px;
+          color: #88898a;
+      }
+
+      .media-body small span {
+          font-family: 'Rokkitt', serif;
+          font-size: 12px;
+          color: #aaa;
+          margin-right: 10px;
+      }
+
+
+      /* ------------------------------- */
+      /* Cardbox Item
+      ---------------------------------- */
+      .cardbox .cardbox-item {
+          position: relative;
+          display: block;
+      }
+
+      .cardbox .cardbox-item img {
+      }
+
+      .img-responsive {
+          display: block;
+          max-width: 100%;
+          height: auto;
+      }
+
+      .fw {
+          width: 100% !important;
+          height: auto;
+      }
+
+
+      /* ------------------------------- */
+      /* Cardbox Base
+      ---------------------------------- */
+      .cardbox-base {
+          border-bottom: 2px solid #f4f4f4;
+      }
+
+      .cardbox-base ul {
+          margin: 10px 0px 10px 15px !important;
+          padding: 10px !important;
+          font-size: 0px;
+          display: inline-block;
+      }
+
+      .cardbox-base li {
+          list-style: none;
+          margin: 0px 0px 0px -8px !important;
+          padding: 0px 0px 0px 0px !important;
+          display: inline-block;
+      }
+
+      .cardbox-base li a {
+          margin: 0px !important;
+          padding: 0px !important;
+      }
+
+      .cardbox-base li a i {
+          position: relative;
+          top: 4px;
+          font-size: 16px;
+          color: #8d8d8d;
+          margin-right: 15px;
+      }
+
+      .cardbox-base li a span {
+          font-family: 'Rokkitt', serif;
+          font-size: 14px;
+          color: #8d8d8d;
+          margin-left: 20px;
+          position: relative;
+          top: 5px;
+      }
+
+      .cardbox-base li a em {
+          font-family: 'Rokkitt', serif;
+          font-size: 14px;
+          color: #8d8d8d;
+          position: relative;
+          top: 3px;
+      }
+
+      .cardbox-base li a img {
+          width: 25px;
+          height: 25px;
+          margin: 0px !important;
+          border: 2px solid #fff;
+      }
+
+
+      /* ------------------------------- */
+      /* Cardbox Comments
+      ---------------------------------- */
+      .cardbox-comments {
+          padding: 10px 40px 20px 40px !important;
+          font-size: 0px;
+          text-align: center;
+          display: inline-block;
+      }
+
+      .cardbox-comments .comment-avatar img {
+          margin-top: 1px;
+          margin-right: 10px;
+          position: relative;
+          display: inline-block;
+          text-align: center;
+          width: 40px;
+          height: 40px;
+      }
+
+      .cardbox-comments .comment-body {
+          overflow: auto;
+      }
+
+      .search {
+          position: relative;
+          right: -60px;
+          top: -40px;
+          margin-bottom: -40px;
+          border: 2px solid #f4f4f4;
+          width: 100%;
+          overflow: hidden;
+      }
+
+      .search input[type="text"] {
+          background-color: #fff;
+          line-height: 10px;
+          padding: 15px 60px 20px 10px;
+          border: none;
+          border-radius: 4px;
+          width: 350px;
+          font-family: 'Rokkitt', serif;
+          font-size: 14px;
+          color: #8d8d8d;
+          height: inherit;
+          font-weight: 700;
+      }
+
+      .search button {
+          position: absolute;
+          right: 0;
+          top: 0px;
+          border: none;
+          background-color: transparent;
+          color: #bbbbbb;
+          padding: 15px 25px;
+          cursor: pointer;
+
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+          align-items: center;
+          text-align: center;
+      }
+
+      .search button i {
+          font-size: 20px;
+          line-height: 30px;
+          display: block;
+      }
+
+
+      /* ------------------------------- */
+      /* Author
+      ---------------------------------- */
+      .author a {
+          font-family: 'Rokkitt', serif;
+          font-size: 16px;
+          color: #00C4CF;
+      }
+
+      .author p {
+          font-family: 'Rokkitt', serif;
+          font-size: 16px;
+          color: #8d8d8d;
+      }
+
+
+      .container{margin-top:20px}
+      .fa-spin-fast{-webkit-animation:fa-spin-fast .1s infinite linear;animation:fa-spin-fast 0.1s infinite linear}
+      @-webkit-keyframes fa-spin-fast{0%{-webkit-transform:rotate(0);transform:rotate(0)}
+          100%{-webkit-transform:rotate(180deg);transform:rotate(180deg)}}
+      @keyframes fa-spin-fast{0%{-webkit-transform:rotate(0);transform:rotate(0)}
+          100%{-webkit-transform:rotate(180deg);transform:rotate(180deg)}}
+      .material-card{position:relative;height:0;padding-bottom:calc(100% - 16px);margin-bottom:6.6em}
+      .material-card h2{position:absolute;top:calc(100% - 16px);left:0;width:100%;padding:10px 16px 10px 20px;height:82px;color:#fff;font-size:1.4em;line-height:1.6em;margin:0;z-index:10;-webkit-transition:all .3s;-moz-transition:all .3s;-ms-transition:all .3s;-o-transition:all .3s;transition:all .3s;box-shadow: 0 2px 20px 0 rgba(0,0,0,0.14), 0 3px 1px -2px rgba(0,0,0,0.12), 0 1px 5px 0 rgba(0,0,0,0.2);}
+      .material-card h2 span{display:block}
+      .material-card h2 strong{font-weight:300;display:block;font-size:.76em}
+      .material-card h2:after,.material-card h2:before{content:' ';position:absolute;left:0;top:-16px;width:0;border:8px solid;-webkit-transition:all .3s;-moz-transition:all .3s;-ms-transition:all .3s;-o-transition:all .3s;transition:all .3s}
+      .material-card h2:after{top:auto;bottom:0}
+      @media screen and (max-width:20px){.material-card.mc-active{padding-bottom:0;height:auto}
+      }
+      .material-card.mc-active h2{top:0;padding:10px 16px 10px 90px}
+      .material-card.mc-active h2:before{top:0}
+      .material-card.mc-active h2:after{bottom:-16px}
+      .material-card .mc-content{position:absolute;right:0;top:0;bottom:16px;left:16px;-webkit-transition:all .3s;-moz-transition:all .3s;-ms-transition:all .3s;-o-transition:all .3s;transition:all .3s;box-shadow:0 2px 20px 0 rgba(0,0,0,0.14), 0 3px 1px -2px rgba(0,0,0,0.12), 0 1px 5px 0 rgba(0,0,0,0.2);}
+      .material-card .mc-btn-action{position:absolute;right:16px;top:15px;-webkit-border-radius:50%;-moz-border-radius:50%;border-radius:50%;border:5px solid;width:54px;height:54px;line-height:46px;text-align:center;color:#fff!important;cursor:pointer;z-index:20;-webkit-transition:all .3s;-moz-transition:all .3s;-ms-transition:all .3s;-o-transition:all .3s;transition:all .3s}
+      .material-card .mc-btn-action:hover{box-shadow:0 0px 2px 0 rgba(0,0,0,0.14), 0 3px 1px -2px rgba(0,0,0,0.12), 0 1px 5px 0 rgba(0,0,0,0.2);transition:all 0.3s ease;-webkit-transition:all 0.3s ease;-moz-transition:all 0.3s ease;-ms-transition:all 0.3s ease;-o-transition:all 0.3s ease;}
+      .material-card.mc-active .mc-btn-action{top:62px;box-shadow:0 2px 2px 0 rgba(0,0,0,0.14), 0 3px 1px -2px rgba(0,0,0,0.12), 0 1px 5px 0 rgba(0,0,0,0.2);}
+      .material-card .mc-description{position:absolute;top:100%;right:30px;left:30px;bottom:54px;overflow:hidden;opacity:0;-webkit-transition:all 0.4s;-moz-transition:all 0.4s;-ms-transition:all 0.4s;-o-transition:all 0.4s;transition:all 0.4s}
+      .material-card .mc-footer{height:0;overflow:hidden;-webkit-transition:all .3s;-moz-transition:all .3s;-ms-transition:all .3s;-o-transition:all .3s;transition:all .3s}
+      .material-card .mc-footer a{font-size:10px;color:#fff;line-height:36px;text-decoration:none;top:200px;border-radius:10%;}
+      .material-card .mc-footer a:nth-child(1){-webkit-transition:all .1s;-moz-transition:all .1s;-ms-transition:all .1s;-o-transition:all .1s;transition:all .1s}
+      .material-card .mc-footer a:nth-child(2){-webkit-transition:all .2s;-moz-transition:all .2s;-ms-transition:all .2s;-o-transition:all .2s;transition:all .2s}
+      .material-card .mc-footer a:nth-child(3){-webkit-transition:all .3s;-moz-transition:all .3s;-ms-transition:all .3s;-o-transition:all .3s;transition:all .3s}
+      .material-card .mc-footer a:nth-child(4){-webkit-transition:all .4s;-moz-transition:all .4s;-ms-transition:all .4s;-o-transition:all .4s;transition:all .4s}
+      .material-card .mc-footer a:nth-child(5){-webkit-transition:all .5s;-moz-transition:all .5s;-ms-transition:all .5s;-o-transition:all .5s;transition:all .5s}
+      .material-card .img-container{overflow:hidden;position:absolute;left:0;top:0;width:100%;height:100%;z-index:3;-webkit-transition:all .3s;-moz-transition:all .3s;-ms-transition:all .3s;-o-transition:all .3s;transition:all .3s;}
+      .material-card.mc-active .img-container{-webkit-border-radius:50%;-moz-border-radius:50%;border-radius:50%;left:0;top:12px;width:55px;height:55px;z-index:20}
+      .img-fluid{max-width:100%}
+      .material-card.mc-active .mc-content{padding-top:5.6em}
+      @media screen and (max-width:100px){.material-card.mc-active .mc-content{position:relative;margin-right:16px}
+      }
+      .material-card.mc-active .mc-description{top:50px;padding-top:5.6em;opacity:1;text-align:left;}
+      @media screen and (max-width:100px){.material-card.mc-active .mc-description{position:relative;top:auto;right:auto;left:auto;padding:50px 30px 70px 30px;bottom:0}
+      }
+      .material-card.mc-active .mc-footer{overflow:visible;position:absolute;top:calc(100% - 16px);left:7px;right:0;height:72px;display:flex;align-items:center;justify-content:center;    box-shadow:0 2px 20px 0 rgba(0,0,0,0.14), 0 3px 1px -2px rgba(0,0,0,0.12), 0 1px 5px 0 rgba(0,0,0,0.2);}
+      .material-card.mc-active .mc-footer a{top:0;border:2px solid #e8eaf6;}
+      .material-card.mc-active .mc-footer h4{top:27px;left:20px;font-weight:400;}
+      .material-card.Red h2{background-color: #9c80b9
+      }
+      .material-card.Red h2:after{border-top-color: #4d266c;border-right-color: #791385;border-bottom-color:transparent;border-left-color:transparent}
+      .material-card.Red h2:before{border-top-color:transparent;border-right-color: #701786;border-bottom-color: #ad35dc;border-left-color:transparent}
+      .material-card.Red.mc-active h2:before{border-top-color:transparent;border-right-color: #493962;border-bottom-color: #382544;border-left-color:transparent}
+      .material-card.Red.mc-active h2:after{border-top-color: #a387ad;border-right-color: #9b72a4;border-bottom-color:transparent;border-left-color:transparent}
+      .material-card.Red .mc-btn-action{background-color: #703d7e
+      }
+      .material-card.Red .mc-btn-action:hover{background-color: #a951d2
+      }
+      .material-card.Red .mc-footer h4{color: #8f359d
+      }
+      .material-card.Red .mc-footer a{background-color: #824b8f
+      }
+      .material-card.Red.mc-active .mc-content{background-color:#e7b3ba45}
+      .material-card.Red.mc-active .mc-footer{background-color:#dc354552}
+      .material-card.Red.mc-active .mc-btn-action{border-color:#FCE4EC}
+      .material-card.Blue-Grey h2{background-color:#607d8b}
+      .material-card.Blue-Grey h2:after{border-top-color:#607d8b;border-right-color:#607d8b;border-bottom-color:transparent;border-left-color:transparent}
+      .material-card.Blue-Grey h2:before{border-top-color:transparent;border-right-color:#263238;border-bottom-color:#263238;border-left-color:transparent}
+      .material-card.Blue-Grey.mc-active h2:before{border-top-color:transparent;border-right-color:#607d8b;border-bottom-color:#607d8b;border-left-color:transparent}
+      .material-card.Blue-Grey.mc-active h2:after{border-top-color:#263238;border-right-color:#263238;border-bottom-color:transparent;border-left-color:transparent}
+      .material-card.Blue-Grey .mc-btn-action{background-color:#607d8b}
+      .material-card.Blue-Grey .mc-btn-action:hover{background-color:#263238}
+      .material-card.Blue-Grey .mc-footer h4{color:#263238}
+      .material-card.Blue-Grey .mc-footer a{background-color:#263238}
+      .material-card.Blue-Grey.mc-active .mc-content{background-color:#eceff1}
+      .material-card.Blue-Grey.mc-active .mc-footer{background-color:#cfd8dc}
+      .material-card.Blue-Grey.mc-active .mc-btn-action{border-color:#eceff1}
+      .material-card.Pink h2{background-color: #a097a8
+      }
+      .material-card.Pink h2:after{border-top-color: #6c577a;border-right-color: #91719b;border-bottom-color:transparent;border-left-color:transparent}
+      .material-card.Pink h2:before{border-top-color:transparent;border-right-color: #6f5177;border-bottom-color: #a38cbe;border-left-color:transparent}
+      .material-card.Pink.mc-active h2:before{border-top-color:transparent;border-right-color: #452f52;border-bottom-color: #654d79;border-left-color:transparent}
+      .material-card.Pink.mc-active h2:after{border-top-color: #4e3757;border-right-color: #936b9d;border-bottom-color:transparent;border-left-color:transparent}
+      .material-card.Pink .mc-btn-action{background-color: #81618c
+      }
+      .material-card.Pink .mc-btn-action:hover{background-color: #614b7c
+      }
+      .material-card.Pink .mc-footer h4{color: #683e73
+      }
+      .material-card.Pink .mc-footer a{background-color: #7d4ea9
+      }
+      .material-card.Pink.mc-active .mc-content{background-color:#fce4ec}
+      .material-card.Pink.mc-active .mc-footer{background-color:#f8bbd0}
+      .material-card.Pink.mc-active .mc-btn-action{border-color:#fce4ec}
+      .material-card.Purple h2{background-color:#9c27b0}
+      .material-card.Purple h2:after{border-top-color:#9c27b0;border-right-color:#9c27b0;border-bottom-color:transparent;border-left-color:transparent}
+      .material-card.Purple h2:before{border-top-color:transparent;border-right-color:#4a148c;border-bottom-color:#4a148c;border-left-color:transparent}
+      .material-card.Purple.mc-active h2:before{border-top-color:transparent;border-right-color:#9c27b0;border-bottom-color:#9c27b0;border-left-color:transparent}
+      .material-card.Purple.mc-active h2:after{border-top-color: #8772a1;border-right-color: #796196;border-bottom-color:transparent;border-left-color:transparent}
+      .material-card.Purple .mc-btn-action{background-color:#9c27b0}
+      .material-card.Purple .mc-btn-action:hover{background-color: #695385
+      }
+      .material-card.Purple .mc-footer h4{color: #9277b4
+      }
+      .material-card.Purple .mc-footer a{background-color: #6f46a1
+      }
+      .material-card.Purple.mc-active .mc-content{background-color:#f3e5f5}
+      .material-card.Purple.mc-active .mc-footer{background-color:#e1bee7}
+      .material-card.Purple.mc-active .mc-btn-action{border-color:#f3e5f5}
+      .material-card.Deep-Purple h2{background-color:#673ab7}
+      .material-card.Deep-Purple h2:after{border-top-color:#673ab7;border-right-color:#673ab7;border-bottom-color:transparent;border-left-color:transparent}
+      .material-card.Deep-Purple h2:before{border-top-color:transparent;border-right-color:#311b92;border-bottom-color:#311b92;border-left-color:transparent}
+      .material-card.Deep-Purple.mc-active h2:before{border-top-color:transparent;border-right-color:#673ab7;border-bottom-color:#673ab7;border-left-color:transparent}
+      .material-card.Deep-Purple.mc-active h2:after{border-top-color:#311b92;border-right-color:#311b92;border-bottom-color:transparent;border-left-color:transparent}
+      .material-card.Deep-Purple .mc-btn-action{background-color:#673ab7}
+      .material-card.Deep-Purple .mc-btn-action:hover{background-color:#311b92}
+      .material-card.Deep-Purple .mc-footer h4{color:#311b92}
+      .material-card.Deep-Purple .mc-footer a{background-color:#311b92}
+      .material-card.Deep-Purple.mc-active .mc-content{background-color:#ede7f6}
+      .material-card.Deep-Purple.mc-active .mc-footer{background-color:#d1c4e9}
+      .material-card.Deep-Purple.mc-active .mc-btn-action{border-color:#ede7f6}
+
+      body{background-color:#eceff1;color:#37474f;font-family:'Rubik', sans-serif !important;font-weight:300;font-size:14px}
+      h1,h2,h3{font-weight:200}
+      h2{font-weight:100!important;text-transform:uppercase;letter-spacing:2px;color:#212529}
+      .ripple{position:relative;overflow:hidden;transform:translate3d(0,0,0)}
+      .ripple:after{content:"";display:block;position:absolute;width:100px;height:20px;top:0;left:0;pointer-events:none;background-image:radial-gradient(circle,#000 10%,transparent 10.01%);background-repeat:no-repeat;background-position:50%;transform:scale(10,10);opacity:0;transition:transform .5s,opacity 1s}
+      .ripple:active:after{transform:scale(0,0);opacity:.2;transition:0s}
+      .material-card h2{text-align:left;font-size:16px;display:flex;flex-direction:column;align-items:flex-start;justify-content:center;white-space:nowrap;}
+      @media(min-width:100px) and (max-width:100px){.material-card.mc-active .img-container{top:20px;width:45px;height:45px;}.material-card h2{font-size:12px;}.material-card.mc-active h2{padding:10px 16px 10px 70px;}.material-card.mc-active .mc-footer h4{top:-32px;}.material-card .mc-btn-action{width:48px;height:48px;line-height:39px;right:12px;}
+      }
+
+
+
+
+
+  </style>#}
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+  <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <!------ Include the above in your HEAD tag ---------->
+
+
+  <link href="https://fonts.googleapis.com/css?family=Rokkitt" rel="stylesheet">
+  <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+  <!-- Page css files -->
+  <link rel="stylesheet" href="{{ asset('css/base/pages/app-chat.css') }}">
+  <link rel="stylesheet" href="{{ asset('css/base/pages/app-chat-list.css') }}">
+{% endblock %}
+
+
+{% block content_sidebar %}
+  {% include 'views/content/apps/chat/app-chat-sidebar.html.twig' %}
+{% endblock %}
+
+
+{% block content %}
+
+
+
+
+  <div class="alert alert-success px-1 py-2">
+    {% for message in app.flashes('info') %}
+      {{ message }}
+      <br>
+    {% endfor %}
+  </div>
+  <div class="note note-warnning px-1 py-2">
+    {% for flash_message in app.session.flashBag.get('notice') %}
+      <p>{{ flash_message }}</p>
+    {% endfor %}
+  </div>
+  {% for flash_message in app.session.flashBag.get('success') %}
+    <div class="note note-success px-1 py-2">
+      <p>{{ flash_message }}</p>
+    </div>
+
+  {% endfor %}
+
+
+
+
+
+
+
+
+    <!--/ Basic example section -->
+
+
+    <!--/ Sweet alert Positions -->
+
+    <!-- SweetAlert Animations -->
+
+    <!--/ SweetAlert Animations -->
+
+    <!-- Types section -->
+
+
+
+
+
+
+
+    <div style="float: right; margin: 6px" class=" blog-recent-posts mt-5">
+        <h6 class="section-label">Postes recentes</h6>
+
+
+        {% for p in recentP %}
+
+            {% if p.isValid ==1 %}
+
+                <div class="mt-75">
+                    <div class="d-flex mb-2">
+                        <a href="{{ path('singlepost',{'id':p.id}) }}" class="me-2">
+
+                        </a>
+                        <div class="blog-info">
+                            <h6 class="blog-recent-post-title">
+                                <a href="{{ path('singlepost',{'id':p.id}) }}" class="text-body-heading">{{ p.title }}</a>
+                            </h6>
+                            <div class="text-muted mb-0">{{ p.createdAt|date("d-M-Y ") }} </div>
+                        </div>
+                    </div>
+
+                </div>
+            {% endif %}
+
+        {% endfor %}
+
+            <h6 class="section-label">Mes groupes</h6>
+
+            <div class="mt-1">
+
+                {% for group in app.user.groupPosts %}
+                {% if group.isValid ==1 %}
+                <div class="d-flex justify-content-start align-items-center mb-75">
+                    <a href="#" class="me-75">
+
+                    </a>
+                    <a  href="{{ path('singleGroup', {'id': group.id}) }}"  >
+                        <div class="blog-category-title text-body">{{  group.nomGroupe }}</div>
+                    </a>
+                </div>
+       {% endif %}
+{% endfor %}
+
+
+            </div>
+        </div>
+
+
+
+
+    <!--/ Categories -->
+
+
+
+
+
+
+
+
+  {#
+  <div  style="   display: flex;
+  flex-wrap: wrap;
+  list-style: none;
+  margin: 0;
+  padding: 0;">
+        <span style="height: 30px" class="badge badge-light-primary"><br/><br/><br/>Mes groupes</span><br/>
+        {% for group in app.user.groupPosts %}
+            {% if group.isValid ==1 %}
+
+  {#  {% if app.user.id is same as group.user.id %} #}
+{#
+        <div class="col-lg-2">
+                    <article class="material-card Red">
+                        <h2>
+                            <span>{{  group.nomGroupe }}</span>
+                            <strong>
+                                <i class="fa fa-fw fa-magic"></i>
+                              {{ group.user.firstName  }}
+                            </strong>
+                        </h2>
+                        <div class="mc-content">
+                            <div class="img-container">
+                                <img class="img-fluid" src="{{ asset('/uploads/brochures/'~group.image) }}" alt="{{ group.image }}" draggable="false" oncontextmenu="return false;" />
+
+                            </div>
+                            <div style="height: 100%" class=" mc-description">
+{{ group.but }}
+                            </div>
+                        </div>
+                        <a class="mc-btn-action ripple">
+                            <i class="fa fa-bars"></i>
+                        </a>
+                        <div  class="mc-footer">
+
+                            <a  href="{{ path('newpost_group', {'id': group.id}) }}"  >
+Ajouter
+
+                            </a>
+
+                            <a href="{{ path('quitter_membre_group', {'id': group.id,'idU':app.user.id}) }}"  >
+                                Quitter
+
+                            </a>
+                            <a href="{{ path('newpost_group', {'id': group.id}) }}" >
+                                Ajouter
+
+                            </a>
+                        </div>
+                    </article>
+                </div>
+
+{% endif %}
+
+    {% endfor %}
+  {#  </div>
+#}
+
+<br/>
+    <div style="   display: flex;
+  flex-wrap: wrap;
+  list-style: none;
+  margin: 0;
+  padding: 0;">
+
+
+        <div style="margin-left: 1000px" >
+            <a href="{{ url('newpost') }}" class="btn btn-outline-primary" >Creer une publication</a>
+        </div>
+
+
+        <br/>
+        <br/>
+
+        <br/>
+
+    </div>
+
+        <a href="{{ url('newgroup') }}" class="btn btn-outline-primary" >Creer un groupe</a>
+    <br/>
+    <br/>
+    <br/>
+
+        <span style="height: 30px" class="badge badge-light-primary">Rejoignez nous !!</span><br/>
+
+
+            {% for group  in allgroups %}
+
+
+{% if group.isValid ==1 %}
+              {% if app.user.id != group.user.id  %}
+
+
+            <div class="col-lg-3">
+                <article class="material-card Red">
+                    <h2>
+                        <span>{{  group.nomGroupe }}</span>
+                        <strong>
+                            <i class="fa fa-fw fa-magic"></i>
+                            {{ group.user.firstName  }}
+                        </strong>
+                    </h2>
+                    <div class="mc-content">
+                        <div class="img-container">
+                            <img class="img-fluid" src="{{ asset('/uploads/brochures/'~group.image) }}" alt="{{ group.image }}" draggable="false" oncontextmenu="return false;" />
+
+                        </div>
+                        <div style="height: 100%" class="mc-description">
+                            {{ group.but }}
+                        </div>
+                    </div>
+                    <a class="mc-btn-action ripple">
+                        <i class="fa fa-bars"></i>
+                    </a>
+                    <div  class="mc-footer">
+
+
+                        <a  href="{{ path('new_membre_group', {'id': group.id,'idU':app.user.id}) }}"  >
+                            Rejoindre
+
+                        </a>
+                        <div class="user-info ms-1">
+
+                            <small class="badge-dark">{{ group.membre | length  }} membres</small>
+                        </div>
+
+
+                    </div>
+                </article>
+            </div>
+
+
+{% endif %}
+
+{% endif %}
+        {% endfor %}
+
+    </div>
+    <br/>
+<br/>
+
+
+    {% for group  in allgroups %}
+
+
+    {% if group.isValid ==1 %}
+    {% if app.user.id != group.user.id  %}
+    <div class="col-lg-2 col-md-6 col-3">
+        <div class="card card-profile">
+            <img
+                    src="{{asset('images/banner/banner-12.jpg')}}"
+                    class="img-fluid card-img-top"
+                    alt="Profile Cover Photo"
+            />
+            <div class="card-body">
+                <div class="profile-image-wrapper">
+                    <div class="profile-image">
+                        <div class="avatar">
+                            <img src="{{ asset('/uploads/brochures/'~group.image) }}" alt="Profile Picture" />
+                        </div>
+                    </div>
+                </div>
+                <h3>{{  group.nomGroupe }}</h3>
+                <span class="badge badge-light-primary profile-badge">        {{ group.user.firstName  }}</span>
+                <h6 class="text-muted">  {{ group.but }}</h6>
+                <div>
+                    <h6 class="text-muted fw-bolder">Membres</h6>
+                    <h3 class="mb-0">{{ group.membre | length  }} </h3>
+                </div>
+
+                <hr class="mb-2" />
+                <div class="d-flex justify-content-between align-items-center">
+
+                    <div>
+                        <a style="margin: 2px"  class="badge badge-light-primary profile-badge" href="{{ path('new_membre_group', {'id': group.id,'idU':app.user.id}) }}"  >
+                            Rejoindre
+
+                        </a>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+    {% endif %}
+
+    {% endif %}
+    {% endfor %}
+
+    <div class="col-xs1">
+
+
+        <section class="col-5" id="vuexy-checkbox-color">
+
+
+            <div class="col-9">
+
+                <div class="card">
+                    <div class="card-header">
+                        <div class="row">
+
+                            <h4 class="card-title">Groupes</h4>
+
+                            <div style="float: left" class="card-body">
+                                <p class="card-text mb-0">
+                                    Cherchez dedans tes <code>groupes</code>
+
+                                </p>
+                                <div class="demo-inline-spacing">
+                                    <form   id="filters">
+
+                                        {% for group in allgroups %}
+                                            {% if group.isValid ==1 %}
+                                                <p><input type="checkbox" name="allgroups[]" id="group{{ group.id }}"
+                                                          value="{{ group.id }}">
+                                                    <label for="group{{ group.id }}">{{ group.nomGroupe }}</label>
+                                                </p>
+                                            {% endif %}
+                                        {% endfor %}
+
+
+                                    </form>
+                                </div>
+                            </div>
+
+
+
+
+
+                        </div>
+                    </div>
+                </div>
+        </section>
+        </div>
+
+
+
+
+
+
+
+
+
+    <div class="col-xs1 col-sm4" id="content" >
+        {% include "views/content/posts/User/contentPosts.html.twig" %}
+
+
+    </div>
+
+{% endblock %}
+{% block vendor_script %}
+    <script src="{{ asset('vendors/js/extensions/sweetalert2.all.min.js') }}"></script>
+    <script src="{{ asset('vendors/js/extensions/polyfill.min.js') }}"></script>
+{% endblock %}
+
+{% block page_script %}
+
+    <script src="{{ asset('js/scripts/extensions/ext-component-sweet-alerts.js') }}"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <!-- Page js files -->
+  <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+  {# bloc java script pour ajax #}
+  <script>
+      // fonction
+      function onClickBtnLike(event) {
+          event.preventDefault();
+
+          // nheb na7i lien mte3 like bech ki nekliki meyodhherlich lien
+          // this hiya l "a mte3 l href ili 9a3da nekliki aaliha "
+          const url = this.href;
+          const spanCount = this.querySelector('span.js-likes');
+
+          // nbadel l'icone
+          const icone = this.querySelector('i');
+          axios.get(url).then(function (response) {
+              //  console.log(response);
+              spanCount.textContent = response.data.likess;
+              // console.log(likess);
+
+              if (icone.classList.contains('fa')) {
+                  icone.classList.replace('fa', 'fa-o');
+
+              } else {
+                  icone.classList.replace('fa-o', 'fa');
+              }
+
+              // si il'ya une erreur
+          }).catch(function (error) {
+              if (error.response.status === 403) {
+                  window.alert('pardon!! vous ne pouvez pas liker un post si vous n\'etes pas connecté! ');
+              }
+          })
+
+
+      }
+
+      //recupere tous les lien de "a" qui contiennent la classe js-like
+      // forEach(function) ==> f kol a.js-like bch naamel fonction
+      document.querySelectorAll('a.js-like').forEach(function (link) {
+          link.addEventListener('click', onClickBtnLike)
+      })
+
+
+      function onClickBtnComment(event) {
+          event.preventDefault();
+          const url = this.action;
+          console.log(url);
+          var com = this.querySelector('.msg');
+          var span = this.querySelector('.c1');
+          var count = this.querySelector('.count');
+          var texte = this.querySelector('.texte');
+
+          var inputVal = document.getElementById("aa").value;
+
+          let data = new FormData(this);
+          axios.post(url, data).then(function (response) {
+              // $('#count').load(document.URL +  ' #count');
+              console.log(inputVal);
+              //  console.log(response.data);
+              count.textContent = response.data.nbrcomments;
+              span.textContent = response.data.message;
+            {% if app.user %}
+              com.textContent = " Ajouté par {{ app.user.firstName |upper }} " + "  à " + "  " + response.data.dateajout;
+            {% endif %}
+              // $('#aa').value = "";
+              // $('#msg').load(document.URL +  ' #msg');
+
+
+              // document.getElementById("msg1").innerHTML="dddd";
+          }).catch(function (error) {
+              console.log(error)
+          })
+        {% if app.user %}
+          document.getElementById("m").innerHTML = "Commentaire ajoutée avec succées ! <br/>" + inputVal;
+          window.alert('votre commentaire est bien ajoutée ');
+        {% endif %}
+      }
+
+      document.querySelectorAll('form.comment').forEach(function (link) {
+          link.addEventListener('submit', onClickBtnComment)
+      });
+/////////***************************************Map***************************************////////////////
+
+
+  </script>
+
+    <script>
+        // $(document).ready(function() {
+        let map;
+        let markers = [];
+
+        function initMap() {
+            tab = document.querySelectorAll("div.map1");
+            tab2 = document.querySelectorAll("div.test");
+            long = tab2[0].childNodes;
+            console.log(tab2[0].childNodes);
+            console.log(long[1], long[3]);
+            for (let i = 0; i < tab.length; i++) {
+                var latit = Number(tab2[i].childNodes[3].value);
+                var long = Number(tab2[i].childNodes[1].value);
+                const haightAshbury = {lat: long, lng: latit};
+                map = new google.maps.Map(document.getElementById(tab[i].id), {
+                    zoom: 12,
+                    center: haightAshbury,
+                    draggable: true
+                });
+                new google.maps.Marker({
+                    position: haightAshbury,
+                    map,
+                    title: "Localisation",
+                });
+            }
+        }
+
+
+
+        const ReadMore = (() => {
+            let s;
+
+            return {
+
+                settings() {
+                    return {
+                        content: document.querySelectorAll('.js-read-more'),
+                        originalContentArr: [],
+                        truncatedContentArr: [],
+                        moreLink: "Voir plus",
+                        lessLink: "Voir moins",
+
+
+                    }
+                },
+
+                init() {
+                    s = this.settings();
+                    this.bindEvents();
+                },
+
+                bindEvents() {
+                    ReadMore.truncateText();
+                },
+
+               // ne7seb 9adeh 3andi men kelma
+                countWords(str) {
+                    return str.split(/\s+/).length;
+                },
+
+                // nombre des mots ili bch nchoufhom 9bal tronc
+                ellipseContent(str, wordsNum) {
+                    return str.split(/\s+/).slice(0, wordsNum).join(' ') + ' ...';
+
+                },
+
+              // n9asem text
+                truncateText() {
+
+                    for (let i = 0; i < s.content.length; i++) {
+                        //console.log(s.content)
+                        const originalContent = s.content[i].innerHTML;
+                        const numberOfWords = s.content[i].dataset.rmWords;
+                        const truncateContent = ReadMore.ellipseContent(originalContent, numberOfWords);
+                        const originalContentWords = ReadMore.countWords(originalContent);
+
+                        s.originalContentArr.push(originalContent);
+                        s.truncatedContentArr.push(truncateContent);
+
+
+                        if (numberOfWords < originalContentWords) {
+                            s.content[i].innerHTML = s.truncatedContentArr[i];
+                            let self = i;
+                            ReadMore.createLink(self)
+                        }
+                    }
+                    ReadMore.handleClick(s.content);
+                },
+
+                //
+                createLink(index) {
+                    const linkWrap = document.createElement('span');
+
+                    linkWrap.className = 'read-more__link-wrap';
+
+                    linkWrap.innerHTML = `<a id="read-more_${index}" class="read-more__link" style="cursor:pointer;">${s.moreLink}</a>`;
+
+                    // Inset created link
+                    s.content[index].parentNode.insertBefore(linkWrap, s.content[index].nextSibling);
+
+                },
+
+              //
+                handleClick(el) {
+                    const readMoreLink = document.querySelectorAll('.read-more__link');
+
+                    for (let j = 0, l = readMoreLink.length; j < l; j++) {
+
+                        readMoreLink[j].addEventListener('click', function() {
+
+                            const moreLinkID = this.getAttribute('id');
+                            let index = moreLinkID.split('_')[1];
+
+                            el[index].classList.toggle('is-expanded');
+
+                            if (this.dataset.clicked !== 'true') {
+                                el[index].innerHTML = s.originalContentArr[index];
+                                this.innerHTML = s.lessLink;
+                                this.dataset.clicked = true;
+                            } else {
+                                el[index].innerHTML = s.truncatedContentArr[index];
+                                this.innerHTML = s.moreLink;
+                                this.dataset.clicked = false;
+                            }
+                        });
+                    }
+                },
+
+               // lkol
+                openAll() {
+                    const instances = document.querySelectorAll('.read-more__link');
+                    for (let i = 0; i < instances.length; i++) {
+                        content[i].innerHTML = s.truncatedContentArr[i];
+                        instances[i].innerHTML = s.moreLink;
+                    }
+                }
+            }
+        })();
+
+        ReadMore.init()
+
+    </script>
+
+    <script
+            src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDch6NmhxtcdIgcCRjZbblh5z16CK-a2Jo&callback=initMap&libraries=&v=weekly"
+            async
+    ></script>
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+
+
+    <script>
+        // mes groupes
+        $(function() {
+            $('.material-card > .mc-btn-action').click(function () {
+                var card = $(this).parent('.material-card');
+                var icon = $(this).children('i');
+                icon.addClass('fa-spin-fast');
+
+                if (card.hasClass('mc-active')) {
+                    card.removeClass('mc-active');
+
+                    window.setTimeout(function() {
+                        icon
+                            .removeClass('fa-arrow-left ripple')
+                            .removeClass('fa-spin-fast')
+                            .addClass('fa-bars');
+
+                    }, 800);
+                } else {
+                    card.addClass('mc-active');
+
+                    window.setTimeout(function() {
+                        icon
+                            .removeClass('fa-bars')
+                            .removeClass('fa-spin-fast')
+                            .addClass('fa-arrow-left ripple');
+
+                    }, 800);
+                }
+            });
+        });
+
+
+    </script>
+<script src="{{ asset('js/filters.js') }}">
+    // filtrage recherche
+</script>
+
+
+
+{% endblock %}

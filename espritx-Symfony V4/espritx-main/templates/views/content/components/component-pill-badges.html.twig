@@ -1,0 +1,160 @@
+{% extends 'views/layouts/contentLayoutMaster.html.twig' %}
+
+{% block title %} Pill Badges {% endblock %}
+
+{% block content %}
+<!-- Basic Pill Badges start-->
+<section id="basic-pill-badges">
+  <div class="row">
+    <div class="col-12">
+      <div class="card">
+        <div class="card-header">
+          <h4 class="card-title">Contextual</h4>
+        </div>
+        <div class="card-body">
+          <p class="card-text mb-0">
+            Use the <code>.badge</code> class, followed by<code>.rounded-pill</code> with
+            <code>.bg-&#123;color&#125;</code>class within element to create contextual pill badge.
+          </p>
+          <div class="demo-inline-spacing">
+            <span class="badge rounded-pill bg-primary">Primary</span>
+            <span class="badge rounded-pill bg-secondary">Secondary</span>
+            <span class="badge rounded-pill bg-success">Success</span>
+            <span class="badge rounded-pill bg-danger">Danger</span>
+            <span class="badge rounded-pill bg-warning">Warning</span>
+            <span class="badge rounded-pill bg-info">Info</span>
+            <span class="badge rounded-pill bg-dark">Dark</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- Basic Pill Badges end -->
+
+<!-- Badge Pill Glow Starts -->
+<section id="rounded-pill-glow">
+  <div class="row">
+    <div class="col-12">
+      <div class="card">
+        <div class="card-header">
+          <h4 class="card-title">Glow Badges</h4>
+        </div>
+        <div class="card-body">
+          <p class="card-text mb-0">Use class <code>.badge-glow</code> to add glow effect to contextual badge.</p>
+          <div class="demo-inline-spacing">
+            <span class="badge rounded-pill badge-glow bg-primary">Primary</span>
+            <span class="badge rounded-pill badge-glow bg-secondary">Secondary</span>
+            <span class="badge rounded-pill badge-glow bg-success">Success</span>
+            <span class="badge rounded-pill badge-glow bg-danger">Danger</span>
+            <span class="badge rounded-pill badge-glow bg-warning">Warning</span>
+            <span class="badge rounded-pill badge-glow bg-info">Info</span>
+            <span class="badge rounded-pill badge-glow bg-dark">Dark</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- Badge Pill Glow Ends -->
+
+<!-- Badge Pill light Starts -->
+<section id="rounded-pill-light">
+  <div class="row">
+    <div class="col-12">
+      <div class="card">
+        <div class="card-header">
+          <h4 class="card-title">Light Badges</h4>
+        </div>
+        <div class="card-body">
+          <p class="card-text mb-0">
+            Use class <code>.rounded-pill</code> class with <code>.badge.badge-light-&#123;color&#125;</code> to add
+            light effect to your badge.
+          </p>
+          <div class="demo-inline-spacing">
+            <span class="badge rounded-pill badge-light-primary">Primary</span>
+            <span class="badge rounded-pill badge-light-secondary">Secondary</span>
+            <span class="badge rounded-pill badge-light-success">Success</span>
+            <span class="badge rounded-pill badge-light-danger">Danger</span>
+            <span class="badge rounded-pill badge-light-warning">Warning</span>
+            <span class="badge rounded-pill badge-light-info">Info</span>
+            <span class="badge rounded-pill badge-light-dark">Dark</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- Badge Pill light Ends -->
+
+<!-- Pill Badges as Notification start-->
+<section id="pill-badges-as-notification">
+  <div class="row match-height">
+    <div class="col-12">
+      <div class="card">
+        <div class="card-header">
+          <h4 class="card-title">Pill Badges as Notification</h4>
+        </div>
+        <div class="card-body">
+          <p class="card-text">
+            Use <code>.badge-up</code> to set pill badge to higher than other text. So that it can work with
+            notifications also.
+          </p>
+          <div class="demo-inline-spacing">
+            <div class="position-relative d-inline-block">
+              <i data-feather="bell" class="font-medium-5 text-primary"></i>
+              <span class="badge rounded-pill bg-primary badge-up">4</span>
+            </div>
+            <div class="position-relative d-inline-block">
+              <i data-feather="bell" class="font-medium-5 text-info"></i>
+              <span class="badge rounded-pill bg-info badge-up">5</span>
+            </div>
+            <div class="position-relative d-inline-block">
+              <i data-feather="bell" class="font-medium-5 text-danger"></i>
+              <span class="badge rounded-pill bg-danger badge-glow badge-up">6</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- Pill Badges as Notification end -->
+<!-- Badge Pill Options Starts -->
+<section id="rounded-pill-options">
+  <div class="row match-height">
+    <div class="col-md-6 col-sm-12">
+      <div class="card">
+        <div class="card-header">
+          <h4 class="card-title">Badge Pill Link</h4>
+        </div>
+        <div class="card-body">
+          <p class="card-text">
+            Use class <code>.badge.rounded-pill</code> with <code>&lt;a&gt;</code> tag to make your badge a link.
+          </p>
+          <a href="https://pixinvent.com" target="_blank">
+            <span class="badge rounded-pill bg-primary">Primary</span></a
+          >
+        </div>
+      </div>
+    </div>
+    <div class="col-md-6 col-sm-12">
+      <div class="card">
+        <div class="card-header">
+          <h4 class="card-title">Block Badge Pill</h4>
+        </div>
+        <div class="card-body">
+          <p class="card-text">
+            Use <code>.d-block</code> with <code>.rounded-pill</code> to display your badge as block level element.
+          </p>
+          <span class="badge rounded-pill d-block bg-danger">
+            <span>Block Badge Pill</span>
+          </span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- Badge Pill Options Ends -->
+{% endblock %}
+

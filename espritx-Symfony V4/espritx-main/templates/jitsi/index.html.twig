@@ -1,0 +1,22 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Video Chat espritX{% endblock %}
+
+{% block body %}
+
+    <div id="meet">
+    </div>
+    <script src='https://jitsi.espritx.xyz/external_api.js'></script>
+    <script>
+        const domain = 'jitsi.espritx.xyz';
+        const options = {
+            roomName: 'FewThreatsPoseWickedly',
+            width: 700,
+            height: 700,
+            parentNode: document.querySelector('#meet'),
+            lang: 'de'
+        };
+        let api = new JitsiMeetExternalAPI(domain, options);
+console.log(api.getNumberOfParticipants());
+    </script>
+{% endblock %}

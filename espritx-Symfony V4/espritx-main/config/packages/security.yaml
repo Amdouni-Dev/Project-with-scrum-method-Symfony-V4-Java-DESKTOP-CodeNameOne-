@@ -1,0 +1,72 @@
+security:
+  encoders:
+    App\Entity\User:
+      algorithm: auto
+      cost: 14
+
+  # https://symfony.com/doc/current/security.html#where-do-users-come-from-user-providers
+  providers:
+    # used to reload user from session & other features (e.g. switch_user)
+    app_user_provider:
+      entity:
+        class: App\Entity\User
+        property: email
+  firewalls:
+    dev:
+      pattern: ^/(_(profiler|wdt)|css|images|js)/
+      security: false
+      logout:
+        path: app_logout
+
+    login:
+      pattern: ^/api/login
+      stateless: true
+      json_login:
+        check_path: /api/login_check # or api_login_check as defined in config/routes.yaml
+        success_handler: lexik_jwt_authentication.handler.authentication_success
+        failure_handler: lexik_jwt_authentication.handler.authentication_failure
+
+    api:
+      pattern: ^/api
+      stateless: true
+      guard:
+        authenticators:
+          - lexik_jwt_authentication.jwt_token_authenticator
+
+    main:
+      pattern: /
+      anonymous: lazy
+      logout_on_user_change: false
+      provider: app_user_provider
+      access_denied_handler: App\Security\AccessDeniedHandler
+      remember_me:
+        secret: '%kernel.secret%'
+        lifetime: 604800
+        path: /
+      logout:
+        path: app_logout
+
+      form_login:
+        login_path: login
+        check_path: login
+      guard:
+        entry_point: App\Security\LoginFormAuthenticator
+        authenticators:
+          - App\Security\LoginFormAuthenticator
+          - App\Security\GoogleAuthenticator
+
+
+      # activate different ways to authenticate
+      # https://symfony.com/doc/current/security.html#firewalls-authentication
+
+      # https://symfony.com/doc/current/security/impersonating_user.html
+      # switch_user: true
+  access_decision_manager:
+    strategy: affirmative
+    allow_if_all_abstain: false
+  # Easy way to control access for large sections of your site
+  # Note: Only the *first* access control that matches will be used
+  access_control:
+    - { path: ^/(login|register|resetpassword|forum|connect|api/login|authenticate_device).*, role: IS_AUTHENTICATED_ANONYMOUSLY }
+    - { path: ^/api,       roles: IS_AUTHENTICATED_FULLY }
+    - { path: ^/.*, role: IS_AUTHENTICATED_REMEMBERED }

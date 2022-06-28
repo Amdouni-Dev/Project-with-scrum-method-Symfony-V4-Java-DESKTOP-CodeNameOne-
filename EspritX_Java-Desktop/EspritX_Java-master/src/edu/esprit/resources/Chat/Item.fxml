@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.effect.DropShadow?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.shape.Circle?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane id="AnchorPane" prefHeight="316.0" prefWidth="849.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <Pane layoutX="29.0" layoutY="22.0" prefHeight="271.0" prefWidth="796.0" style="-fx-background-color: #fff;">
+         <children>
+            <Separator layoutX="41.0" layoutY="94.0" prefHeight="3.0" prefWidth="744.0" />
+            <Label fx:id="name" layoutX="123.0" layoutY="18.0" text="Request_Title" textFill="#3a1c9d">
+               <font>
+                  <Font name="System Bold" size="18.0" />
+               </font>
+            </Label>
+            <Label layoutX="51.0" layoutY="113.0" text="Requester" textFill="#aeacac">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Label>
+            <Label layoutX="398.0" layoutY="113.0" text="Description" textFill="#aeacac">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Label>
+            <Label layoutX="51.0" layoutY="171.0" text="Service" textFill="#aeacac">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Label>
+            <Label fx:id="requester" layoutX="82.0" layoutY="139.0" text="Brad Pitt" textFill="#4d4c4c">
+               <font>
+                  <Font size="13.0" />
+               </font>
+            </Label>
+            <Label fx:id="type" layoutX="51.0" layoutY="197.0" text="\$1000" textFill="#4d4c4c">
+               <font>
+                  <Font size="13.0" />
+               </font>
+            </Label>
+            <Label fx:id="desc" alignment="TOP_LEFT" layoutX="398.0" layoutY="139.0" prefHeight="82.0" prefWidth="375.0" text="London" textFill="#4d4c4c">
+               <font>
+                  <Font size="13.0" />
+               </font>
+            </Label>
+            <Pane layoutY="234.0" prefHeight="39.0" prefWidth="796.0" style="-fx-background-color: #F0F0F0;">
+               <children>
+                  <Label layoutX="62.0" layoutY="10.0" text="Responded at:" textFill="#504df2">
+                     <font>
+                        <Font size="13.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="response" layoutX="157.0" layoutY="10.0" text="Drapo returns you $3000 and $1000 for all the deals" textFill="#504df2">
+                     <font>
+                        <Font size="13.0" />
+                     </font>
+                  </Label>
+               </children>
+            </Pane>
+            <Label layoutX="578.0" layoutY="12.0" text="Date Created" textFill="#3a1c9d">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Label>
+            <Label fx:id="day_creation" layoutX="578.0" layoutY="34.0" text="16" textFill="#aeacac">
+               <font>
+                  <Font name="System Bold" size="36.0" />
+               </font>
+            </Label>
+            <Label fx:id="month_creation" layoutX="627.0" layoutY="42.0" text="APR" textFill="#3a1c9d" />
+            <Label fx:id="year_creation" layoutX="627.0" layoutY="60.0" text="2018" textFill="#aeacac" />
+            <Separator layoutX="672.0" layoutY="19.0" orientation="VERTICAL" prefHeight="64.0" prefWidth="0.0" />
+            <Label layoutX="709.0" layoutY="13.0" text="Status" textFill="#3a1c9d">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Label>
+            <Label fx:id="status" layoutX="699.0" layoutY="37.0" text="25" textAlignment="CENTER" textFill="#aeacac">
+               <font>
+                  <Font name="System Bold" size="18.0" />
+               </font>
+            </Label>
+            <Label layoutX="123.0" layoutY="51.0" text="ID: " textFill="#b2b0b0">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Label>
+            <Label fx:id="id" layoutX="143.0" layoutY="51.0" text="     20178" textFill="#b2b0b0">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Label>
+            <Circle fx:id="requester_avatar" fill="DODGERBLUE" layoutX="64.0" layoutY="149.0" radius="13.0" stroke="BLACK" strokeType="INSIDE" />
+            <Circle fx:id="picstatus" fill="DODGERBLUE" layoutX="58.0" layoutY="47.0" radius="41.0" stroke="BLACK" strokeType="INSIDE" />
+         </children>
+         <effect>
+            <DropShadow color="#d7d2d2" height="50.0" radius="24.5" width="50.0" />
+         </effect>
+      </Pane>
+   </children>
+</AnchorPane>

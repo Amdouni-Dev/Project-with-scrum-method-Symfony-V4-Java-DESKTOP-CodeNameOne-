@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane prefHeight="567.0" prefWidth="615.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.esprit.controller.Template.feed.User.AllPostController">
+   <children>
+      <VBox layoutX="13.0" layoutY="14.0" prefHeight="531.0" prefWidth="589.0">
+         <children>
+            <ScrollPane fx:id="scroll" prefHeight="519.0" prefWidth="589.0">
+               <content>
+                  <GridPane fx:id="gridPane" prefHeight="0.0" prefWidth="0.0">
+                    <columnConstraints>
+                      <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                    </columnConstraints>
+                  </GridPane>
+               </content>
+            </ScrollPane>
+         </children>
+      </VBox>
+      <Button fx:id="idRetour" layoutX="632.0" layoutY="10.0" mnemonicParsing="false" onAction="#back" text="Retour" />
+   </children>
+</AnchorPane>

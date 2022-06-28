@@ -1,0 +1,67 @@
+{% extends 'views/layouts/contentLayoutMaster.html.twig' %}
+
+
+{% block title %} Post Category {% endblock %}
+
+{% block page_style %}
+  <!-- Page css files -->
+  <link rel="stylesheet" href="{{ asset('css/base/pages/app-chat.css') }}">
+  <link rel="stylesheet" href="{{ asset('css/base/pages/app-chat-list.css') }}">
+{% endblock %}
+
+
+{% block content_sidebar %}
+  {% include 'views/content/apps/chat/app-chat-sidebar.html.twig' %}
+{% endblock %}
+
+
+{% block content %}
+
+  <h1>Post Category</h1>
+
+  <table class="table">
+    <thead>
+    <tr>
+      <th>Id</th>
+      <th>slug</th>
+      <th>name</th>
+      <th>user</th>
+
+    </tr>
+    </thead>
+    <tbody>
+    {% for post in posts %}
+      <tr>
+        <td>{{ post.id }}</td>
+        <td>{{ post.slug }}</td>
+        <td>{{ post.name }}</td>
+        {# <td>{{ post.user.first_name }}</td> #}
+        <td><a href=" {{ path('deletepost_category',{'id':post.id}) }} ">Delete</a></td>
+
+
+      </tr>
+    {% else %}
+      <tr>
+        <td colspan="13">No records found</td>
+      </tr>
+    {% endfor %}
+    {% if not is_granted(constant('App\\Enum\\AccessType::CREATE'), "App\\Entity\\PostCategory") %}
+      <div class="col">
+        <div class="form-group">
+          <a href="{{ path('newpostcategory') }}" class="btn btn-success">Ajouter</a>
+        </div>
+      </div>
+    {% endif %}
+    </tbody>
+  </table>
+
+
+
+
+{% endblock %}
+
+
+{% block page_script %}
+  <!-- Page js files -->
+  <script src="{{ asset('js/scripts/pages/app-chat.js') }}"></script>
+{% endblock %}

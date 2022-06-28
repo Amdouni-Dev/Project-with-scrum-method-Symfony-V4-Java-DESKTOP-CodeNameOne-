@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+{#
+{% set configData = Helper::applClasses()  %} #}
+
+
+{#
+Languague
+<html class="loading {{ (configData['theme'] == 'light') ? '' : configData['layoutTheme']}}"
+lang="{% if session().has('locale')%}{{session()->get('locale')}}{% else %}{{configData['defaultLanguage']}}{% endif%}"
+data-textdirection="{{ env('MIX_CONTENT_DIRECTION') === 'rtl' ? 'rtl' : 'ltr' }}"
+      {% if configData['theme'] == 'dark'%} data-layout="dark-layout" {% endif %}> #}
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,user-scalable=0,minimal-ui">
+    {#
+    csrf token login wahib ki ykamel el user
+    <meta name="csrf-token" content="{{ csrf_token() }}">
+    #}
+    <meta name="description"
+          content="Vuexy admin is super flexible, powerful, clean &amp; modern responsive bootstrap 4 admin template with unlimited possibilities.">
+    <meta name="keywords"
+          content="admin template, Vuexy admin template, dashboard template, flat admin template, responsive admin template, web app">
+    <meta name="author" content="PIDEV">
+    <title>{% block title %}{% endblock %} ESPRITx | Communiquer Autrement </title>
+    <link rel="apple-touch-icon" href="{{ asset('images/ico/apple-icon-120.png') }}">
+    <link rel="shortcut icon" type="image/x-icon" href="{{ asset('images/logo/favicon.ico') }}">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,300;0,400;0,500;0,600;1,400;1,500;1,600"
+          rel="stylesheet">
+
+    {% block vendor_style %}{% endblock %}
+    {% block page_style %}{% endblock %}
+    {# Include core + vendor Styles #}
+    {% include 'views/panels/styles.html.twig' %}
+
+    <style>
+        #botmanWidgetRoot > div{
+            min-width: 90px !important;
+            min-height: 150px !important;
+            bottom: 20px!important;
+        }
+    </style>
+</head>
+
+<body class="horizontal-layout horizontal-menu
+{{ configData['contentLayout'] }} {{ configData['horizontalMenuType'] }} {{ configData['blankPageClass'] }} {{ configData['bodyClass'] }} {{ configData['footerType'] }}"
+      data-open="hover"
+      data-menu="horizontal-menu"
+      data-framework="laravel"
+      data-col="{{ (configData['showMenu'] )? configData['contentLayout'] : '1-column' }}"
+      data-asset-path="{{ asset('/manifest.json') }}">
+
+<!-- BEGIN: Header-->
+{% include 'views/panels/navbar.html.twig' %}
+
+{# Include Sidebar #}
+{% if  configData['showMenu'] is defined and configData['showMenu'] == true %}
+    {% include 'views/panels/horizontalMenu.html.twig' %}
+{% endif %}
+<!-- BEGIN: Content-->
+<div class="app-content content {{ configData['pageClass'] }}">
+    <div class="content-overlay"></div>
+    <div class="header-navbar-shadow"></div>
+
+
+    {% if configData['contentLayout']!='default' and configData['contentLayout'] is defined %}
+    <div class="content-area-wrapper {{ (configData['layoutWidth'] == 'boxed')? 'container-xxl p-0' : '' }}">
+        <div class="{{ configData['sidebarPositionClass'] }}">
+            <div class="sidebar">
+                {# Include Sidebar Content #}
+                {% block content_sidebar %}{% endblock %}
+            </div>
+        </div>
+        <div class="{{ configData['contentsidebarClass'] }}">
+            <div class="content-wrapper">
+                {% else %}
+                    {% if configData['pageHeader'] == true %}
+                        {% include 'views/panels/breadcrumb.html.twig' %}
+                    {% endif %}
+                {% endif %}
+
+                <div class="content-body">
+                    {% block content %}{% endblock %}
+                </div>
+                {% if configData['contentLayout']!='default' and configData['contentLayout'] is defined %}
+            </div>
+        </div>
+    </div>
+    {% else %}
+</div>
+{% endif %}
+</div>
+
+
+{% if configData['blankPage'] == false and configData['blankPage'] is defined %}
+    {% include 'views/content/pages/customizer.html.twig' %}
+{% endif %}
+<div class="sidenav-overlay"></div>
+<div class="drag-target"></div>
+
+{# include footer #}
+{% include 'views/panels/footer.html.twig' %}
+
+{# include default scripts #}
+{% include 'views/panels/scripts.html.twig' %}
+
+{% block vendor_script %}{% endblock %}
+
+{% block page_script %}{% endblock %}
+<script type="text/javascript">
+    $(window).on('load', function () {
+        if (feather) {
+            feather.replace({
+                width: 14, height: 14
+            });
+        }
+    })
+</script>
+<script>
+    var botmanWidget = {
+        frameEndpoint: '{{ path("chatframe") }}',
+        chatServer: '{{ path("message") }}',
+        introMessage: 'Hello, I am a Chatbot',
+        title: 'My Chatbot',
+        mainColor: '#456765',
+        bubbleBackground: '#ff76f4',
+        aboutText: ''
+    };
+</script>
+<script src='https://cdn.jsdelivr.net/npm/botman-web-widget@0/build/js/widget.js'></script>
+</body>
+</html>

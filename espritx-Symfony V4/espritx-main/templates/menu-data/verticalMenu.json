@@ -1,0 +1,197 @@
+{
+  "menu": [
+    {
+      "name": "Dashboards",
+      "__badge__": "2",
+      "badgeClass": "badge badge-light-warning rounded-pill ms-auto me-1",
+      "icon": "home",
+      "slug": "",
+      "submenu": [
+        {
+          "url": "app_admin_home",
+          "name": "Analytics",
+          "icon": "circle",
+          "slug": "Dashboard-Analytics"
+        },
+        {
+          "__url__": "#",
+          "name": "Updates",
+          "icon": "circle",
+          "slug": "Dashboard-Announcments"
+        }
+      ]
+    },
+    {
+      "navheader": "My Account",
+      "slug": ""
+    },
+    {
+      "name": "Authentication",
+      "icon": "user-check",
+      "slug": "",
+      "submenu": [
+        {
+          "url": "app_forgot_password_request",
+          "name": "Reset Password",
+          "icon": "circle",
+          "slug": ""
+        }
+      ]
+    },
+    {
+      "navheader": "User Management",
+      "slug": ""
+    },
+    {
+      "name": "Roles & Permission",
+      "icon": "shield",
+      "slug": "",
+      "submenu": [
+        {
+          "url": "group_index",
+          "name": "Roles",
+          "icon": "circle",
+          "slug": "users-roles"
+        },
+        {
+          "url": "permission_index",
+          "name": "Permission",
+          "icon": "circle",
+          "slug": "users-permissions"
+        }
+      ]
+    },
+    {
+      "name": "User",
+      "icon": "user",
+      "slug": "",
+      "submenu": [
+        {
+          "url": "user_index",
+          "name": "List",
+          "icon": "circle",
+          "slug": "users-list"
+        },
+        {
+          "url": "user_create",
+          "name": "Add",
+          "icon": "circle",
+          "slug": ""
+        }
+      ]
+    },
+    {
+      "navheader": "Groups Management",
+      "slug": ""
+    },
+
+    {
+      "url": "groupall",
+      "name": "Group-posts",
+      "icon": "users",
+      "slug": "Groups"
+    },
+    {
+      "url": "postall",
+      "name": "Posts",
+      "icon": "file-text",
+      "slug": "Posts"
+    },
+    {
+      "navheader": "Calendar Management",
+      "slug": ""
+    },
+    {
+      "url": "backofficeEvent",
+      "name": "Calendar",
+      "icon": "calendar",
+      "slug": "app-calendar"
+    },
+    {
+      "name": "Events",
+      "icon": "credit-card",
+      "slug": "",
+      "submenu": [
+        {
+          "url": "call",
+          "name": "Calls",
+          "icon": "circle",
+          "slug": "card-basic"
+        },
+        {
+          "url": "addNewEvent",
+          "name": "Add",
+          "icon": "circle",
+          "slug": "card-advance"
+        }
+      ]
+    },
+    {
+      "navheader": "Services Management",
+      "slug": ""
+    },
+    {
+      "url": "service",
+      "name": "Services",
+      "icon": "briefcase",
+      "slug": ""
+    },
+    {
+      "url": "ser_requests",
+      "name": "Requests",
+      "icon": "server",
+      "slug": "Service-Requests"
+    },
+    {
+      "navheader": "Contact",
+      "slug": ""
+    },
+    {
+      "__url__": "#",
+      "name": "Contact",
+      "icon": "folder",
+      "slug": "Contact",
+      "newTab": true
+    },
+    {
+      "navheader": "Forum",
+      "slug": ""
+    },
+    {
+      "name": "Post Categories",
+      "icon": "folder",
+      "slug": "",
+      "submenu": [
+        {
+          "url": "post_category",
+          "name": "View All",
+          "icon": "circle",
+          "slug": ""
+        },
+        {
+          "url": "newpostcategory",
+          "name": "Create New",
+          "icon": "circle",
+          "slug": ""
+        }
+      ]
+    },
+    {
+      "navheader": "Communication",
+      "slug": ""
+    },
+    {
+      "name": "Messaging",
+      "icon": "user-check",
+      "slug": "",
+      "submenu": [
+        {
+          "url": "chat_back",
+          "name": "Conversations",
+          "icon": "circle",
+          "slug": ""
+        }
+      ]
+    }
+  ]
+}

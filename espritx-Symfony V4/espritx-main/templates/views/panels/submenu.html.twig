@@ -1,0 +1,20 @@
+{# For submenu #}
+<ul class="menu-content">
+    {% if menu is defined %}
+        {% for submenu in menu %}
+            <li {{ (submenu.slug == app.request.get('_route')) ? "active" : "" }}>
+                <a href="{{ (submenu.url is defined) ? path(submenu.url):'javascript:void(0)' }}"
+                   class="d-flex align-items-center"
+                   target="{{ ((submenu.newTab is defined) and submenu.newTab == true)  ? '_blank':'_self' }}">
+                    {% if submenu.icon is defined %}
+                        <i data-feather="{{ submenu.icon }}"></i>
+                    {% endif %}
+                    <span class="menu-item text-truncate">{{ submenu.name }}</span>
+                </a>
+                {% if  submenu.submenu is defined %}
+                    {{ include('views/panels/submenu.html.twig', {'menu' : submenu.submenu}) }}
+                {% endif %}
+            </li>
+        {% endfor %}
+    {% endif %}
+</ul>

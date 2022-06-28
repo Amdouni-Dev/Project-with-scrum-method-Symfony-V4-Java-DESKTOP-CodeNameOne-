@@ -1,0 +1,147 @@
+
+{% extends 'views/layouts/contentLayoutMaster.html.twig' %}
+
+{% block title %} Group List {% endblock %}
+
+{% block vendor_style %}
+    <link rel="stylesheet" href="{{ asset('vendors/css/forms/select/select2.min.css') }}">
+{% endblock %}
+
+
+{% block page_style %}
+    <link rel="stylesheet" href="{{ asset('css/base/plugins/forms/form-validation.css') }}">
+{% endblock %}
+
+
+{% block content %}
+
+    <div class="card">
+        <div class="card-header">
+            <h4 class="card-title">Gerer les groupes</h4>
+            <div class="container text-center ">
+                <button id="MyButton" class="btn btn-warning mb-4">Actualiser</button>
+                <div id="refreshDivID">
+                    <div class="reloaded-divs">
+
+
+                        <div class="alert alert-primary  show" role="alert">
+                            <strong>{{ groupsT }}</strong> groupe(s) non validé(s)!
+
+
+                        </div>
+
+
+
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="card-body">
+            <div class="d-flex justify-content-between align-items-center mb-1">
+
+                <a class="btn btn-primary waves-effect waves-float waves-light" href="{{ url('newgroup') }}">Ajouter</a>
+            </div>
+            <div class="table-responsive row">
+                <table class="table table-hover">
+                    <thead>
+                    <tr>
+                        <th>
+                            Numero de groupe
+                        </th>
+                        <th>Nom du groupe</th>
+
+                        <th>
+                            Proprietaire Groupe
+                        </th>
+
+                        <th>
+                           But
+                        </th>
+                        <th>
+                            Date de creation
+                        </th>
+                        <th>Nombre des membres</th>
+
+                        <th>Actions</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {% for group in groups %}
+                        <tr>
+                            <td>
+
+
+                                <span class="fw-bolder fs-6">{{ group.id }}</span>
+
+
+
+
+
+
+
+
+                            </td>
+
+                            <td>
+                                <small class="emp_post text-muted">{{ group.nomGroupe }}</small>
+
+                            </td>
+
+                            <td><small class="emp_post text-muted">{{ group.user.firstName }}</small></td>
+                            <td><small class="emp_post text-muted">{{ group.but }}</small></td>
+
+                            <td><small class="emp_post text-muted">{{ group.createdAt ? group.createdAt|date('Y-m-d H:i:s') : '' }}</small></td>
+                            <td><small class="emp_post text-muted">{{ group.membre | length }}</small></td>
+
+                            <td>
+                                <div class="d-flex">
+
+                                    <a href="{{ path('deletegroup_admin', {'id': group.id}) }}" onclick="return confirm('Etes-vous sure de supprimer ce groupe ?! ')">
+                                        <i data-feather="trash" class="me-50"></i>
+                                    </a>
+                                    {%  if group.isValid %}
+                                        <a  href="{{ path('changevalidite_group', {'id': group.id}) }}"  onclick="return confirm('Voulez-vous vraiment approuver ce groupe  ?! ')">     <i data-feather="check" class="me-50"></i></a>
+                                    {% else %}
+                                        <a  href="{{ path('changevalidite_group', {'id': group.id}) }}" onclick="return confirm('Voulez-vous vraiment approuver ce groupe  ?! ')"> <i data-feather="x" class="me-50"></i></a>
+                                    {% endif %}
+                                </div>
+                            </td>
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+
+
+        </div>
+    </div>
+    <!-- users list ends -->
+
+
+    {{ knp_pagination_render(groups) }}
+{% endblock %}
+
+
+{% block vendor_script %}
+    <script src="{{ asset('vendors/js/forms/select/select2.full.min.js') }}"></script>
+    <script src="{{ asset('vendors/js/tables/datatable/jszip.min.js') }}"></script>
+    <script src="{{ asset('vendors/js/tables/datatable/vfs_fonts.js') }}"></script>
+    <script src="{{ asset('vendors/js/tables/datatable/buttons.html5.min.js') }}"></script>
+    <script src="{{ asset('vendors/js/tables/datatable/buttons.print.min.js') }}"></script>
+    <script src="{{ asset('vendors/js/forms/validation/jquery.validate.min.js') }}"></script>
+    <script src="{{ asset('vendors/js/forms/cleave/cleave.min.js') }}"></script>
+    <script src="{{ asset('vendors/js/forms/cleave/addons/cleave-phone.us.js') }}"></script>
+{% endblock %}
+
+
+{% block page_script %}
+    <script>
+        $("#MyButton").click(function() {
+            alert('Actualiser  ?');
+            $("#refreshDivID").load("#refreshDivID .reloaded-divs > *");
+        });
+
+    </script>
+    <script src="{{ asset('js/scripts/pages/app-user-list.js') }}"></script>
+{% endblock %}
+

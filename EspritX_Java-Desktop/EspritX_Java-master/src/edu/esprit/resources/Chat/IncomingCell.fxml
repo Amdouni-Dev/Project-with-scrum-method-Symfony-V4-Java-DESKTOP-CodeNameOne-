@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.text.Font?>
+
+<HBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="55.0" prefWidth="595.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.esprit.controller.IncomingCellController">
+   <children>
+      <ImageView fitHeight="45.0" fitWidth="53.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@Img/icons8_user_80px_2.png" />
+         </image>
+      </ImageView>
+      <Label fx:id="Content" prefHeight="30.0" prefWidth="153.0" styleClass="incoming-bubble" stylesheets="@Values/style.css" text="Bonjours test chat" textFill="#9da7a7">
+         <font>
+            <Font name="Ebrima" size="18.0" />
+         </font>
+         <padding>
+            <Insets left="5.0" />
+         </padding>
+      </Label>
+   </children>
+</HBox>

@@ -1,0 +1,40 @@
+{% extends "Main-View.pebble.fxml" %}
+        {% block body %}
+
+
+<AnchorPane prefHeight="603.0" prefWidth="1382.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <Pane prefHeight="583.0" prefWidth="1362.0" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="10.0">
+         <children>
+            <SplitPane dividerPositions="0.1" layoutX="3.0" layoutY="7.0" orientation="VERTICAL" prefHeight="563.0" prefWidth="1342.0">
+              <items>
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="53.6" prefWidth="1342.0" />
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefWidth="1342.0">
+                     <children>
+                        <SplitPane dividerPositions="0.3" prefHeight="506.7" prefWidth="1342.0">
+                          <items>
+                            <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
+                                 <children>
+                                    <SplitPane dividerPositions="0.9" orientation="VERTICAL" prefHeight="506.7" prefWidth="536.8">
+                                      <items>
+                                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0" />
+                                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0" />
+                                      </items>
+                                    </SplitPane>
+                                 </children>
+                              </AnchorPane>
+                            <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="95.0" prefWidth="938.0" />
+                          </items>
+                        </SplitPane>
+                     </children>
+                  </AnchorPane>
+              </items>
+            </SplitPane>
+         </children>
+         <padding>
+            <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+         </padding>
+      </Pane>
+   </children>
+</AnchorPane>
+        {% endblock %}

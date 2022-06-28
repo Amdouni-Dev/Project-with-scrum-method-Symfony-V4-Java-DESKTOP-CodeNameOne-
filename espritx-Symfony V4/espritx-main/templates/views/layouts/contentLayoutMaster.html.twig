@@ -1,0 +1,16 @@
+{# {% if pageConfigs is defined %}
+  {{ Helper::updatePageConfig(pageConfigs) }}
+{% endif %} #}
+
+{% if(pageConfigs is defined) %}
+  {% set configData = configData.applClasses|merge(pageConfigs) %}
+{% else %}
+  {% set configData = configData.applClasses %}
+{% endif %}
+{% if app.user and isStudent(app.user) %}
+  {% set configData = configData|merge({"mainLayoutType": "horizontal"}) %}
+{% endif %}
+{% extends (configData["mainLayoutType"] == 'horizontal') ? 'views/layouts/horizontalLayoutMaster.html.twig' : 'views/layouts/verticalLayoutMaster.html.twig' %}
+
+
+

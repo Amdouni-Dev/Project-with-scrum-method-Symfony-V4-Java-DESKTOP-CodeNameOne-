@@ -1,0 +1,58 @@
+{% for blog in blogs %}
+    <div class="col-md-6 col-12">
+        <div class="card">
+
+
+            <a href="{{ asset('page/blog/detail') }}">
+                <img class="img-fluid my-1" src="{{ asset('/uploads/brochures/'~blog.image) }}" alt="{{ blog.image }}"/>
+            </a>
+            <div class="card-body">
+                <h4 class="card-title">
+                    <a href="{{ asset('page/blog/detail') }}" class="blog-title-truncate text-body-heading"
+                    >{{ blog.slug }}</a
+                    >
+                </h4>
+                <div class="d-flex">
+                    <div class="avatar me-50">
+                        <img src="{{asset('images/portrait/small/avatar-s-7.jpg')}}" alt="Avatar" width="24" height="24" />
+                    </div>
+                    <div class="author-info">
+                        <small class="text-muted me-25">by</small>
+                        <small><a href="#" class="text-body"> Internaute </a></small>
+                        <span class="text-muted ms-50 me-25">|</span>
+                        <small class="text-muted"> Categorie : {{ blog.postcategory }}</small>
+                    </div>
+                </div>
+                <div class="my-1 py-25">
+                    <a href="{{ path('deleteblog_post',{'id':blog.id}) }}">
+                                <span class="badge rounded-pill badge-light-info me-50">Delete
+                                </span>
+                    </a>
+                    <a href="{{ path('update_blog',{'id':blog.id})}}">
+                        <span class="badge rounded-pill badge-light-primary">Update</span>
+                    </a>
+                </div>
+                <p class="card-text blog-content-truncate">
+                    {{ blog.body | raw }}
+                </p>
+                <hr />
+                <div class="d-flex justify-content-between align-items-center">
+                    <a href="{{ asset('page/blog/detail#blogComment') }}">
+                        <div class="d-flex align-items-center">
+                            <i data-feather="message-square" class="font-medium-1 text-body me-50"></i>
+                            <span class="text-body fw-bold">Like</span>
+                        </div>
+                    </a>
+                    <a href="{{ asset('page/blog/detail') }}" class="fw-bold">
+                        <div class="fb-share-button"
+                             data-href="https://www.your-domain.com/your-page.html"
+                             data-layout="button_count">
+                        </div>
+                    </a>
+
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+{% endfor %}

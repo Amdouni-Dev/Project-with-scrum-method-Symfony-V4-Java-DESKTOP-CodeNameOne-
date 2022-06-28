@@ -1,0 +1,55 @@
+{% extends 'views/layouts/contentLayoutMaster.html.twig'%}
+
+{%  block title %}
+    {{ 'Demander Service' }}
+{% endblock %}
+
+{%  block vendor_style%}
+    <link rel="stylesheet" href="{{ asset('vendors/css/tables/datatable/dataTables.bootstrap5.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('vendors/css/tables/datatable/responsive.bootstrap5.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('vendors/css/tables/datatable/buttons.bootstrap5.min.css') }}">
+{% endblock %}
+{%  block page_style%}
+    <!-- Page css files -->
+    <link rel="stylesheet" href="{{ asset('css/base/plugins/forms/form-validation.css') }}">
+{% endblock %}
+
+{%  block content %}
+    <h3>Demander un service</h3>
+    <p>Ajouter les champs nécessaires.</p>
+
+    <div class="card">
+        <div class="card-header">
+        </div>
+        <div class="card-body">
+            {{ form_start (form,{'attr':{'novalidate':'novalidate'}},{'method': 'POST'}) }}
+            {{ form_row(form.Title) }}
+            {{ form_row(form.Description) }}
+            {{ form_row(form.Email) }}
+            {{ form_row(form.PictureFile) }}
+            {{ form_row(form.AttachementsFile) }}
+            {{ form_row(form.Type) }}
+            <div class="float-end">
+                {{ form_row(form.Envoyer) }}</div>
+            {{ form_end(form) }}
+        </div>
+    </div>
+
+    {% include'views/content/_partials/_modals/modal-add-permission.html.twig'%}
+    {% include'views/content/_partials/_modals/modal-edit-permission.html.twig'%}
+{% endblock %}
+
+{%  block vendor_script%}
+    <script src="{{ asset('vendors/js/tables/datatable/jquery.dataTables.min.js') }}"></script>
+    <script src="{{ asset('vendors/js/tables/datatable/dataTables.bootstrap5.min.js') }}"></script>
+    <script src="{{ asset('vendors/js/tables/datatable/dataTables.responsive.min.js') }}"></script>
+    <script src="{{ asset('vendors/js/tables/datatable/responsive.bootstrap5.js') }}"></script>
+    <script src="{{ asset('vendors/js/tables/datatable/datatables.buttons.min.js') }}"></script>
+    <script src="{{ asset('vendors/js/tables/datatable/buttons.bootstrap5.min.js') }}"></script>
+    <script src="{{ asset('vendors/js/forms/validation/jquery.validate.min.js') }}"></script>
+{% endblock %}
+{%  block page_script%}
+    <script src="{{ asset('js/scripts/pages/modal-add-permission.js') }}"></script>
+    <script src="{{ asset('js/scripts/pages/modal-edit-permission.js') }}"></script>
+    <script src="{{ asset('js/scripts/pages/app-access-permission.js') }}"></script>
+{% endblock %}

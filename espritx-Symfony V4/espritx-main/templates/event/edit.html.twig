@@ -1,0 +1,53 @@
+{% extends 'views/layouts/contentLayoutMaster.html.twig' %}
+
+{% block title %}{% endblock %}
+
+{% block vendor_style %}
+    <link rel="stylesheet" href="{{ asset('vendors/css/calendars/fullcalendar.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('vendors/css/forms/select/select2.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('vendors/css/pickers/flatpickr/flatpickr.min.css') }}">
+{% endblock %}
+
+
+{% block page_style %}
+    <link rel="stylesheet" href="{{ asset('css/base/plugins/forms/pickers/form-flat-pickr.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/base/pages/app-calendar.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/base/plugins/forms/form-validation.css') }}">
+{% endblock %}
+
+
+{% block content %}
+    <section>
+
+        {{ form_start(form) }}
+
+        {{ form_row(form.title) }}
+        {{ form_row(form.start) }}
+        {{ form_row(form.end) }}
+        {{ form_row(form.description) }}
+        {{ form_row(form.allDay) }}
+
+        <button class="btn btn-primary btn-toggle-sidebar w-100">{{ button_label|default('Mettre a jour') }}</button>
+
+        
+        {{ form_end(form) }}
+
+    </section>
+
+{% endblock %}
+
+
+{% block vendor_script %}
+    <script src="{{ asset('vendors/js/calendar/fullcalendar.min.js') }}"></script>
+    <script src="{{ asset('vendors/js/extensions/moment.min.js') }}"></script>
+    <script src="{{ asset('vendors/js/forms/select/select2.full.min.js') }}"></script>
+    <script src="{{ asset('vendors/js/forms/validation/jquery.validate.min.js') }}"></script>
+    <script src="{{ asset('vendors/js/pickers/flatpickr/flatpickr.min.js') }}"></script>
+{% endblock %}
+
+
+{% block page_script %}
+    <script src="{{ asset('js/scripts/pages/app-calendar-events.js') }}"></script>
+    <script src="{{ asset('js/scripts/pages/app-calendar.js') }}"></script>
+{% endblock %}
+

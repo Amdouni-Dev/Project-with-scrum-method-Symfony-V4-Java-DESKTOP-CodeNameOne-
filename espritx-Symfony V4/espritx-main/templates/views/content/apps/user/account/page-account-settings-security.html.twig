@@ -1,0 +1,205 @@
+{% extends 'views/layouts/contentLayoutMaster.html.twig' %}
+
+{% block title %} Security {% endblock %}
+
+{% block vendor_style %}
+  <!-- vendor css files -->
+  <link rel='stylesheet' href="{{ asset('vendors/css/forms/select/select2.min.css') }}">
+{% endblock %}
+
+{% block page_style %}
+  <!-- Page css files -->
+  <link rel="stylesheet" href="{{ asset('css/base/plugins/forms/form-validation.css') }}">
+{% endblock %}
+
+
+{% block content %}
+
+  {{ form_start(resetForm, {"attr": {"class": "auth-reset-password-form"}}) }}
+
+<div class="row">
+  <div class="col-12">
+    <ul class="nav nav-pills mb-2">
+      <!-- Account -->
+      <li class="nav-item">
+        <a class="nav-link" href="{{ path('account_settings') }}">
+          <i data-feather="user" class="font-medium-3 me-50"></i>
+          <span class="fw-bold">Account</span>
+        </a>
+      </li>
+      <!-- security -->
+      <li class="nav-item">
+        <a class="nav-link active" href="{{ path('account_password') }}">
+          <i data-feather="lock" class="font-medium-3 me-50"></i>
+          <span class="fw-bold">Security</span>
+        </a>
+      </li>
+      <!-- billing and plans -->
+      {#  <li class="nav-item">
+        <a class="nav-link" href="{{asset('page/account-settings-billing')}}">
+          <i data-feather="bookmark" class="font-medium-3 me-50"></i>
+          <span class="fw-bold">Billings &amp; Plans</span>
+        </a>
+      </li>#}
+      <!-- notification -->
+      <li class="nav-item">
+        <a class="nav-link" href="#">
+          <i data-feather="bell" class="font-medium-3 me-50"></i>
+          <span class="fw-bold">Notifications</span>
+        </a>
+      </li>
+      <!-- connection -->
+      {# <li class="nav-item">
+        <a class="nav-link" href="{{asset('page/account-settings-connections')}}">
+          <i data-feather="link" class="font-medium-3 me-50"></i>
+          <span class="fw-bold">Connections</span>
+        </a>
+      </li>#}
+    </ul>
+
+    <!-- security -->
+
+    <div class="card">
+      <div class="card-header border-bottom">
+        <h4 class="card-title">Change Password</h4>
+      </div>
+      <div class="card-body pt-1">
+        <!-- form -->
+        <form class="validate-form">
+          <div class="row">
+            <div class="col-12 col-sm-6 mb-1">
+              {{ form_row(resetForm.currentPassowrd) }}
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-12 col-sm-6 mb-1">
+              <div class="mb-1">
+                {{ form_row(resetForm.plainPassword) }}
+              </div>
+            </div>
+
+            <div class="col-12">
+              <button class="btn btn-primary me-1 mt-1" tabindex="3">Set New Password</button>
+              {{ form_end(resetForm) }}
+            </div>
+            <div class="col-12">
+              <p class="fw-bolder">Password requirements:</p>
+              <ul class="ps-1 ms-25">
+                <li class="mb-50">Minimum 8 characters long - the more, the better</li>
+                <li class="mb-50">At least one lowercase character</li>
+                <li>At least one number, symbol, or whitespace character</li>
+              </ul>
+            </div>
+          </div>
+        </form>
+        <!--/ form -->
+      </div>
+    </div>
+
+    <!-- two-step verification -->
+    <div class="card">
+      <div class="card-header border-bottom">
+        <h4 class="card-title">Two-step verification</h4>
+      </div>
+      <div class="card-body my-2 py-25">
+        <p class="fw-bolder">Two factor authentication is not enabled yet.</p>
+        <p>
+          Two-factor authentication adds an additional layer of security to your account by requiring <br />
+          more than just a password to log in. Learn more.
+        </p>
+        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#twoFactorAuthModal">
+          Enable two-factor authentication
+        </button>
+      </div>
+    </div>
+    <!-- / two-step verification -->
+
+    <!-- recent device -->
+    <div class="card">
+      <div class="card-header border-bottom">
+        <h4 class="card-title">Recent devices</h4>
+      </div>
+      <div class="card-body my-2 py-25">
+        <div class="table-responsive">
+          <table class="table table-bordered text-nowrap text-center">
+            <thead>
+              <tr>
+                <th class="text-start">BROWSER</th>
+                <th>DEVICE</th>
+                <th>LOCATION</th>
+                <th>RECENT ACTIVITY</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td class="text-start">
+                  <div class="avatar me-25">
+                    <img src="{{asset('images/icons/google-chrome.png')}}" alt="avatar" width="20" height="20" />
+                  </div>
+                  <span class="fw-bolder">Chrome on Windows</span>
+                </td>
+                <td>Dell XPS 15</td>
+                <td>United States</td>
+                <td>10, Jan 2021 20:07</td>
+              </tr>
+              <tr>
+                <td class="text-start">
+                  <div class="avatar me-25">
+                    <img src="{{asset('images/icons/google-chrome.png')}}" alt="avatar" width="20" height="20" />
+                  </div>
+                  <span class="fw-bolder">Chrome on Android</span>
+                </td>
+                <td>Google Pixel 3a</td>
+                <td>Ghana</td>
+                <td>11, Jan 2021 10:16</td>
+              </tr>
+              <tr>
+                <td class="text-start">
+                  <div class="avatar me-25">
+                    <img src="{{asset('images/icons/google-chrome.png')}}" alt="avatar" width="20" height="20" />
+                  </div>
+                  <span class="fw-bolder">Chrome on MacOS</span>
+                </td>
+                <td>Apple iMac</td>
+                <td>Mayotte</td>
+                <td>11, Jan 2021 12:10</td>
+              </tr>
+              <tr>
+                <td class="text-start">
+                  <div class="avatar me-25">
+                    <img src="{{asset('images/icons/google-chrome.png')}}" alt="avatar" width="20" height="20" />
+                  </div>
+                  <span class="fw-bolder">Chrome on iPhone</span>
+                </td>
+                <td>Apple iPhone XR</td>
+                <td>Mauritania</td>
+                <td>12, Jan 2021 8:29</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+    <!-- / recent device -->
+    <!--/ security -->
+  </div>
+</div>
+
+{% include 'views/content/_partials/_modals/modal-two-factor-auth.html.twig' %}
+{% endblock %}
+
+
+{% block vendor_script %}
+  <!-- vendor files -->
+  <script src="{{ asset('vendors/js/forms/select/select2.full.min.js') }}"></script>
+  <script src="{{ asset('vendors/js/forms/validation/jquery.validate.min.js') }}"></script>
+  <script src="{{ asset('vendors/js/forms/cleave/cleave.min.js') }}"></script>
+  <script src="{{ asset('vendors/js/forms/cleave/addons/cleave-phone.us.js') }}"></script>
+{% endblock %}
+
+{% block page_script %}
+  <!-- Page js files -->
+  <script src="{{ asset('js/scripts/pages/modal-two-factor-auth.js') }}"></script>
+  <script src="{{ asset('js/scripts/pages/page-account-settings-security.js') }}"></script>
+{% endblock %}
+

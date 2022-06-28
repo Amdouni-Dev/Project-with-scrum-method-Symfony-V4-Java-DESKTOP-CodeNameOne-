@@ -1,0 +1,349 @@
+{% extends 'views/layouts/contentLayoutMaster.html.twig' %}
+
+{% block title %} Profile {% endblock %}
+
+{% block page_style %}
+  {# Page Css files #}
+  <link rel="stylesheet" href="{{ asset('css/base/plugins/extensions/ext-component-sweet-alerts.css') }}">
+  <link rel="stylesheet" href="{{ asset('css/base/pages/page-profile.css') }}">
+  <style>
+      .profile-img .avatar-wrapper {
+          height: 100%;
+          width: 100%;
+      }
+
+      .avatar-wrapper .avatar {
+          height: 100%;
+          width: 100%;
+      }
+  </style>
+{% endblock %}
+{% block vendor_style %}
+  <link rel="stylesheet" href="{{ asset('vendors/css/animate/animate.min.css') }}">
+  <link rel="stylesheet" href="{{ asset('vendors/css/extensions/sweetalert2.min.css') }}">
+{% endblock %}
+
+{% block content %}
+  <div id="user-profile">
+    <!-- profile header -->
+    <div class="row">
+      <div class="col-12">
+        <div class="card profile-header mb-2">
+          <!-- profile cover photo -->
+          <img
+              class="card-img-top"
+              src="{{ asset('images/profile/user-uploads/timeline.jpg') }}"
+              alt="User Profile Image"
+          />
+          <!--/ profile cover photo -->
+
+          <div class="position-relative">
+            <!-- profile picture -->
+            <div class="profile-img-container d-flex align-items-center">
+              <div class="profile-img avatar-wrapper">
+                {% include "views/content/_partials/_fragments/user-avatar.html.twig" with {'user': user, "size": "xl"} %}
+              </div>
+              <!-- profile title -->
+              <div class="profile-title ms-3">
+                <h2 class="text-white">{{ user.firstName ~ " " ~ user.lastName }}</h2>
+                <p class="text-white d-flex">
+                  {% for group in user.groups %}
+                    {{ include('views/content/_partials/_fragments/group-type-badge.html.twig',
+                      {'grouptype': group.groupType, 'displayname': group.displayName}) }}
+                  {% endfor %}
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <!-- tabs pill -->
+          <div class="profile-header-nav">
+            <!-- navbar -->
+            <nav class="navbar navbar-expand-md navbar-light justify-content-end justify-content-md-between w-100">
+              <button
+                  class="btn btn-icon navbar-toggler"
+                  type="button"
+                  data-bs-toggle="collapse"
+                  data-bs-target="#navbarSupportedContent"
+                  aria-controls="navbarSupportedContent"
+                  aria-expanded="false"
+                  aria-label="Toggle navigation"
+              >
+                <i data-feather="align-justify" class="font-medium-5"></i>
+              </button>
+
+              <!-- collapse  -->
+              <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <div class="profile-tabs d-flex justify-content-between flex-wrap mt-1 mt-md-0">
+                  <ul class="nav nav-pills mb-0">
+                    <li class="nav-item">
+                      <a class="nav-link fw-bold active" href="#">
+                        <span class="d-none d-md-block">Feed</span>
+                        <i data-feather="rss" class="d-block d-md-none"></i>
+                      </a>
+                    </li>
+                    <li class="nav-item">
+                      <a class="nav-link fw-bold" id="show-qc-qr" href="#">
+                        <span class="d-none d-md-block">Show QuickConnect™ Code</span>
+                        <i data-feather="info" class="d-block d-md-none"></i>
+                      </a>
+                    </li>
+                  </ul>
+                  <!-- edit button -->
+                  {% if user != app.user %}
+                    {% if user in app.user.contacts %}
+                      <a href="{{ url("remove_contact", {"id" : user.id}) }}?redirect_uri={{ url("show_user_profile", {"id": user.id}) }}"
+                         class="btn btn-primary add-contact-btn">
+                        <i data-feather="edit" class="d-block d-md-none"></i>
+                        <span class="fw-bold d-none d-md-block">Remove Contact</span>
+                      </a>
+                    {% else %}
+                      <a href="{{ url("add_contact", {"id" : user.id}) }}?redirect_uri={{ url("show_user_profile", {"id": user.id}) }}"
+                         class="btn btn-primary add-contact-btn">
+                        <i data-feather="edit" class="d-block d-md-none"></i>
+                        <span class="fw-bold d-none d-md-block">Add Contact</span>
+                      </a>
+                    {% endif %}
+                  {% endif %}
+                </div>
+              </div>
+              <!--/ collapse  -->
+            </nav>
+            <!--/ navbar -->
+          </div>
+        </div>
+      </div>
+    </div>
+    <!--/ profile header -->
+
+    <!-- profile info section -->
+    <section id="profile-info">
+      <div class="row">
+        <!-- left profile info section -->
+        <div class="col-lg-3 col-12 order-2 order-lg-1">
+          <!-- about -->
+          <div class="card">
+            <div class="card-body">
+              <h5 class="mb-75">About</h5>
+              <p class="card-text">
+                {{ (user.about|trim is not empty) ? user.about : "Nothing here yet..." }}
+              </p>
+              <div class="mt-2">
+                <h5 class="mb-75">User Status:</h5>
+                {{ include('views/content/_partials/_fragments/user-status-pill.html.twig', {'userstatus': user.userstatus}) }}
+              </div>
+              <div class="mt-2">
+                <h5 class="mb-75">Email:</h5>
+                <a class="card-text" href="mailto:{{ user.email }}" target="_blank">{{ user.email }}</a>
+              </div>
+              <div class="mt-2">
+                <h5 class="mb-75">Joined:</h5>
+                <p class="card-text">{{ user.createdAt|date("m/d/Y") }}</p>
+              </div>
+              {% if user.class is not null %}
+                <div class="mt-2">
+                  <h5 class="mb-75">Class:</h5>
+                  <p class=|"card-text">{{ user.class }}</p>
+                </div>
+              {% endif %}
+              <div class="mt-2">
+                <h5 class="mb-50">Last Seen:</h5>
+                <p class="card-text mb-0">{{ user.lastActivityAt|date("m/d/Y") }} </p>
+              </div>
+            </div>
+          </div>
+          <!--/ about -->
+
+          <!-- suggestion pages -->
+          <div class="card">
+            <div class="card-body profile-suggestion">
+              <h5 class="mb-2">Suggested Contacts</h5>
+              <!-- user suggestions -->
+              {% for contact in makeFriendSuggestions(user, 5) %}
+                <div class="d-flex justify-content-start align-items-center mb-1">
+                  {% include "views/content/_partials/_fragments/user-avatar.html.twig" with {'user': contact} %}
+                  <div class="ms-1 profile-user-info">
+                    <h6 class="mb-0">{{ contact.firstName ~ " " ~ contact.lastName }}</h6>
+                    {% set commonFriendsNumber = countCommonContacts(app.user, contact) %}
+                    {% if commonFriendsNumber > 0 %}
+                      <small class="text-muted"> {{ commonFriendsNumber }} Mutual Friends</small>
+                    {% endif %}
+                  </div>
+                  {% if user in app.user.contacts %}
+                    <a href="{{ url('remove_contact', {"id": contact.id}) }}?redirect_uri={{ url('show_user_profile', {"id": user.id}) }}"
+                       class="btn btn-primary btn-icon btn-sm ms-auto">
+                      <i data-feather="user-x"></i>
+                    </a>
+                  {% else %}
+                    <a href="{{ url('add_contact', {"id": contact.id}) }}?redirect_uri={{ url('show_user_profile', {"id": user.id}) }}"
+                       class="btn btn-primary btn-icon btn-sm ms-auto">
+                      <i data-feather="user-plus"></i>
+                    </a>
+                  {% endif %}
+                </div>
+              {% endfor %}
+            </div>
+          </div>
+          <!--/ suggestion pages -->
+        </div>
+        <!--/ left profile info section -->
+
+        <!-- center profile info section -->
+        <div class="col-lg-6 col-12 order-1 order-lg-2">
+          <!-- post 1 -->
+          {% if user.posts|length > 0 %}
+
+            {% for post in user.posts|slice(0,5) %}
+              <div class="card">
+                <div class="card-body">
+                  <div class="d-flex justify-content-start align-items-center mb-1">
+                    <!-- avatar -->
+                    {% include "views/content/_partials/_fragments/user-avatar.html.twig" with {'user': user} %}
+                    <!--/ avatar -->
+                    <div class="ms-1 profile-user-info">
+                      <h6 class="mb-0">{{ user.firstName ~ ' ' ~ user.lastName }}</h6>
+                      <small class="text-muted">{{ post.createdAt|date("F j Y, g:i a") }}</small>
+                    </div>
+                  </div>
+                  <p class="card-text">
+                    {{ post.content|u.truncate(128, '...') }}
+                  </p>
+                  <a href="{{ url("singlepost", {"id": post.id}) }}" class="mt-2">
+                    <span class="text-primary">See more...</span>
+                  </a>
+                  <!-- post img -->
+                  {% if post.images|length > 0 %}
+                    {% set img = post.images|first %}
+                    <img
+                        class="img-fluid rounded mb-75"
+                        src="{{ asset('uploads/brochures/' ~ img.name) }}"
+                        alt="avatar img"
+                    />
+                  {% endif %}
+                  <!--/ post img -->
+                </div>
+              </div>
+            {% endfor %}
+          {% else %}
+            <div class="card">
+              <div class="card-header">
+                <h4 class="card-title">Uhm... Nothing (yet?)</h4>
+              </div>
+              <div class="card-body">
+                <p class="card-text">
+                  <span>{{ user.firstName ~ ' ' ~ user.lastName }} still hasn't published anything, or you're not allowed to see what they posted.</span>
+                </p>
+              </div>
+            </div>
+          {% endif %}
+        </div>
+        <!--/ center profile info section -->
+
+        <!-- right profile info section -->
+        <div class="col-lg-3 col-12 order-3">
+          <!-- social circles -->
+          <div class="card">
+            <div class="card-body">
+              <h5 class="mb-1">Circles</h5>
+              {% if user.groupes|length > 0 %}
+                {% for groupe in user.groupes %}
+                  <div class="d-flex">
+                    <ul class="list-unstyled d-flex align-items-center avatar-group mb-0">
+                      {% for group_member in groupe.membre.slice(0,2) %}
+                        <li
+                            data-bs-toggle="tooltip"
+                            data-popup="tooltip-custom"
+                            data-bs-placement="top"
+                            title="{{ group_member.firstName~' '~group_member.lastName }}"
+                            class="avatar-sm pull-up"
+                        >
+                          {% include "views/content/_partials/_fragments/user-avatar.html.twig" with {'user': group_member} %}
+                        </li>
+                      {% endfor %}
+                    </ul>
+                    <a href="{{ url("singleGroup", {"id":groupe.id }) }}"><span>{{ groupe.nomGroupe }}</span></a>
+                  </div>
+                {% endfor %}
+              {% else %}
+                <span>This user doesn't seem very social, or just hates groups. <a
+                      href="#">Maybe invite them for a chat?</a></span>
+              {% endif %}
+            </div>
+          </div>
+          <!-- /social circles -->
+
+          <!-- contacts -->
+          <div class="card">
+            <div class="card-body">
+              <h5>Contacts</h5>
+              {% if user.contacts|length > 0 %}
+                {% for contact in user.contacts.slice(0, 10) %}
+                  <div class="d-flex justify-content-start align-items-center mt-2 me-1">
+                    {% include "views/content/_partials/_fragments/user-avatar.html.twig" with {'user': contact} %}
+                    <div class="ms-1 profile-user-info">
+                      <h6 class="mb-0">{{ contact.firstName ~ " " ~ contact.lastName }}</h6>
+                      {% set commonContactsNumber = countCommonContacts(app.user, contact) %}
+                      {% if commonContactsNumber > 0 %}
+                        <small class="text-muted"> {{ commonContactsNumber }} Mutual Friends</small>
+                      {% endif %}
+                    </div>
+                    {% if user in app.user.contacts %}
+                      <a href="{{ url('remove_contact', {"id": contact.id}) }}?redirect_uri={{ url("show_user_profile", {"id": user.id}) }}"
+                         class="btn btn-primary btn-icon btn-sm ms-auto">
+                        <i data-feather="user-x"></i>
+                      </a>
+                    {% else %}
+                      <a href="{{ url('add_contact', {"id": contact.id}) }}?redirect_uri={{ url("show_user_profile", {"id": user.id}) }}"
+                         class="btn btn-primary btn-icon btn-sm ms-auto">
+                        <i data-feather="user-plus"></i>
+                      </a>
+                    {% endif %}
+                  </div>
+                {% endfor %}
+              {% else %}
+                <span>No one here.. Maybe they're just a rockstar?</span>
+              {% endif %}
+            </div>
+          </div>
+          <!--/ suggestion -->
+        </div>
+        <!--/ right profile info section -->
+      </div>
+
+      <!-- reload button -->
+      <div class="row">
+        <div class="col-12 text-center">
+          <button type="button" class="btn btn-sm btn-primary block-element border-0 mb-1">Load More</button>
+        </div>
+      </div>
+      <!--/ reload button -->
+    </section>
+    <!--/ profile info section -->
+  </div>
+{% endblock %}
+
+{% block vendor_script %}
+  <script src="{{ asset('vendors/js/extensions/sweetalert2.all.min.js') }}"></script>
+  <script src="{{ asset('vendors/js/extensions/polyfill.min.js') }}"></script>
+{% endblock %}
+
+{% block page_script %}
+  <script src="{{ asset('js/scripts/pages/page-profile.js') }}"></script>
+  <script>
+      $("#show-qc-qr").on('click', function () {
+          Swal.fire({
+              title: '{{ user.firstName ~ " " ~ user.lastName }}',
+              text: 'Scan this QR code on your device.',
+              imageUrl: '{{ url('make_quick_code', {"id": user.id}) }}',
+              imageWidth: 200,
+              imageHeight: 200,
+              imageAlt: '{{ user.firstName ~ " " ~ user.lastName }}',
+              customClass: {
+                  confirmButton: 'btn btn-primary'
+              },
+              buttonsStyling: false
+          });
+      });
+  </script>
+{% endblock %}
+

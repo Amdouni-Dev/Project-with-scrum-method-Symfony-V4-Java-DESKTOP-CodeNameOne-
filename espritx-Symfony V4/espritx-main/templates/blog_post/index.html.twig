@@ -1,0 +1,106 @@
+{% extends 'views/layouts/contentLayoutMaster.html.twig' %}
+
+
+{% block title %} Forum EspritX {% endblock %}
+
+{% block page_style %}
+  <!-- Page css files -->
+  <link rel="stylesheet" href="{{ asset('css/base/pages/page-blog.css') }}">
+
+{% endblock %}
+
+
+{% block content_sidebar %}
+  {% include '/content/pages/page-blog-sidebar' %}
+{% endblock %}
+
+
+{% block content %}
+<div class="blog-list-wrapper">
+  <div class="card">
+    <div class="card-header">
+      <h4 class="card-title">Forum EspritX </h4>
+    </div>
+    <div class="card-body">
+      <table>
+        <tr>
+          <th>
+            <div class="form-row align-items-end">
+              <div class="col">
+                <div class="form-group">
+                  <form action="#" class="nk-form nk-form-style-1" novalidate="novalidate">
+                    <div class="input-group">
+                      <input type="text" class="form-control" placeholder="Type something..." id="search">
+                      <button class="nk-btn nk-btn-color-main-1"><span class="ion-search"></span></button>
+                    </div>
+                  </form>
+                </div>
+              </div>
+            </div>
+          </th>
+          <th>
+            <div class="form-row align-items-end">
+              <div class="col">
+                <div class="form-group">
+                  <a href="{{ path('newblogpost') }}" class="btn btn-success">Ajouter</a>
+                </div>
+              </div>
+            </div>
+          </th>
+        </tr>
+      </table>
+
+      <div class="nk-blog-post nk-blog-post-border-bottom">
+        <div class="row vertical-gap" id="all">
+          {% include 'blog_post/ajaxblog.html.twig' %}
+        </div>
+        <div class="row vertical-gap" id="search">
+        </div>
+      </div>
+    </div>
+    {#    {{ knp_pagination_render(blogs) }} #}
+    {% endblock %}
+
+
+    {% block page_script %}
+      <!-- Page js files -->
+      <script src="{{ asset('js/scripts/pages/app-chat.js') }}"></script>
+
+      <div id="fb-root"></div>
+      <script>(function (d, s, id) {
+              var js, fjs = d.getElementsByTagName(s)[0];
+              if (d.getElementById(id)) return;
+              js = d.createElement(s);
+              js.id = id;
+              js.src = "https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v3.0";
+              fjs.parentNode.insertBefore(js, fjs);
+          }(document, 'script', 'facebook-jssdk'));</script>
+
+      <script>
+          $(document).ready(function () {
+              var currentRequest = null;
+              $("#search").keyup(function (e) {
+                  /* La variable value va prendre la valeur insérer dans le champ de texte
+                  afin d’effectuer la recherche */
+                  var value = $(this).val();
+                  if (currentRequest != null) {
+                      currentRequest.abort();
+                  }
+                  /* Ajax est lancé lors du remplissage du champ texte dont l’id est
+                  « search » pour faire la recherche */
+                  currentRequest = $.ajax({
+                      url: "{{ path('ajaxcategory') }}",
+                      type: 'GET',
+                      data: {
+                          'searchValue': value
+                      },
+                      success: function (retour) {
+                          $('#all').html(retour);
+                      },
+                  });
+                  return false;
+              });
+          });
+      </script>
+    {% endblock %}
+

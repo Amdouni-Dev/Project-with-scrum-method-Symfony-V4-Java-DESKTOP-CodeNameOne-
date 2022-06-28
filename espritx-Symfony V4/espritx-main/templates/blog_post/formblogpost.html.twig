@@ -1,0 +1,23 @@
+{% extends 'views/layouts/contentLayoutMaster.html.twig' %}
+
+{% block title %} Ajouter un Blog {% endblock %}
+{% block content %}
+  <h3>Publish on public blog</h3>
+  <p>Data you share here will be visible to everyone on the platform.</p>
+
+  <div class="card">
+    <div class="card-header">
+      <h4 class="card-title">Post Details</h4>
+    </div>
+    <div class="card-body">
+      {{ form_start(form) }}
+      {{ form_widget(form) }}
+      {{ form_end(form) }}
+      <div class="col-12 d-flex justify-content-end">
+        <a href="{{ path('newpostcategory') }}" class="btn btn-success" style="width: 20%">Ajouter une categorie</a>
+      </div>
+    </div>
+  </div>
+
+
+{% endblock %}

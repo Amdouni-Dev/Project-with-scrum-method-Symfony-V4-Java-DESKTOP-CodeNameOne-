@@ -1,0 +1,74 @@
+
+{% extends 'views/layouts/contentLayoutMaster.html.twig' %}
+
+{% block title %} Statistiques{% endblock %}
+
+{% block vendor_style %}
+    <link rel="stylesheet" href="{{ asset('vendors/css/forms/select/select2.min.css') }}">
+{% endblock %}
+
+
+{% block page_style %}$
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.css" integrity="sha512-SUJFImtiT87gVCOXl3aGC00zfDl6ggYAw5+oheJvRJ8KBXZrr/TMISSdVJ5bBarbQDRC2pR5Kto3xTR0kpZInA==" crossorigin="anonymous" referrerpolicy="no-referrer" />{% endblock %}
+
+
+{% block content %}
+<h1>Statistiques</h1>
+
+
+    <div>
+        <canvas height="100px" width="100px" id="myChart"></canvas>
+    </div>
+
+
+
+    <h1>gggg</h1>
+
+{% endblock %}
+
+
+
+
+
+{% block page_script %}
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.min.js" integrity="sha512-s+xg36jbIujB2S2VKfpGmlC3T5V2TF3lY48DX7u2r9XzGzgPsa6wTpOQA7J9iffvdeBN0q9tKzRxVxw1JviZPg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script>
+        const labels = [
+            'January',
+            'February',
+            'March',
+            'April',
+            'May',
+            'June',
+        ];
+
+        const data = {
+            labels: labels,
+            datasets: [{
+                label: 'My First dataset',
+                backgroundColor: 'rgb(255, 99, 132)',
+                borderColor: 'rgb(255, 99, 132)',
+                data: [0, 10, 5, 2, 20, 30, 45],
+            }]
+        };
+
+        const config = {
+            type: 'line',
+            data: data,
+            options: {}
+        };
+    </script>
+
+    Copied!
+
+    Finally, render the chart using our configuration:
+
+    <script>
+        const myChart = new Chart(
+            document.getElementById('myChart'),
+            config
+        );
+    </script>
+{% endblock %}
+

@@ -1,0 +1,513 @@
+{% extends 'views/layouts/contentLayoutMaster.html.twig' %}
+
+{% block title %} Pagination {% endblock %}
+
+{% block content %}
+<!-- Default Pagination Starts -->
+<section id="default-pagination">
+  <div class="row match-height">
+    <!-- Basic Pagination starts -->
+    <div class="col-md-6 col-sm-12">
+      <div class="card">
+        <div class="card-header">
+          <h4 class="card-title">Basic</h4>
+        </div>
+        <div class="card-body">
+          <p class="card-text">A basic pagination with active item</p>
+          <nav aria-label="Page navigation">
+            <ul class="pagination mt-3">
+              <li class="page-item"><a class="page-link" href="#">1</a></li>
+              <li class="page-item"><a class="page-link" href="#">2</a></li>
+              <li class="page-item"><a class="page-link" href="#">3</a></li>
+              <li class="page-item active"><a class="page-link" href="#">4</a></li>
+              <li class="page-item"><a class="page-link" href="#">5</a></li>
+              <li class="page-item"><a class="page-link" href="#">6</a></li>
+              <li class="page-item"><a class="page-link" href="#">7</a></li>
+            </ul>
+          </nav>
+        </div>
+      </div>
+    </div>
+    <!-- Basic Pagination ends -->
+
+    <!-- Basic Bootstrap Pagination starts -->
+    <div class="col-md-6 col-sm-12">
+      <div class="card">
+        <div class="card-header">
+          <h4 class="card-title">Basic with bootstrap structure</h4>
+        </div>
+        <div class="card-body">
+          <p class="card-text">A basic bootstrap pagination with Next and Previous links</p>
+          <nav aria-label="Page navigation">
+            <ul class="pagination mt-3">
+              <li class="page-item disabled">
+                <a class="page-link" href="#" tabindex="-1" aria-disabled="true">Previous</a>
+              </li>
+              <li class="page-item"><a class="page-link" href="#">1</a></li>
+              <li class="page-item active" aria-current="page">
+                <a class="page-link" href="#">2</a>
+              </li>
+              <li class="page-item"><a class="page-link" href="#">3</a></li>
+              <li class="page-item"><a class="page-link" href="#">4</a></li>
+              <li class="page-item"><a class="page-link" href="#">5</a></li>
+              <li class="page-item">
+                <a class="page-link" href="#">Next</a>
+              </li>
+            </ul>
+          </nav>
+        </div>
+      </div>
+    </div>
+    <!-- Basic Bootstrap Pagination ends -->
+
+    <!-- Bootstrap Pagination with icon starts -->
+    <div class="col-md-6 col-sm-12">
+      <div class="card">
+        <div class="card-header">
+          <h4 class="card-title">Bootstrap pagination with icons</h4>
+        </div>
+        <div class="card-body">
+          <p class="card-text">A bootstrap pagination with Next and Previous links with icons</p>
+          <nav aria-label="Page navigation example">
+            <ul class="pagination mt-3">
+              <li class="page-item">
+                <a class="page-link" href="#" aria-label="Previous">
+                  <span aria-hidden="true">&laquo; Prev</span>
+                </a>
+              </li>
+              <li class="page-item"><a class="page-link" href="#">1</a></li>
+              <li class="page-item"><a class="page-link" href="#">2</a></li>
+              <li class="page-item active"><a class="page-link" href="#">3</a></li>
+              <li class="page-item"><a class="page-link" href="#">4</a></li>
+              <li class="page-item"><a class="page-link" href="#">5</a></li>
+              <li class="page-item">
+                <a class="page-link" href="#" aria-label="Next">
+                  <span aria-hidden="true">Next &raquo;</span>
+                </a>
+              </li>
+            </ul>
+          </nav>
+        </div>
+      </div>
+    </div>
+    <!-- Bootstrap Pagination with icon ends -->
+
+    <!-- Separated Pagination starts -->
+    <div class="col-md-6 col-sm-12">
+      <div class="card">
+        <div class="card-header">
+          <h4 class="card-title">Separated</h4>
+        </div>
+        <div class="card-body">
+          <p class="card-text">Pagination with separated Next and Previous icons</p>
+          <p class="card-text">
+            To create separated pagination use <code>.prev-item</code> class for the first item and
+            <code>.next-item</code> for the last item.
+          </p>
+          <nav aria-label="Page navigation">
+            <ul class="pagination mt-2">
+              <li class="page-item prev-item"><a class="page-link" href="#"></a></li>
+              <li class="page-item"><a class="page-link" href="#">1</a></li>
+              <li class="page-item"><a class="page-link" href="#">2</a></li>
+              <li class="page-item"><a class="page-link" href="#">3</a></li>
+              <li class="page-item active" aria-current="page">
+                <a class="page-link" href="#">4</a>
+              </li>
+              <li class="page-item"><a class="page-link" href="#">5</a></li>
+              <li class="page-item"><a class="page-link" href="#">6</a></li>
+              <li class="page-item"><a class="page-link" href="#">7</a></li>
+              <li class="page-item next-item"><a class="page-link" href="#"></a></li>
+            </ul>
+          </nav>
+        </div>
+      </div>
+    </div>
+    <!-- Separated Pagination ends -->
+
+    <!-- Pagination with Icon and Text starts -->
+    <div class="col-md-6 col-sm-12">
+      <div class="card">
+        <div class="card-header">
+          <h4 class="card-title">With icon and text</h4>
+        </div>
+        <div class="card-body">
+          <p class="card-text">Pagination with icon and text</p>
+          <nav aria-label="Page navigation">
+            <ul class="pagination mt-2">
+              <li class="page-item prev"><a class="page-link" href="#">Prev</a></li>
+              <li class="page-item"><a class="page-link" href="#">1</a></li>
+              <li class="page-item"><a class="page-link" href="#">2</a></li>
+              <li class="page-item active"><a class="page-link" href="#">3</a></li>
+              <li class="page-item"><a class="page-link" href="#">4</a></li>
+              <li class="page-item"><a class="page-link" href="#">5</a></li>
+              <li class="page-item next"><a class="page-link" href="#">Next</a></li>
+            </ul>
+          </nav>
+        </div>
+      </div>
+    </div>
+    <!-- Pagination with Icon and Text ends -->
+
+    <!-- Pagination with Only Icons starts -->
+    <div class="col-md-6 col-sm-12">
+      <div class="card">
+        <div class="card-header">
+          <h4 class="card-title">Only icons</h4>
+        </div>
+        <div class="card-body">
+          <p class="card-text">Pagination with only icons</p>
+          <nav aria-label="Page navigation">
+            <ul class="pagination mt-2">
+              <li class="page-item prev"><a class="page-link" href="#"></a></li>
+              <li class="page-item"><a class="page-link" href="#">1</a></li>
+              <li class="page-item"><a class="page-link" href="#">2</a></li>
+              <li class="page-item"><a class="page-link" href="#">3</a></li>
+              <li class="page-item active" aria-current="page">
+                <a class="page-link" href="#">4</a>
+              </li>
+              <li class="page-item"><a class="page-link" href="#">5</a></li>
+              <li class="page-item"><a class="page-link" href="#">6</a></li>
+              <li class="page-item"><a class="page-link" href="#">7</a></li>
+              <li class="page-item next"><a class="page-link" href="#"></a></li>
+            </ul>
+          </nav>
+        </div>
+      </div>
+    </div>
+    <!-- Pagination with Only Icons ends -->
+  </div>
+</section>
+<!-- Default Pagination Ends -->
+
+<!-- Themed Pagination Starts -->
+<section id="themed-pagination">
+  <div class="row">
+    <!-- Success Pagination starts -->
+    <div class="col-md-6 col-sm-12">
+      <div class="card">
+        <div class="card-header">
+          <h4 class="card-title">Success</h4>
+        </div>
+        <div class="card-body">
+          <p class="card-text">Use class <code>.pagination-success</code> with <code>.pagination</code></p>
+          <nav aria-label="Page navigation">
+            <ul class="pagination pagination-success mt-2">
+              <li class="page-item prev">
+                <a class="page-link" href="#" aria-label="Previous"></a>
+              </li>
+              <li class="page-item"><a class="page-link" href="#">1</a></li>
+              <li class="page-item"><a class="page-link" href="#">2</a></li>
+              <li class="page-item"><a class="page-link" href="#">3</a></li>
+              <li class="page-item active"><a class="page-link" href="#">4</a></li>
+              <li class="page-item"><a class="page-link" href="#">5</a></li>
+              <li class="page-item"><a class="page-link" href="#">6</a></li>
+              <li class="page-item"><a class="page-link" href="#">7</a></li>
+              <li class="page-item next">
+                <a class="page-link" href="#" aria-label="Next"></a>
+              </li>
+            </ul>
+          </nav>
+        </div>
+      </div>
+    </div>
+    <!-- Success Pagination ends -->
+
+    <!-- Danger Pagination starts -->
+    <div class="col-md-6 col-sm-12">
+      <div class="card">
+        <div class="card-header">
+          <h4 class="card-title">Danger</h4>
+        </div>
+        <div class="card-body">
+          <p class="card-text">Use class <code>.pagination-danger</code> with <code>.pagination</code></p>
+          <nav aria-label="Page navigation">
+            <ul class="pagination pagination-danger mt-2">
+              <li class="page-item prev">
+                <a class="page-link" href="#" aria-label="Previous"></a>
+              </li>
+              <li class="page-item"><a class="page-link" href="#">1</a></li>
+              <li class="page-item"><a class="page-link" href="#">2</a></li>
+              <li class="page-item"><a class="page-link" href="#">3</a></li>
+              <li class="page-item active"><a class="page-link" href="#">4</a></li>
+              <li class="page-item"><a class="page-link" href="#">5</a></li>
+              <li class="page-item"><a class="page-link" href="#">6</a></li>
+              <li class="page-item"><a class="page-link" href="#">7</a></li>
+              <li class="page-item next">
+                <a class="page-link" href="#" aria-label="Next"></a>
+              </li>
+            </ul>
+          </nav>
+        </div>
+      </div>
+    </div>
+    <!-- Danger Pagination ends -->
+
+    <!-- Warning Pagination starts -->
+    <div class="col-md-6 col-sm-12">
+      <div class="card">
+        <div class="card-header">
+          <h4 class="card-title">Warning</h4>
+        </div>
+        <div class="card-body">
+          <p class="card-text">Use class <code>.pagination-warning</code> with <code>.pagination</code></p>
+          <nav aria-label="Page navigation">
+            <ul class="pagination pagination-warning mt-2">
+              <li class="page-item prev">
+                <a class="page-link" href="#" aria-label="Previous"></a>
+              </li>
+              <li class="page-item"><a class="page-link" href="#">1</a></li>
+              <li class="page-item"><a class="page-link" href="#">2</a></li>
+              <li class="page-item"><a class="page-link" href="#">3</a></li>
+              <li class="page-item active"><a class="page-link" href="#">4</a></li>
+              <li class="page-item"><a class="page-link" href="#">5</a></li>
+              <li class="page-item"><a class="page-link" href="#">6</a></li>
+              <li class="page-item"><a class="page-link" href="#">7</a></li>
+              <li class="page-item next">
+                <a class="page-link" href="#" aria-label="Next"></a>
+              </li>
+            </ul>
+          </nav>
+        </div>
+      </div>
+    </div>
+    <!-- Warning Pagination ends -->
+
+    <!-- Info Pagination starts -->
+    <div class="col-md-6 col-sm-12">
+      <div class="card">
+        <div class="card-header">
+          <h4 class="card-title">Info</h4>
+        </div>
+        <div class="card-body">
+          <p class="card-text">Use class <code>.pagination-info</code> with <code>.pagination</code></p>
+          <nav aria-label="Page navigation">
+            <ul class="pagination pagination-info mt-2">
+              <li class="page-item prev">
+                <a class="page-link" href="#" aria-label="Previous"></a>
+              </li>
+              <li class="page-item"><a class="page-link" href="#">1</a></li>
+              <li class="page-item"><a class="page-link" href="#">2</a></li>
+              <li class="page-item"><a class="page-link" href="#">3</a></li>
+              <li class="page-item active"><a class="page-link" href="#">4</a></li>
+              <li class="page-item"><a class="page-link" href="#">5</a></li>
+              <li class="page-item"><a class="page-link" href="#">6</a></li>
+              <li class="page-item"><a class="page-link" href="#">7</a></li>
+              <li class="page-item next">
+                <a class="page-link" href="#" aria-label="Next"></a>
+              </li>
+            </ul>
+          </nav>
+        </div>
+      </div>
+    </div>
+    <!-- Info Pagination ends -->
+  </div>
+</section>
+<!-- Themed Pagination Ends -->
+
+<!-- Pagination Positions start -->
+<section id="pagination-positions">
+  <div class="row">
+    <div class="col-md-12">
+      <div class="card">
+        <div class="card-header">
+          <h4 class="card-title">Pagination Positions</h4>
+        </div>
+        <div class="card-body">
+          <p class="card-text">
+            Use classes <code>.justify-content-{direction}</code> with <code>.pagination</code> to align your
+            pagination.
+          </p>
+          <div class="row">
+            <div class="col-xl-4 col-lg-12">
+              <h5 class="text-start">Left Aligned</h5>
+              <nav aria-label="Page navigation">
+                <ul class="pagination justify-content-start mt-2">
+                  <li class="page-item"><a class="page-link" href="#">1</a></li>
+                  <li class="page-item"><a class="page-link" href="#">2</a></li>
+                  <li class="page-item active"><a class="page-link" href="#">3</a></li>
+                  <li class="page-item"><a class="page-link" href="#">4</a></li>
+                  <li class="page-item"><a class="page-link" href="#">5</a></li>
+                </ul>
+              </nav>
+            </div>
+            <div class="col-xl-4 col-lg-12">
+              <h5 class="text-center">Center Aligned</h5>
+              <nav aria-label="Page navigation">
+                <ul class="pagination justify-content-center mt-2">
+                  <li class="page-item"><a class="page-link" href="#">1</a></li>
+                  <li class="page-item"><a class="page-link" href="#">2</a></li>
+                  <li class="page-item active"><a class="page-link" href="#">3</a></li>
+                  <li class="page-item"><a class="page-link" href="#">4</a></li>
+                  <li class="page-item"><a class="page-link" href="#">5</a></li>
+                </ul>
+              </nav>
+            </div>
+            <div class="col-xl-4 col-lg-12">
+              <h5 class="text-end">Right Aligned</h5>
+              <nav aria-label="Page navigation">
+                <ul class="pagination justify-content-end mt-2">
+                  <li class="page-item"><a class="page-link" href="#">1</a></li>
+                  <li class="page-item"><a class="page-link" href="#">2</a></li>
+                  <li class="page-item active"><a class="page-link" href="#">3</a></li>
+                  <li class="page-item"><a class="page-link" href="#">4</a></li>
+                  <li class="page-item"><a class="page-link" href="#">5</a></li>
+                </ul>
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- Pagination Positions end -->
+
+<!-- Pagination Sizes start -->
+<section id="pagination-sizes">
+  <div class="row">
+    <div class="col-12 mt-3 mb-1">
+      <h4 class="text-uppercase">Pagination Sizes</h4>
+      <p>
+        Use class <code>.pagination-lg</code> for large size pagination &amp; use <code>.pagination-sm</code> for small
+        size pagination. For Default size no classes required.
+      </p>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-12">
+      <div class="card">
+        <div class="card-header">
+          <h4 class="card-title">Pagination Sizes</h4>
+        </div>
+        <div class="card-body">
+          <div class="row">
+            <div class="col-xl-4 col-lg-12">
+              <nav aria-label="Page navigation">
+                <ul class="pagination pagination-lg mb-1">
+                  <li class="page-item"><a class="page-link" href="#">1</a></li>
+                  <li class="page-item"><a class="page-link" href="#">2</a></li>
+                  <li class="page-item active"><a class="page-link" href="#">3</a></li>
+                  <li class="page-item"><a class="page-link" href="#">4</a></li>
+                  <li class="page-item"><a class="page-link" href="#">5</a></li>
+                </ul>
+              </nav>
+            </div>
+            <div class="col-xl-4 col-lg-12">
+              <nav aria-label="Page navigation">
+                <ul class="pagination mb-1">
+                  <li class="page-item"><a class="page-link" href="#">1</a></li>
+                  <li class="page-item"><a class="page-link" href="#">2</a></li>
+                  <li class="page-item active"><a class="page-link" href="#">3</a></li>
+                  <li class="page-item"><a class="page-link" href="#">4</a></li>
+                  <li class="page-item"><a class="page-link" href="#">5</a></li>
+                </ul>
+              </nav>
+            </div>
+            <div class="col-xl-4 col-lg-12">
+              <nav aria-label="Page navigation">
+                <ul class="pagination pagination-sm">
+                  <li class="page-item"><a class="page-link" href="#">1</a></li>
+                  <li class="page-item"><a class="page-link" href="#">2</a></li>
+                  <li class="page-item active"><a class="page-link" href="#">3</a></li>
+                  <li class="page-item"><a class="page-link" href="#">4</a></li>
+                  <li class="page-item"><a class="page-link" href="#">5</a></li>
+                </ul>
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- Pagination Sizes end -->
+
+<!-- Dynamic Pagination start -->
+<section id="dynamic-pagination">
+  <div class="row">
+    <div class="col-12 mt-3 mb-1">
+      <h4 class="text-uppercase">Dynamic Pagination</h4>
+      <p>
+        We are using <strong>jQuery Pagination plugin</strong>. This jQuery plugin simplifies the usage of Bootstrap
+        Pagination. It uses appropriate classes: <code>.pagination</code>, <code>.active</code> and
+        <code>.disabled</code>.
+      </p>
+    </div>
+  </div>
+  <div class="row match-height">
+    <!-- Dynamic Default Pagination starts -->
+    <div class="col-lg-6 col-md-12">
+      <div class="card">
+        <div class="card-header">
+          <h4 class="card-title">Default Pagination</h4>
+        </div>
+        <div class="card-body">
+          <div id="page1-content" class="mb-1">You are on page 1</div>
+          <ul class="pagination page1-links"></ul>
+        </div>
+      </div>
+    </div>
+    <!-- Dynamic Default Pagination ends -->
+
+    <!-- Dynamic Pagination with last & first starts -->
+    <div class="col-lg-6 col-md-12">
+      <div class="card">
+        <div class="card-header">
+          <h4 class="card-title">Default Pagination with last &amp; first</h4>
+        </div>
+        <div class="card-body">
+          <div id="firstLast1-content" class="mb-1">You are on page 1</div>
+          <ul class="pagination firstLast1-links"></ul>
+        </div>
+      </div>
+    </div>
+    <!-- Dynamic Pagination with last & first ends -->
+
+    <!-- Dynamic Pagination with reload starts -->
+    <div class="col-lg-6 col-md-12">
+      <div class="card">
+        <div class="card-header">
+          <h4 class="card-title">Pagination drop you here after reload</h4>
+        </div>
+        <div class="card-body">
+          <div class="alert alert-warning">
+            <div class="alert-body"><strong>Warning!</strong> Page will reload.</div>
+          </div>
+          <div id="url1-content" class="mb-1">You are on page 1</div>
+          <ul class="pagination url1-links"></ul>
+        </div>
+      </div>
+    </div>
+    <!-- Dynamic Pagination with reload ends -->
+
+    <!-- Dynamically Set Start Page Of Pagination starts -->
+    <div class="col-lg-6 col-md-12">
+      <div class="card">
+        <div class="card-header">
+          <h4 class="card-title">Set Start Page Of Pagination</h4>
+        </div>
+        <div class="card-body">
+          <div id="start-content" class="mb-1">Your start Page 5</div>
+          <ul class="pagination start-links"></ul>
+        </div>
+      </div>
+    </div>
+    <!-- Dynamically Set Start Page Of Pagination ends -->
+  </div>
+</section>
+<!-- Dynamic Pagination end -->
+{% endblock %}
+
+
+{% block vendor_script %}
+<!-- vendor js files -->
+<script src="{{ asset('vendors/js/pagination/jquery.bootpag.min.js') }}"></script>
+<script src="{{ asset('vendors/js/pagination/jquery.twbsPagination.min.js') }}"></script>
+{% endblock %}
+
+{% block page_script %}
+{# Page js files #}
+<script src="{{ asset('js/scripts/pagination/components-pagination.js') }}"></script>
+{% endblock %}
+

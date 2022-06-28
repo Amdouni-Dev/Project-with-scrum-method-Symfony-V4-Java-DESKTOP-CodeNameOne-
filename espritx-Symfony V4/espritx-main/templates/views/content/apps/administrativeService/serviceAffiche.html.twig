@@ -1,0 +1,95 @@
+{% extends 'views/layouts/contentLayoutMaster.html.twig' %}
+
+{% block title %}
+    {{ 'Services' }}
+{% endblock %}
+
+{% block vendor_style %}{% endblock %}
+{% block page_style %}{% endblock %}
+
+{% block content %}
+    <h3>Services</h3>
+
+    <div class="row">
+        <div class="col-xl-4 col-lg-6 col-md-6">
+            <div class="card">
+                <div class="row">
+                    <div class="col-sm-5">
+                        <div class="d-flex align-items-end justify-content-center h-100">
+                            <img
+                                    src="{{ asset('images/illustration/faq-illustrations.svg') }}"
+                                    class="img-fluid mt-2"
+                                    alt="Image"
+                                    width="85"
+                            />
+                        </div>
+                    </div>
+                    <div class="col-sm-7">
+                        <div class="card-body text-sm-end text-center ps-sm-0">
+                            <a
+                                    href="{{ url("Serivce_Add") }}"
+                                    class="stretched-link text-nowrap"
+                            >
+                                <span class="btn btn-primary mb-1">Ajouter Service</span>
+                            </a>
+                            <p class="mb-0">The more the better</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        {% for Ser in Services %}
+            <div class="col-xl-4 col-lg-6 col-md-6">
+                <div class="card">
+                    <div class="card-body">
+                        <div class="d-flex justify-content-between">
+                            <span>Number of requests: {{ Ser.serviceRequests|length }} </span>
+                            {% if Ser.serviceRequests|length > 0 %}
+                            <ul class="list-unstyled d-flex align-items-center avatar-group mb-0">
+                                {% for i in 0..(min(Ser.serviceRequests|length,4)-1) %}
+                                    {% if Ser.serviceRequests[i].Requester != null  %}
+                                <li
+                                        data-bs-toggle="tooltip"
+                                        data-popup="tooltip-custom"
+                                        data-bs-placement="top"
+                                        title="{{ Ser.serviceRequests[i].Requester.firstName~' '~Ser.serviceRequests[i].Requester.lastName }}"
+                                        class="avatar-sm pull-up"
+                                >
+                                    {% include "views/content/_partials/_fragments/user-avatar.html.twig" with {'user': Ser.serviceRequests[i].Requester} %}
+                                </li>
+                                    {% endif %}
+                                {% endfor %}
+                            </ul>
+                            {% endif %}
+                        </div>
+                        <div class="d-flex justify-content-between align-items-end mt-1 pt-25">
+                            <div class="role-heading">
+                                <a href="{{ url('ser_sh_requests', {id: Ser.id}) }}">
+                                <h4 class="fw-bolder">{{ Ser.name }}</h4>
+                                </a>
+                                <a href="{{ url('Service_Edit', {id: Ser.id}) }}">
+                                    <small class="fw-bolder">Edit Service</small>
+                                </a>
+                            </div>
+                            <a href="{{ url('Service_Del', {id: Ser.id}) }}"
+                               class="text-body">
+                                <i data-feather="x-circle" class="font-medium-5"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
+
+
+    </div>
+{% endblock %}
+
+{% block vendor_script %}
+    <script src="{{ asset('vendors/js/forms/validation/jquery.validate.min.js') }}"></script>
+{% endblock %}
+
+{% block page_script %}
+    <script src="{{ asset('js/scripts/pages/app-access-roles.js') }}"></script>
+{% endblock %}

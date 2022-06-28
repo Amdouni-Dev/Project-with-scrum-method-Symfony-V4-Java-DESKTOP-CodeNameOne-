@@ -1,0 +1,123 @@
+{% extends 'views/layouts/contentLayoutMaster.html.twig' %}
+
+{% block title %} Message List {% endblock %}
+
+{% block vendor_style %}
+    <link rel="stylesheet" href="{{ asset('vendors/css/forms/select/select2.min.css') }}">
+{% endblock %}
+
+
+{% block page_style %}
+    <link rel="stylesheet" href="{{ asset('css/base/plugins/forms/form-validation.css') }}">
+{% endblock %}
+
+{% block content %}
+    <section class="app-user-list">
+        <div class="row">
+            <div class="col-lg-3 col-sm-6">
+                <div class="card">
+                    <div class="card-body d-flex align-items-center justify-content-between">
+                        <div>
+                            <h3 class="fw-bolder mb-75">{{ count }}</h3>
+                            <span>Total Messages</span>
+                        </div>
+                        <div class="avatar bg-light-primary p-50">
+            <span class="avatar-content">
+              <i data-feather="user" class="font-medium-4"></i>
+            </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+
+
+        <div class="card">
+            <div class="card-header">
+                <h4 class="card-title">Manage messages</h4>
+            </div>
+            <div class="card-body">
+                <div class="d-flex justify-content-between align-items-center mb-1">
+        <span class="card-text">
+          You can view, create or update messages in the table below.
+        </span>
+
+                    <a class="btn btn-primary waves-effect waves-float waves-light" href="{{ url('messages_new') }}">Add</a>
+                </div>
+                <div class="table-responsive row">
+                    <table class="table table-hover">
+                        <thead>
+                        <tr>
+                            <th>
+                                Messages
+                            </th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        {# {% for user in pagination %} #}
+                        {% for message in messages %}
+                            <tr>
+                                <td>
+
+                                    <div class="d-flex justify-content-left align-items-center">
+
+                                        <div class="d-flex flex-column">
+                                            <span class="fw-bolder fs-6">{{ message.content }}</span>
+                                        </div>
+                                    </div>
+
+                                </td>
+                                <td>
+
+                                </td>
+                                <td>
+
+                                    <div class="d-flex flex-column">
+                                        {#  {% for group in user.groups %}
+                                            {{ include('views/content/_partials/_fragments/group-type-badge.html.twig',
+                                                {'grouptype': group.groupType, 'displayname': group.displayName}) }}
+                                        {% endfor %} #}
+                                    </div>
+
+                                </td>
+                                <td>
+                                    <div class="d-flex">
+                                        <a href="{{url("messages_edit", {id: message.id})}}">
+                                            <i data-feather="edit-2" class="me-50"></i>
+                                        </a>
+                                        <a href="{{ url("messages_delete", {id: message.id}) }}">
+                                            <i data-feather="trash" class="me-50"></i>
+                                        </a>
+                                    </div>
+                                </td>
+                            </tr>
+                         {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+
+            </div>
+        </div>
+
+    </section>
+
+{% endblock %}
+
+
+{% block vendor_script %}
+    <script src="{{ asset('vendors/js/forms/select/select2.full.min.js') }}"></script>
+    <script src="{{ asset('vendors/js/tables/datatable/jszip.min.js') }}"></script>
+    <script src="{{ asset('vendors/js/tables/datatable/vfs_fonts.js') }}"></script>
+    <script src="{{ asset('vendors/js/tables/datatable/buttons.html5.min.js') }}"></script>
+    <script src="{{ asset('vendors/js/tables/datatable/buttons.print.min.js') }}"></script>
+    <script src="{{ asset('vendors/js/forms/validation/jquery.validate.min.js') }}"></script>
+    <script src="{{ asset('vendors/js/forms/cleave/cleave.min.js') }}"></script>
+    <script src="{{ asset('vendors/js/forms/cleave/addons/cleave-phone.us.js') }}"></script>
+{% endblock %}
+
+
+{% block page_script %}
+    <script src="{{ asset('js/scripts/pages/app-user-list.js') }}"></script>
+{% endblock %}
+

@@ -1,0 +1,88 @@
+{% extends 'views/layouts/fullLayoutMaster.html.twig' %}
+
+{% block title %} Register {% endblock %}
+
+{% block page_style %}
+  {# Page Css files #}
+  <link rel="stylesheet" href="{{ asset('css/base/plugins/forms/form-validation.css') }}">
+  <link rel="stylesheet" href="{{ asset('css/base/pages/authentication.css') }}">
+{% endblock %}
+
+
+{% block content %}
+  <div class="auth-wrapper auth-cover">
+    <div class="auth-inner row m-0">
+      <!-- Brand logo-->
+      <div class="brand-logo" style="width: 25%;height: 105px;">
+        <img class="img-fluid" style="width: 80px;" src="{{ asset('images/pages/Logo.png') }}" alt="Logo"/>
+        <h6 class="brand-text text-primary ms-1">Communiquer autrement</h6>
+      </div>
+      <!-- /Brand logo-->
+
+      <!-- Left Text-->
+      <div class="d-none d-lg-flex col-lg-8 align-items-center p-5">
+        <div class="w-100 d-lg-flex align-items-center justify-content-center px-5">
+          {% if configData['theme'] == 'dark' %} #}
+            <img class="img-fluid" src="{{ asset('images/pages/register-v2-dark.svg') }}" alt="Register V2"/>
+          {% else %}
+            <img class="img-fluid" src="{{ asset('images/pages/register-v2.svg') }}" alt="Register V2"/>
+          {% endif %}
+        </div>
+      </div>
+      <!-- /Left Text-->
+
+      <!-- Register-->
+      <div class="d-flex col-lg-4 align-items-center auth-bg px-2 p-lg-5">
+        <div class="col-12 col-sm-8 col-md-6 col-lg-12 px-xl-2 mx-auto">
+          <h2 class="card-title fw-bold mb-1">Adventure starts here 🚀</h2>
+          <p class="card-text mb-2">Signup for ESPRITx</p>
+          {{ form_start(form, {'method': 'POST'}) }}
+          {% for flash_error in app.flashes('verify_email_error') %}
+            <div class="alert alert-danger" role="alert">{{ flash_error }}</div>
+          {% endfor %}
+          <div class="mb-1">
+            {{ form_row(form.firstName) }}
+          </div>
+          <div class="mb-1">
+            {{ form_row(form.lastName) }}
+          </div>
+          <div class="mb-1">
+            {{ form_row(form.email) }}
+          </div>
+          <div class="mb-1">
+            {{ form_row(form.plainPassword,{
+              label: 'Password'
+            }) }}
+          </div>
+          <div class="mb-1">
+            {{ form_row(form.agreeTerms) }}
+          </div>
+          <button class="btn btn-primary w-100" tabindex="5">Sign up</button>
+          {{ form_end(form) }}
+          <p class="text-center mt-2">
+            <span>Already have an account?</span>
+            <a href="{{ path('login') }}"><span>&nbsp;Sign in instead</span></a>
+          </p>
+          <div class="divider my-2">
+            <div class="divider-text">or</div>
+          </div>
+          <div class="auth-footer-btn d-flex justify-content-center">
+            <a class="btn btn-google" href="{{ url('connect_google_start') }}"><i data-feather="mail"></i></a>
+          </div>
+        </div>
+      </div>
+      <!-- /Register-->
+    </div>
+  </div>
+{% endblock %}
+
+
+{% block vendor_script %}
+  <script src="{{ asset('vendors/js/forms/validation/jquery.validate.min.js') }}"></script>
+{% endblock %}
+
+
+{% block page_script %}
+  <script src="{{ asset('js/scripts/pages/auth-register.js') }}"></script>
+{% endblock %}
+

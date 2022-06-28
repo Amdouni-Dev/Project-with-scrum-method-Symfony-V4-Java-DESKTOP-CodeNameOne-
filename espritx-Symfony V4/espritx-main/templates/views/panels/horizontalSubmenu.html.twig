@@ -1,0 +1,28 @@
+{# For Horizontal submenu #}
+<ul class="dropdown-menu" data-bs-popper="none">
+  {% if  menu is defined %}
+    {% for submenu in menu %}
+      {% set custom_classes = "" %}
+      {% if  submenu.classlist is defined %}
+        {% set custom_classes = submenu.classlist %}
+      {% endif %}
+
+      <li class="{{ custom_classes }} {{ (submenu.submenu is defined) ? 'dropdown dropdown-submenu' : '' }} {# {{ (app.request.get('_route') == submenu.slug) ? 'active' : '' }} #}"
+          {% if submenu.submenu is defined %}{{ 'data-menu=dropdown-submenu' }}{% endif %}>
+        <a href="{{ (submenu.url is defined) ? path(submenu.url):'javascript:void(0)' }}"
+           class="dropdown-item {{ ((submenu.submenu)is defined) ? 'dropdown-toggle' : '' }} d-flex align-items-center"
+            {{ (submenu.submenu is defined) ? 'data-bs-toggle=dropdown' : '' }}
+           target="{{ ((submenu.newTab is defined) and submenu.newTab == true ) ? '_blank':'_self' }}">
+          {% if submenu.icon is defined %}
+            <i data-feather="{{ submenu.icon }}"></i>
+          {% endif %}
+
+          <span>{{ submenu.name }}</span>
+        </a>
+        {% if  submenu.submenu is defined %}
+          {{ include('views/panels/horizontalSubmenu.html.twig', {'menu' : submenu.submenu}) }}
+        {% endif %}
+      </li>
+    {% endfor %}
+  {% endif %}
+</ul>

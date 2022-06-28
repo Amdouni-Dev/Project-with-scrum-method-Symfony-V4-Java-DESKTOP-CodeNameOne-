@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane prefHeight="665.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.esprit.controller.Template.feed.User.AllpostsController">
+   <children>
+      <Button layoutX="391.0" layoutY="39.0" mnemonicParsing="false" prefHeight="33.0" prefWidth="172.0" style="-fx-background-color: #E38773;" text="Ajouter Publication">
+         <font>
+            <Font name="Times New Roman Bold" size="16.0" />
+         </font>
+      </Button>
+      <AnchorPane fx:id="id_AllPostst" layoutX="23.0" layoutY="120.0" prefHeight="172.0" prefWidth="555.0" style="-fx-background-color: #EBF5FB;">
+         <children>
+            <Label layoutX="17.0" layoutY="14.0" prefHeight="17.0" prefWidth="91.0" text="Crée par" />
+            <Label fx:id="tfU" layoutX="90.0" layoutY="14.0" prefHeight="17.0" prefWidth="91.0" text="Crée par" />
+            <Label layoutX="17.0" layoutY="45.0" prefHeight="17.0" prefWidth="65.0" text="Title" />
+            <Label fx:id="tfTitle" layoutX="90.0" layoutY="37.0" prefHeight="33.0" prefWidth="456.0" text="Crée par" />
+         </children></AnchorPane>
+   </children>
+</AnchorPane>

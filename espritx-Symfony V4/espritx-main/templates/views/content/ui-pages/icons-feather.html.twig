@@ -1,0 +1,42 @@
+{% extends 'views/layouts/contentLayoutMaster.html.twig' %}
+
+{% block title %} Feather Icons {% endblock %}
+
+{% block vendor_style %}
+<link rel="stylesheet" href="{{asset('vendors/css/extensions/toastr.min.css')}}">
+{% endblock %}
+
+
+{% block page_style %}
+<link rel="stylesheet" href="{{asset('css/base/plugins/extensions/ext-component-toastr.css')}}">
+<link rel="stylesheet" href="{{asset('css/base/pages/ui-feather.css')}}">
+{% endblock %}
+
+
+{% block content %}
+<!-- Feather icons section start -->
+<section id="feather-icons">
+  <div class="row">
+    <div class="col-12">
+      <div class="icon-search-wrapper my-3 mx-auto">
+        <div class="mb-1 input-group input-group-merge">
+          <span class="input-group-text"><i data-feather="search"></i></span>
+          <input type="text" class="form-control" id="icons-search" placeholder="Search Icons..." />
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="d-flex flex-wrap" id="icons-container"></div>
+</section>
+<!-- Feather icon-s section end -->
+{% endblock %}
+
+
+{% block vendor_script %}
+<script src="{{asset('vendors/js/extensions/toastr.min.js')}}"></script>
+{% endblock %}
+
+{% block page_script %}
+<script src="{{asset('js/scripts/ui/ui-feather.js')}}"></script>
+{% endblock %}
+

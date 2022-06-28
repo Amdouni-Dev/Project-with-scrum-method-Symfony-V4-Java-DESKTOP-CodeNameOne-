@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.web.*?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="422.0" prefWidth="550.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.esprit.controller.Template.feed.User.PostController">
+   <children>
+      <VBox layoutX="73.0" layoutY="14.0" prefHeight="402.0" prefWidth="540.0" stylesheets="@../../../StyleCss/style.css" AnchorPane.bottomAnchor="15.0" AnchorPane.leftAnchor="5.0" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="5.0">
+         <children>
+            <HBox prefHeight="39.0" prefWidth="540.0">
+               <children>
+                  <Label prefHeight="55.0" prefWidth="189.0" text="Titre" />
+                  <Label fx:id="LabTitleId" prefHeight="60.0" prefWidth="153.0" text="Label" />
+               </children>
+            </HBox>
+            <HBox layoutX="10.0" layoutY="10.0" prefHeight="33.0" prefWidth="540.0">
+               <children>
+                  <Label prefHeight="55.0" prefWidth="194.0" text="Crée le: " />
+                  <Label fx:id="LabDate" prefHeight="60.0" prefWidth="193.0" text="Label" />
+               </children>
+            </HBox>
+            <HBox prefHeight="43.0" prefWidth="540.0">
+               <children>
+                  <TextArea fx:id="contentId" prefHeight="64.0" prefWidth="505.0">
+                     <HBox.margin>
+                        <Insets bottom="5.0" left="15.0" right="5.0" top="5.0" />
+                     </HBox.margin></TextArea>
+               </children>
+            </HBox>
+            <HBox layoutX="10.0" layoutY="82.0" prefHeight="182.0" prefWidth="540.0">
+               <children>
+                  <WebView fx:id="webmap" layoutX="14.0" layoutY="428.0" prefHeight="173.0" prefWidth="517.0" />
+               </children>
+            </HBox>
+            <HBox layoutX="10.0" layoutY="129.0" prefHeight="45.0" prefWidth="540.0">
+               <children>
+                  <ImageView fx:id="likeImage" fitHeight="33.0" fitWidth="35.0" pickOnBounds="true" preserveRatio="true">
+                     <Image url="@/like.jpg" />
+                     <HBox.margin>
+                        <Insets left="10.0" top="10.0" />
+                     </HBox.margin>
+
+                  </ImageView>
+                  <Label fx:id="nbLikes" layoutX="462.0" layoutY="20.0" text="0">
+                     <HBox.margin>
+                        <Insets left="10.0" top="15.0" />
+                     </HBox.margin>
+                  </Label>
+                  <ImageView fitHeight="24.0" fitWidth="29.0" layoutX="10.0" layoutY="10.0" pickOnBounds="true" preserveRatio="true">
+
+                     <Image url="@/comments.png" />
+                     <HBox.margin>
+                        <Insets left="380.0" top="10.0" />
+                     </HBox.margin>
+                  </ImageView>
+                  <Label fx:id="nbComments" text="0">
+                     <HBox.margin>
+                        <Insets left="10.0" top="15.0" />
+                     </HBox.margin>
+                  </Label>
+               </children>
+            </HBox>
+            <HBox layoutX="10.0" layoutY="311.0" prefHeight="45.0" prefWidth="540.0">
+               <children>
+                  <Label prefHeight="57.0" prefWidth="101.0" text="Commenter ...." />
+                  <TextField fx:id="tfCommentaire" prefHeight="45.0" prefWidth="329.0" />
+                  <Button fx:id="btnCommentaire" mnemonicParsing="false" onAction="#handleButton" prefHeight="42.0" prefWidth="106.0" text="Commenter" />
+               </children>
+            </HBox>
+         </children>
+         <styleClass>
+            <String fx:value="post-item" />
+            <String fx:value="shadow" />
+         </styleClass>
+      </VBox>
+   </children>
+</AnchorPane>

@@ -1,0 +1,13 @@
+{% if requeststatus | lower == 'complete' %}
+    {% set color = 'success' %}
+{% elseif requeststatus | lower == 'processing' %}
+    {% set color = 'warning' %}
+{% elseif requeststatus | lower == 'denied' %}
+    {% set color = 'danger' %}
+{% elseif requeststatus | lower == 'unseen' %}
+    {% set color = 'dark' %}
+{% else %}
+    {% set color = 'primary' %}
+{% endif %}
+
+<span class="badge rounded-pill badge-light-{{ color }} fw-bold" style="font-size: 12px">{{ requeststatus|upper }}</span>

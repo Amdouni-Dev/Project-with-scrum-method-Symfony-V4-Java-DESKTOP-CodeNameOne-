@@ -1,0 +1,35 @@
+{% extends 'views/layouts/fullLayoutMaster.html.twig' %}
+
+{% block title %} Not Authorized {% endblock %}
+
+{% block page_style %}
+  <link rel="stylesheet" href="{{ asset('css/base/pages/page-misc.css') }}">
+{% endblock %}
+
+
+{% block content %}
+  <section>
+  <!-- Not authorized-->
+  <div class="misc-wrapper">
+    <div class="brand-logo" style="width: 25%;height: 105px;">
+      <img class="img-fluid" style="width: 80px;" src="{{ asset('images/pages/Logo.png') }}" alt="Logo"/>
+    </div>
+    <div class="misc-inner p-2 p-sm-3">
+      <div class="w-100 text-center">
+        <h2 class="mb-1">You are not authorized! 🔐</h2>
+        <p class="mb-2">The Government won't let us show what's here. Are you lost?</p>
+        {# {{path('auth/login-cover')}} #}
+        <a class="btn btn-primary mb-1 btn-sm-block" href="{{ path('app_home') }}">Back to home</a>
+        {% if configData['theme'] == 'dark' %}
+          <img class="img-fluid" src="{{ asset('images/pages/not-authorized-dark.svg') }}" alt="Not authorized page"/>
+        {% else %}
+          <img class="img-fluid" src="{{ asset('images/pages/not-authorized.svg') }}" alt="Not authorized page"/>
+        {% endif %}
+      </div>
+    </div>
+  </div>
+  <!-- / Not authorized-->
+  </section>
+  <!-- maintenance end -->
+{% endblock %}
+

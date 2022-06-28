@@ -1,0 +1,33 @@
+
+{% extends 'views/layouts/contentLayoutMaster.html.twig' %}
+
+{% block title %} Chat Application {% endblock %}
+
+{% block page_style %}
+    <!-- Page css files -->
+    <link rel="stylesheet" href="{{ asset('css/base/pages/app-chat.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/base/pages/app-chat-list.css') }}">
+{% endblock %}
+
+
+{% block content_sidebar %}
+    {% include 'views/content/apps/chat/app-chat-sidebar.html.twig' %}
+{% endblock %}
+
+
+{% block content %}
+    {{ form_start(form,{'attr': {'novalidate': 'novalidate'}} ) }}
+
+
+    {{ form_row(form.content) }}
+
+    <button class="btn">{{ button_label|default('Publier') }}</button>
+    {{ form_end(form) }}
+{% endblock %}
+
+
+{% block page_script %}
+    <!-- Page js files -->
+    <script src="{{ asset('js/scripts/pages/app-chat.js') }}"></script>
+{% endblock %}
+

@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane fx:id="AnchorPane_Publication" prefHeight="536.0" prefWidth="851.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.esprit.controller.Template.feed.Admin.GererPostsController">
+    <children>
+        <VBox layoutX="122.0" layoutY="47.0" prefHeight="294.0" prefWidth="99.0" spacing="20.0" />
+        <TableView fx:id="tvPosts" fixedCellSize="30.0" layoutX="276.0" layoutY="91.0" onMouseClicked="#handleMouseAction" onSort="#allposts" prefHeight="354.0" prefWidth="564.0" styleClass="text" stylesheets="@../../../StyleCss/style.css">
+            <columns>
+                <TableColumn fx:id="colID" prefWidth="75.0" text="ID" />
+                <TableColumn fx:id="colTitle" prefWidth="56.0" text="Titre" />
+                <TableColumn fx:id="colContent" prefWidth="171.0" text="Content" />
+                <TableColumn fx:id="colUSer" minWidth="1.0" prefWidth="85.0" text="idUSer" />
+                <TableColumn fx:id="colLong" prefWidth="83.0" text="longitude" />
+                <TableColumn fx:id="colLati" prefWidth="60.0" text="latitude" />
+            <TableColumn fx:id="colDate" prefWidth="60.0" text="Date de creation" />
+            </columns>
+            <columnResizePolicy>
+                <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+            </columnResizePolicy>
+        </TableView>
+      <AnchorPane layoutY="16.0" prefHeight="690.0" prefWidth="249.0" style="-fx-background-color: #2E2C2C;">
+         <children>
+                <TextField fx:id="tfTitle" layoutX="21.0" layoutY="79.0" prefHeight="25.0" prefWidth="196.0" promptText="Title" />
+              <Button fx:id="btnUpdate" layoutX="15.0" layoutY="444.0" mnemonicParsing="false" onAction="#handleButtonaction" prefHeight="25.0" prefWidth="205.0" style="-fx-background-color: green;" text="Update" />
+              <Button fx:id="btnDelete" layoutX="16.0" layoutY="478.0" mnemonicParsing="false" onAction="#handleButtonaction" prefHeight="25.0" prefWidth="205.0" style="-fx-background-color: yellow;" text="Delete" />
+             <Button fx:id="Button_POSTToPDF" layoutX="19.0" layoutY="520.0" mnemonicParsing="false" onAction="#PostToPDF" prefHeight="25.0" prefWidth="200.0" style="-fx-background-color: #AECBF1;" text="Downlod PDF" />
+
+             <TextArea fx:id="txtContent" layoutX="21.0" layoutY="113.0" prefHeight="137.0" prefWidth="200.0" promptText="Description Post" />
+            <Button fx:id="btnValid" layoutX="14.0" layoutY="409.0" mnemonicParsing="false" onAction="#handleButtonaction" prefHeight="25.0" prefWidth="205.0" style="-fx-background-color: pink;" text="Approuver" />
+            <TextField fx:id="tfValid" layoutX="23.0" layoutY="259.0" prefHeight="25.0" prefWidth="196.0" promptText="Valid?" />
+            <TextField fx:id="tfId" layoutX="23.0" layoutY="38.0" prefHeight="25.0" prefWidth="196.0" promptText="ID" />
+            <TextField fx:id="tfDelete" layoutX="21.0" layoutY="298.0" prefHeight="25.0" prefWidth="196.0" promptText="supprimé" />
+
+         </children>
+
+      </AnchorPane>
+      <TextField fx:id="tfRechercherPost" layoutX="302.0" layoutY="47.0" prefHeight="25.0" prefWidth="273.0" promptText="Chercher Publication..." />
+      <Label layoutX="302.0" layoutY="22.0" text="Rechercher Publication">
+         <font>
+            <Font name="System Bold" size="16.0" />
+         </font>
+      </Label>
+      <Button fx:id="idRetour" layoutX="632.0" layoutY="10.0" mnemonicParsing="false" onAction="#back" text="Retour" />    </children>
+</AnchorPane>

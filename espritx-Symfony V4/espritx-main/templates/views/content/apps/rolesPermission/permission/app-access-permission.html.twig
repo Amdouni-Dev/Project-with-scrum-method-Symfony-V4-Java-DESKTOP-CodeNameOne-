@@ -1,0 +1,111 @@
+{% extends 'views/layouts/contentLayoutMaster.html.twig' %}
+
+{% block title %}
+  {{ 'Manage Permissions' }}
+{% endblock %}
+
+{% block vendor_style %}
+{% endblock %}
+
+{% block page_style %}
+  <style>
+      .pagination {
+          justify-content: flex-end !important;
+      }
+
+      html {
+          font-size: 14px;
+      }
+  </style>
+{% endblock %}
+
+{% block content %}
+  <h3>Permissions</h3>
+  <p>Individual unit of atomic access control.</p>
+
+  <div class="card">
+    <div class="card-header">
+      <h4 class="card-title">Manage permissions</h4>
+    </div>
+    <div class="card-body">
+      <div class="d-flex justify-content-between align-items-center mb-1">
+        <span class="card-text">
+          You can view, create or update permissions in the table below. Please note that disabled permissions aren't
+          processed during access control.
+        </span>
+        <a class="btn btn-primary waves-effect waves-float waves-light" href="{{ url('permission_create') }}">Add</a>
+      </div>
+      <div class="table-responsive row">
+        <table class="table table-hover">
+          <thead>
+          <tr>
+            <th{% if pagination.isSorted('p.title') %} class="sorted"{% endif %}>
+              {{ knp_pagination_sortable(pagination, 'Title', 'p.title') }}
+            </th>
+            <th{% if pagination.isSorted('p.description') %} class="sorted"{% endif %}>
+              {{ knp_pagination_sortable(pagination, 'Description', 'p.description') }}
+            </th>
+
+            <th{% if pagination.isSorted('p.subject') %} class="sorted"{% endif %}>
+              {{ knp_pagination_sortable(pagination, 'Subject', 'p.subject') }}
+            </th>
+
+            <th{% if pagination.isSorted('p.attribute') %} class="sorted"{% endif %}>
+              {{ knp_pagination_sortable(pagination, 'Attribute', 'p.attribute') }}
+            </th>
+            <th{% if pagination.isSorted('p.enabled') %} class="sorted"{% endif %}>
+              {{ knp_pagination_sortable(pagination, 'Enabled', 'p.enabled') }}
+            </th>
+            <th>Actions</th>
+          </tr>
+          </thead>
+          <tbody>
+          {% for permission in pagination %}
+            <tr>
+              <td><span class="fs-6 fw-bold">{{ permission.title }}</span></td>
+              <td><span class="fs-6">{{ permission.description }}</span></td>
+              <td><span class="fs-6">{{ permission.subject }}</td>
+              <td><span class="fs-6">{{ permission.attribute }}</td>
+              <td>
+                {% if permission.enabled %}
+                  <span class="badge rounded-pill fs-6 badge-light-success me-1">YES</span>
+                {% else %}
+                  <span class="badge rounded-pill fs-6 badge-light-warning me-1">NO</span>
+                {% endif %}
+              </td>
+              <td>
+                <div class="d-flex">
+                  <a href="{{ url("permission_edit", {id: permission.id}) }}">
+                    <i data-feather="edit-2" class="me-50"></i>
+                  </a>
+                  <a href="{{ url("permission_delete", {id: permission.id}) }}?_token={{ csrf_token('delete-perm' ~ permission.id|trim)}}">
+                    <i data-feather="trash" class="me-50"></i>
+                  </a>
+                </div>
+              </td>
+            </tr>
+          {% endfor %}
+          </tbody>
+        </table>
+      </div>
+
+      <div class="d-flex justify-content-between my-2">
+        <div class="col-sm-12 col-md-6 text-muted">
+          Showing {{ ((pagination.currentPageNumber - 1) * pagination.itemNumberPerPage) + 1 }}
+          to {{ min(pagination.currentPageNumber * pagination.itemNumberPerPage, pagination.getTotalItemCount) }}
+          of {{ pagination.getTotalItemCount }} entries
+        </div>
+        <div class="col-sm-12 col-md-6 navigation">
+          {{ knp_pagination_render(pagination) }}
+        </div>
+      </div>
+    </div>
+  </div>
+
+{% endblock %}
+
+{% block vendor_script %}
+  <script src="{{ asset('vendors/js/tables/datatable/responsive.bootstrap5.js') }}"></script>
+  <script src="{{ asset('vendors/js/forms/validation/jquery.validate.min.js') }}"></script>
+{% endblock %}
+

@@ -1,0 +1,38 @@
+
+{% extends 'views/layouts/contentLayoutMaster.html.twig' %}
+
+{% block title %} Checkbox {% endblock %}
+
+{% block content %}
+<!-- Basic Checkbox start -->
+
+<!-- Basic Checkbox end -->
+
+<!-- Checkbox Color start -->
+<section id="vuexy-checkbox-color">
+  <div class="row">
+    <div class="col-12">
+      <div class="card">
+        <div class="card-header">
+          <h4 class="card-title">Color</h4>
+        </div>
+        <div class="card-body">
+          <p class="card-text mb-0">
+            To change the color of the checkBox use the <code>.form-check-{value}</code> for primary, secondary,
+            success, danger, info, warning.
+          </p>
+          <div class="demo-inline-spacing">
+            <div class="form-check form-check-primary">
+              <input type="checkbox" class="form-check-input" id="colorCheck1" checked />
+              <label class="form-check-label" for="colorCheck1">Primary</label>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- Vuexy Checkbox Color end -->
+{% endblock %}
+

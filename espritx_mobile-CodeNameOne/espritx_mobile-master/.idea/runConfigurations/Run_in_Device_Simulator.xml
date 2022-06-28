@@ -1,0 +1,11 @@
+<component name="ProjectRunConfigurationManager">
+  <configuration default="false" name="Run in Device Simulator" type="#com.codename1.plugin.intellij.run.CodenameOneConfigurationType" factoryName="Codename One">
+    <setting name="mainClass" value="com.codename1.uikit.pheonixui.PheonixUI" />
+    <setting name="vmparams" value="" />
+    <setting name="workDir" value="" />
+    <setting name="debug" value="false" />
+    <method v="2">
+      <option name="Make" enabled="true" />
+    </method>
+  </configuration>
+</component>

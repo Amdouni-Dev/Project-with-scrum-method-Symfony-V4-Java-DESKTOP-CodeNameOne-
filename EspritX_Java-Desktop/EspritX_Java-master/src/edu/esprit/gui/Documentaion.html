@@ -1,0 +1,13 @@
+1. Create your fxml view as you should (Width 1382 * Height 603)
+2. Create your Application Class
+3. Create your Controller Class
+4. Test your view without the template
+5. Make a copy of your Controller Class and instead of "implements Initilizable", use "extends MainViewController" and
+in the initialize function add "super.initialize(url,resourceBundle);"
+6. Copy your fxml view into resources folder and add ".pebble.fxml" instead of ".fxml"
+7. Add the missing imports in the Main-View.pebble.fxml
+8. Delete all imports and head of your ".pebble.fxml" file and delete the controller integration
+9. add "{% extends "Main-View.pebble.fxml" %}" and surround your view between "{% block body %}" and "{% endblock %}"
+10. Change your application file and implement the template rendering (add your .pebble.fxml file and set your controller
+for the stage)
+!! Don't forget to add "new InitControls(stage);" before the stage.show to ensure the app layout

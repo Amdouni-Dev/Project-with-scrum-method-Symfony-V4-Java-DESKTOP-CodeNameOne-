@@ -1,0 +1,24 @@
+
+.dark-gray-background{
+    -fx-background-color: #46474A;
+}
+.gray-background{
+    -fx-background-color: #636566;
+}
+.transparent-background{
+    -fx-background-color: rgba(0,0,0,0);
+}
+.radius{
+    -fx-background-radius:100px ;
+}
+.light-gray-background{
+    -fx-background-color: #DADADA;
+}
+.incoming-bubble{
+    -fx-background-color: #FFFFFF;
+    -fx-background-radius: 100px;
+}
+.outgoing-bubble{
+    -fx-background-color: #50C984;
+    -fx-background-radius: 100px;
+}

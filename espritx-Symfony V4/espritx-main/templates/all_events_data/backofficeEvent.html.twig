@@ -1,0 +1,161 @@
+{% extends 'views/layouts/contentLayoutMaster.html.twig' %}
+
+{% block title %} Events List {% endblock %}
+
+{% block vendor_style %}
+    <link rel="stylesheet" href="{{ asset('vendors/css/forms/select/select2.min.css') }}">
+{% endblock %}
+
+
+{% block page_style %}
+    <link rel="stylesheet" href="{{ asset('css/base/plugins/forms/form-validation.css') }}">
+{% endblock %}
+
+
+{% block content %}
+    <!-- requests list start -->
+    <section class="app-user-list">
+        <!-- list and filter start -->
+        <div class="card">
+            <div class="card-header">
+                <h4 class="card-title">Manage events</h4>
+            </div>
+            <div class="card-body">
+                <div class="d-flex justify-content-between align-items-center mb-1">
+        <span class="card-text">
+          You can view and answer requests in the table below.
+        </span>
+                    <a class="btn btn-primary waves-effect waves-float waves-light" href="{{ url('addNewEvent') }}">Add</a>
+                </div>
+                <div class="table-responsive row">
+                    <table class="table">
+                        <thead>
+                        <tr>
+                            <th{% if pagination.isSorted('tel.start') %} class="sorted"{% endif %}>
+                                {{ knp_pagination_sortable(pagination, 'Start date', 'tel.start') }}
+                               
+                            </th>
+
+                            <th>
+                                End date
+                            </th>
+
+                            <th>
+                                Title
+                            </th>
+
+                            <th>
+                                Description                                
+                            </th>
+                            <th>
+                                Creator                                
+                            </th>
+                            
+                            <th>Actions</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        {% for event in pagination %}
+                            <tr>
+                                <td>
+                                    <!-- BEGIN: Title and creation date-->
+
+                                 
+                                        <div class="d-flex justify-content-left align-items-center">
+                                            <div class="d-flex flex-column">
+                                                <span class="fw-bolder fs-6">{{ event.start |date }}</span>
+
+                                                
+                                            </div>
+                                        </div>
+                                    </a>
+                                    <!-- END: requests Title and Creation date-->
+                                </td>
+                                <td>
+                                    <div class="d-flex justify-content-left align-items-center">
+                                        <div class="d-flex flex-column">
+                                            <span class="fw-bolder fs-6">{{  event.end |date  }}</span>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="d-flex justify-content-left align-items-center">
+                                        <div class="d-flex flex-column">
+                                            <span class="fw-bolder fs-6">{{  event.Title }}</span>
+                                        </div>
+                                    </div>
+                                </td>
+                                 <td>
+                                    <div class="d-flex justify-content-left align-items-center">
+                                        <div class="d-flex flex-column">
+                                            <span class="fw-bolder fs-6">{{  event.description }}</span>
+                                        </div>
+                                    </div>
+                                </td>
+                               <td>
+                               
+                                    <div class="d-flex justify-content-left align-items-center">
+                                        <div class="d-flex flex-column">
+                                            <span class="fw-bolder fs-6"
+                                            data-bs-toggle="tooltip"
+                                        data-popup="tooltip-custom"
+                                        data-bs-placement="top"
+                                        title="{{ event.user.firstName~' '~event.user.lastName }}"
+                                        class="avatar-sm pull-up">
+                                             {% include "views/content/_partials/_fragments/user-avatar.html.twig" with {'user': event.user} %}
+                                            </span>
+                                        </div>
+                                        
+                                    </div>
+                                    
+                                </td>
+                              
+
+                                <td>
+                   
+                    <a href="{{ path('deleteEventback', {'id': event.id}) }}">
+                        <i data-feather="trash"></i>
+                    </a>
+                </td>
+
+                                
+                            </tr>
+                        {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="d-flex justify-content-between my-2">
+                    <div class="col-sm-12 col-md-6 text-muted">
+                        Showing {{ ((pagination.currentPageNumber - 1) * pagination.itemNumberPerPage) + 1 }}
+                        to {{ min(pagination.currentPageNumber * pagination.itemNumberPerPage, pagination.getTotalItemCount) }}
+                        of {{ pagination.getTotalItemCount }} entries
+                    </div>
+                    <div class="col-sm-12 col-md-6 navigation">
+                        {{ knp_pagination_render(pagination) }}
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- list and filter end -->
+    </section>
+    <!-- users list ends -->
+{% endblock %}
+
+
+{% block vendor_script %}
+    <script src="{{ asset('vendors/js/forms/select/select2.full.min.js') }}"></script>
+    <script src="{{ asset('vendors/js/tables/datatable/jszip.min.js') }}"></script>
+    <script src="{{ asset('vendors/js/tables/datatable/vfs_fonts.js') }}"></script>
+    <script src="{{ asset('vendors/js/tables/datatable/buttons.html5.min.js') }}"></script>
+    <script src="{{ asset('vendors/js/tables/datatable/buttons.print.min.js') }}"></script>
+    <script src="{{ asset('vendors/js/forms/validation/jquery.validate.min.js') }}"></script>
+    <script src="{{ asset('vendors/js/forms/cleave/cleave.min.js') }}"></script>
+    <script src="{{ asset('vendors/js/forms/cleave/addons/cleave-phone.us.js') }}"></script>
+{% endblock %}
+
+
+{% block page_script %}
+    <script src="{{ asset('js/scripts/pages/app-user-list.js') }}"></script>
+{% endblock %}
+

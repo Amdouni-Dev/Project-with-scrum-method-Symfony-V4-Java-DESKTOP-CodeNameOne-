@@ -1,0 +1,77 @@
+{
+  "menu": [
+    {
+      "url": "app_home",
+      "name": "Home",
+      "icon": "home",
+      "slug": ""
+    },
+    {
+      "name": "Profile",
+      "icon": "user",
+      "slug": "",
+
+      "submenu": [
+        {
+          "url": "show_my_profile",
+          "name": "Visit",
+          "icon": "circle",
+          "slug": ""
+        },
+        {
+          "url": "account_settings",
+          "name": "Account Settings",
+          "icon": "circle",
+          "slug": ""
+        }
+      ]
+    },
+    {
+      "name": "Groups",
+      "icon": "layers",
+      "slug": ""
+    },
+    {
+      "url": "SerivceReq_User",
+      "name": "Services",
+      "icon": "briefcase",
+      "slug": ""
+    },
+    {
+      "name": "Chat",
+      "icon": "message-circle",
+      "url": "chat_index",
+      "slug": ""
+    },
+    {
+      "url": "all_events_data",
+      "name": "Calendar",
+      "icon": "calendar",
+      "slug": ""
+    },
+    {
+      "name": "Blog",
+      "icon": "book-open",
+      "slug": "",
+      "submenu": [
+        {
+          "url": "blog_post",
+          "name": "Visit",
+          "icon": "circle",
+          "slug": ""
+        },
+        {
+          "url": "newblogpost",
+          "name": "Create New",
+          "icon": "circle",
+          "slug": ""
+        }
+      ]
+    },
+    {
+      "name": "Resources",
+      "icon": "folder",
+      "slug": ""
+    }
+  ]
+}

@@ -1,0 +1,151 @@
+{% extends 'views/layouts/contentLayoutMaster.html.twig' %}
+
+{% block title %}{% endblock %}
+
+{% block vendor_style %}
+    <link rel="stylesheet" href="{{ asset('vendors/css/calendars/fullcalendar.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('vendors/css/forms/select/select2.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('vendors/css/pickers/flatpickr/flatpickr.min.css') }}">
+{% endblock %}
+
+
+{% block page_style %}
+    <link rel="stylesheet" href="{{ asset('css/base/plugins/forms/pickers/form-flat-pickr.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/base/pages/app-calendar.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/base/plugins/forms/form-validation.css') }}">
+{% endblock %}
+
+
+{% block content %}
+    <section>
+        <div class="app-calendar overflow-hidden border">
+            <div class="row g-0">
+
+                <div class="col app-calendar-sidebar flex-grow-0 overflow-hidden d-flex flex-column"
+                     id="app-calendar-sidebar">
+                    <div class="sidebar-wrapper">
+                        <div class="card-body d-flex justify-content-center">
+                            <button
+                                    class="btn btn-primary btn-toggle-sidebar w-100"
+                                    data-bs-toggle="modal"
+                                    data-bs-target="#add-new-sidebar"
+                            >
+                                <span class="align-middle">Add Event</span>
+                            </button>
+                        </div>
+                        <div class="card-body pb-0">
+                            <h5 class="section-label mb-1">
+                                <span class="align-middle">Filter</span>
+                            </h5>
+                            <div class="form-check mb-1">
+                                <input type="checkbox" class="form-check-input select-all" id="select-all" checked/>
+                                <label class="form-check-label" for="select-all">View All</label>
+                            </div>
+                            <div class="calendar-events-filter">
+                                <div class="form-check form-check-danger mb-1">
+                                    <input
+                                            type="checkbox"
+                                            class="form-check-input input-filter"
+                                            id="personal"
+                                            data-value="personal"
+                                            checked
+                                    />
+                                    <label class="form-check-label" for="personal">Personal</label>
+                                </div>
+                                <div class="form-check form-check-primary mb-1">
+                                    <input
+                                            type="checkbox"
+                                            class="form-check-input input-filter"
+                                            id="business"
+                                            data-value="business"
+                                            checked
+                                    />
+                                    <label class="form-check-label" for="business">Business</label>
+                                </div>
+                                <div class="form-check form-check-warning mb-1">
+                                    <input type="checkbox" class="form-check-input input-filter" id="family"
+                                           data-value="family" checked/>
+                                    <label class="form-check-label" for="family">Family</label>
+                                </div>
+                                <div class="form-check form-check-success mb-1">
+                                    <input
+                                            type="checkbox"
+                                            class="form-check-input input-filter"
+                                            id="holiday"
+                                            data-value="holiday"
+                                            checked
+                                    />
+                                    <label class="form-check-label" for="holiday">Holiday</label>
+                                </div>
+                                <div class="form-check form-check-info">
+                                    <input type="checkbox" class="form-check-input input-filter" id="etc"
+                                           data-value="etc" checked/>
+                                    <label class="form-check-label" for="etc">ETC</label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="mt-auto">
+                        <img
+                                src="{{ asset('images/pages/calendar-illustration.png') }}"
+                                alt="Calendar illustration"
+                                class="img-fluid"
+                        />
+                    </div>
+                </div>
+
+                <div class="col position-relative">
+                    <div class="card shadow-none border-0 mb-0 rounded-0">
+                        <div class="card-body pb-0">
+                            <div id="calendar">
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="body-content-overlay"></div>
+            </div>
+        </div>
+        <div class="modal modal-slide-in event-sidebar fade" id="add-new-sidebar">
+            <div class="modal-dialog sidebar-lg">
+                <div class="modal-content p-0">
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">×</button>
+                    <div class="modal-header mb-1">
+                        <h5 class="modal-title">Add Event</h5>
+                    </div>
+                    {{ form_start(form) }}
+
+                    {{ form_row(form.title) }}
+                    {{ form_row(form.start) }}
+                    {{ form_row(form.end) }}
+                    {{ form_row(form.description) }}
+                    {{ form_row(form.allDay) }}
+
+
+                    <button class="btn">{{ button_label|default('Ajouter un evenement') }}</button>
+                    {{ form_end(form) }}
+                </div>
+            </div>
+        </div>
+
+
+    </section>
+
+{% endblock %}
+
+
+{% block vendor_script %}
+    <script src="{{ asset('vendors/js/calendar/fullcalendar.min.js') }}"></script>
+    <script src="{{ asset('vendors/js/extensions/moment.min.js') }}"></script>
+    <script src="{{ asset('vendors/js/forms/select/select2.full.min.js') }}"></script>
+    <script src="{{ asset('vendors/js/forms/validation/jquery.validate.min.js') }}"></script>
+    <script src="{{ asset('vendors/js/pickers/flatpickr/flatpickr.min.js') }}"></script>
+{% endblock %}
+
+
+{% block page_script %}
+    <script src="{{ asset('js/scripts/pages/app-calendar-events.js') }}"></script>
+    <script src="{{ asset('js/scripts/pages/app-calendar.js') }}"></script>
+{% endblock %}
+

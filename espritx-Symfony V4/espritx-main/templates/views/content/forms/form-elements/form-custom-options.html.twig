@@ -1,0 +1,222 @@
+
+{% extends 'views/layouts/contentLayoutMaster.html.twig' %}
+
+{% block title %} Custom Options {% endblock %}
+
+{% block content %}
+<!-- basic custom options -->
+<div class="row">
+  <!-- custom option radio -->
+  <div class="col-lg-6">
+    <div class="card">
+      <div class="card-header">
+        <h4 class="card-title">Basic Radio</h4>
+      </div>
+      <div class="card-body">
+        <div class="row custom-options-checkable g-1">
+          <div class="col-md-6">
+            <input
+              class="custom-option-item-check"
+              type="radio"
+              name="customOptionsCheckableRadios"
+              id="customOptionsCheckableRadios1"
+              value=""
+              checked=""
+            />
+            <label class="custom-option-item p-1" for="customOptionsCheckableRadios1">
+              <span class="d-flex justify-content-between flex-wrap mb-50">
+                <span class="fw-bolder">Basic</span>
+                <span class="fw-bolder">Free</span>
+              </span>
+              <small class="d-block">Get 1 project with 1 team member.</small>
+            </label>
+          </div>
+
+          <div class="col-md-6">
+            <input
+              class="custom-option-item-check"
+              type="radio"
+              name="customOptionsCheckableRadios"
+              id="customOptionsCheckableRadios2"
+              value=""
+            />
+            <label class="custom-option-item p-1" for="customOptionsCheckableRadios2">
+              <span class="d-flex justify-content-between flex-wrap mb-50">
+                <span class="fw-bolder">Premium</span>
+                <span class="fw-bolder">$ 5.00</span>
+              </span>
+              <small class="d-block">Get 5 projects with 5 team members.</small>
+            </label>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- custom option checkbox -->
+  <div class="col-lg-6">
+    <div class="card">
+      <div class="card-header">
+        <h4 class="card-title">Basic Checkbox</h4>
+      </div>
+      <div class="card-body">
+        <div class="row custom-options-checkable g-1">
+          <div class="col-md-6">
+            <input
+              class="custom-option-item-check"
+              type="checkbox"
+              name="customOptionsCheckableCheckbox"
+              id="customOptionsCheckableCheckbox1"
+              value=""
+              checked=""
+            />
+            <label class="custom-option-item p-1" for="customOptionsCheckableCheckbox1">
+              <span class="d-flex justify-content-between flex-wrap mb-50">
+                <span class="fw-bolder">Discount</span>
+                <span class="fw-bolder">20%</span>
+              </span>
+              <small class="d-block">Get 20% off on your next purchase.</small>
+            </label>
+          </div>
+
+          <div class="col-md-6">
+            <input
+              class="custom-option-item-check"
+              type="checkbox"
+              name="customOptionsCheckableCheckbox"
+              id="customOptionsCheckableCheckbox2"
+              value=""
+            />
+            <label class="custom-option-item p-1" for="customOptionsCheckableCheckbox2">
+              <span class="d-flex justify-content-between flex-wrap mb-50">
+                <span class="fw-bolder">Updates</span>
+                <span class="fw-bolder">Free</span>
+              </span>
+              <small class="d-block">Get Updates regarding related products.</small>
+            </label>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- / basic custom options -->
+
+<!-- custom options with icons -->
+<div class="row">
+  <div class="col-lg-6">
+    <div class="card">
+      <div class="card-header">
+        <h4 class="card-title">Custom Option Radios With Icons</h4>
+      </div>
+      <div class="card-body">
+        <div class="row custom-options-checkable g-1">
+          <div class="col-md-4">
+            <input
+              class="custom-option-item-check"
+              type="radio"
+              name="customOptionsCheckableRadiosWithIcon"
+              id="customOptionsCheckableRadiosWithIcon1"
+              value=""
+              checked=""
+            />
+            <label class="custom-option-item text-center p-1" for="customOptionsCheckableRadiosWithIcon1">
+              <i data-feather="play" class="font-large-1 mb-75"></i>
+              <span class="custom-option-item-title h4 d-block">Starter</span>
+              <small>Cake sugar plum fruitcake I love sweet roll jelly-o.</small>
+            </label>
+          </div>
+
+          <div class="col-md-4">
+            <input
+              class="custom-option-item-check"
+              type="radio"
+              name="customOptionsCheckableRadiosWithIcon"
+              id="customOptionsCheckableRadiosWithIcon2"
+              value=""
+            />
+            <label class="custom-option-item text-center text-center p-1" for="customOptionsCheckableRadiosWithIcon2">
+              <i data-feather="user" class="font-large-1 mb-75"></i>
+              <span class="custom-option-item-title h4 d-block">Personal</span>
+              <small>Cake sugar plum fruitcake I love sweet roll jelly-o.</small>
+            </label>
+          </div>
+          <div class="col-md-4">
+            <input
+              class="custom-option-item-check"
+              type="radio"
+              name="customOptionsCheckableRadiosWithIcon"
+              id="customOptionsCheckableRadiosWithIcon3"
+              value=""
+            />
+            <label class="custom-option-item text-center p-1" for="customOptionsCheckableRadiosWithIcon3">
+              <i data-feather="users" class="font-large-1 mb-75"></i>
+              <span class="custom-option-item-title h4 d-block">Enterprise</span>
+              <small>Cake sugar plum fruitcake I love sweet roll jelly-o.</small>
+            </label>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- checkbox -->
+  <div class="col-lg-6">
+    <div class="card">
+      <div class="card-header">
+        <h4 class="card-title">Custom Option Checkboxes With Icons</h4>
+      </div>
+      <div class="card-body">
+        <div class="row custom-options-checkable g-1">
+          <div class="col-md-4">
+            <input
+              class="custom-option-item-check"
+              type="checkbox"
+              name="customOptionsCheckableCheckboxWithIcon"
+              id="customOptionsCheckableCheckboxWithIcon1"
+              value=""
+              checked=""
+            />
+            <label class="custom-option-item text-center p-1" for="customOptionsCheckableCheckboxWithIcon1">
+              <i data-feather="server" class="font-large-1 mb-75"></i>
+              <span class="custom-option-item-title h4 d-block">Backup</span>
+              <small>Cake sugar plum fruitcake I love sweet roll jelly-o.</small>
+            </label>
+          </div>
+
+          <div class="col-md-4">
+            <input
+              class="custom-option-item-check"
+              type="checkbox"
+              name="customOptionsCheckableCheckboxWithIcon"
+              id="customOptionsCheckableCheckboxWithIcon2"
+              value=""
+            />
+            <label class="custom-option-item text-center text-center p-1" for="customOptionsCheckableCheckboxWithIcon2">
+              <i data-feather="shield" class="font-large-1 mb-75"></i>
+              <span class="custom-option-item-title h4 d-block">Encrypt</span>
+              <small>Cake sugar plum fruitcake I love sweet roll jelly-o.</small>
+            </label>
+          </div>
+          <div class="col-md-4">
+            <input
+              class="custom-option-item-check"
+              type="checkbox"
+              name="customOptionsCheckableCheckboxWithIcon"
+              id="customOptionsCheckableCheckboxWithIcon3"
+              value=""
+            />
+            <label class="custom-option-item text-center p-1" for="customOptionsCheckableCheckboxWithIcon3">
+              <i data-feather="lock" class="font-large-1 mb-75"></i>
+              <span class="custom-option-item-title h4 d-block">Site Lock</span>
+              <small>Cake sugar plum fruitcake I love sweet roll jelly-o.</small>
+            </label>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- / custom options with icons -->
+{% endblock %}
+

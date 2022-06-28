@@ -1,0 +1,2 @@
+mgilet_notification:
+        notification_class: App\Entity\Notification

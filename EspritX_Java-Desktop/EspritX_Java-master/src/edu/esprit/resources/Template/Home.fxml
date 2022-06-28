@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml" fx:controller="edu.esprit.controller.Template.HomeController">
+   <children>
+      <ImageView fitHeight="58.0" fitWidth="46.0" layoutX="31.0" layoutY="14.0">
+         <image>
+            <Image url="@Images/logo.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="326.0" fitWidth="447.0" layoutX="28.0" layoutY="37.0">
+         <image>
+            <Image url="@Images/login-v2.png" />
+         </image>
+      </ImageView>
+      <Label layoutX="401.0" layoutY="33.0" text="Se communiquer autrement" textFill="#472151">
+         <font>
+            <Font name="System Bold" size="14.0" />
+         </font>
+      </Label>
+      <Button fx:id="Guest" layoutX="431.0" layoutY="97.0" mnemonicParsing="false" text="Continue as a guest" />
+      <Button fx:id="User" layoutX="431.0" layoutY="148.0" mnemonicParsing="false" onMouseClicked="#UserView" prefWidth="121.0" text="Login as a user" />
+      <Label layoutX="257.0" layoutY="379.0" text="© Reserructionists" textFill="#472151">
+         <font>
+            <Font name="System Bold" size="10.0" />
+         </font>
+      </Label>
+   </children>
+</AnchorPane>

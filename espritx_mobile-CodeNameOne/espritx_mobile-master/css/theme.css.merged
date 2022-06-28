@@ -1,0 +1,263 @@
+
+/* C:\Users\Wahib\Desktop\untitled\lib\impl\css\CodeRAD\theme.css */
+:root {
+    --rad-main-font: 'native:MainRegular';
+    --rad-main-font-light: 'native:MainLight';
+    --rad-main-font-bold: 'native:MainBold';
+    --rad-main-font-size: 2.5mm;
+    --rad-main-font-size-small: 1.5mm;
+}
+
+PopupMenu {
+    background-color: white;
+    border: 1px solid white;
+    border-radius: 1mm;
+    padding:0;
+    margin:0;
+}
+
+PopupMenuContent {
+    background-color:transparent;
+    margin: 0;
+    padding:2mm;
+    
+}
+
+PopupMenuTitle {
+    padding:0;
+    margin:0;
+    
+}
+
+SwipeableContainerButton {
+    color: white;
+    background-color: #f44336;
+    font-family: 'native:MainRegular';
+    font-size: 5mm;
+}
+
+ContactListLine1 {
+    cn1-derive: 'MultiLine1';
+    font-family: 'native:MainLight';
+    font-size: 5mm;
+    
+}
+
+ContactListLine2 {
+    cn1-derive: 'MultiLine2'; 
+    font-family: 'native:MainLight';
+    font-size: 4mm;
+}
+
+AccountAvatarsTitleComponentText {
+    font-family: 'native:MainLight';
+    font-size: 1.5mm;
+    color: #666666; 
+}
+
+
+
+
+SettingsForm {
+    padding:0;
+    margin:0;
+    
+}
+SettingsFormSection {
+    padding:0;
+    margin: 1mm 0 1mm 0;
+   
+}
+SettingsFormAction {
+    background-color:white;
+    margin:0;
+    border-top: none;
+    border-left: none;
+    border-right: none;
+    border-bottom: 1px solid #aaaaaa;
+    padding:2mm;
+}
+
+SettingsFormAction.pressed {
+    background-color: #cccccc;
+}
+
+SettingsFormActionLabel {
+    font-family: var(--rad-main-font);
+    font-size: var(--rad-main-font-size);
+    color: black;
+}
+
+SettingsFormActionValue {
+    font-family: var(--rad-main-font-light);
+    font-size: var(--rad-main-font-size);
+    color: #888888;
+}
+
+SettingsFormActionArrowButton {
+    font-family: var(--rad-main-font-light);
+    font-size: var(--rad-main-font-size);
+    color: #cccccc;
+}
+
+SettingsFormSectionLabel {
+    font-family: var(--rad-main-font-light);
+    font-size: var(--rad-main-font-size-small);
+    color: #666666;
+    
+    padding: 2mm 1mm 2mm 1mm;
+}
+
+SettingsFormActionDescriptionText {
+    font-size: 1.5mm;
+    font-family: var(--rad-main-font-light);
+    font-family: 1.5mm;
+    color: #888888;
+}
+
+SettingsFormActionDescription {
+    padding:0;
+    margin:0;
+}
+
+SettingsFormButtonList {
+	padding:0;
+	margin:0;
+}
+
+SettingsFormButtonListCell {
+	background-color:white;
+    margin:0;
+    border-top: none;
+    border-left: none;
+    border-right: none;
+    border-bottom: 1px solid #aaaaaa;
+    padding: 2mm;
+    font-size: var(--rad-main-font-size);
+    font-family: var(--rad-main-font);
+}
+
+FieldDescriptionText {
+    font-size: var(--rad-main-font-size);
+    font-family: var(--rad-main-font);
+    color: #666666;
+}
+/* end C:\Users\Wahib\Desktop\untitled\lib\impl\css\CodeRAD\theme.css*/
+
+/* C:\Users\Wahib\Desktop\untitled\lib\impl\css\RADChatRoom\theme.css */
+ChatBubbleTextOwn {
+    font-family: 'native:MainLight';
+    font-size: 2.5mm;
+    color: white;
+    margin:0;
+    padding:0;
+}
+
+ChatBubbleTextOwnDesktop {
+    cn1-derive: 'ChatBubbleTextOwn';
+    font-size: 3.5mm;
+}
+
+ChatBubbleTextOther {
+    font-family: 'native:MainLight';
+    font-size: 2.5mm;
+    color: black;
+    margin:0;
+    padding:0;
+}
+
+ChatBubbleTextOtherDesktop {
+    cn1-derive: 'ChatBubbleTextOther';
+    font-size: 3.5mm;
+}
+
+ChatBubbleSpanLabelOther {
+    padding: 1mm 1mm 1mm 3.5mm;
+    background-color: rgb(229, 229, 234);
+}
+
+ChatBubbleSpanLabelOwn {
+    padding: 1mm 2.5mm 1mm 1mm;
+    background-color: rgb(21, 126, 245);
+}
+
+ChatBubblePostedBy, ChatBubbleDate {
+    font-family: 'native:MainLight';
+    font-size: 1.5mm;
+    color: #666666;
+}
+
+ChatMessageTextArea {
+    cn1-derive: 'TextArea';
+    border: 1pt cn1-pill-border #cccccc ;
+    font-family: 'native:MainLight';
+    font-size: 2.5mm;
+    padding: 1mm 2mm 1mm 2mm;
+    background-color: transparent;
+    
+}
+
+ChatMessageTextAreaDesktop {
+    cn1-derive: 'ChatMessageTextArea';
+    font-size: 3.5mm;
+}
+
+ChatMessageTextAreaMultiLine {
+    cn1-derive: 'TextArea';
+    border: 1pt solid  #cccccc;
+    border-radius: 2mm;
+    font-family: 'native:MainLight';
+    font-size: 2.5mm;
+    padding: 1mm 2mm 1mm 2mm;
+    background-color: transparent;
+}
+
+ChatMessageTextAreaDesktopMultiLine {
+    cn1-derive: 'ChatMessageTextAreaMultiLine';
+    font-size: 3.5mm;
+}
+
+ChatBubbleBadge {
+    cn1-derive: "Button";
+    font-size: 1.5mm;
+    background-color: rgba(0, 0, 0, 0);
+    border: none;
+    margin:0;
+    padding:0;
+    
+}
+
+ChatBubbleLikedBadge {
+    color: red;
+    border:none;
+    padding:0;
+    margin:0;
+    font-size: 1.5mm;
+    background-color: rgba(0, 0, 0, 0);
+    
+}
+
+
+TypingAnimation {
+    padding:0;
+    margin:0;
+    border:none;
+    background-color: transparent;
+}
+
+TypingAnimationDot {
+    padding:0;
+    margin:0;
+    border:none;
+    background-color:transparent;
+    color:#666666;
+    font-size: 1mm;
+}
+/* end C:\Users\Wahib\Desktop\untitled\lib\impl\css\RADChatRoom\theme.css*/
+
+/* C:\Users\Wahib\Desktop\untitled\css\theme.css */
+#Constants {
+    includeNativeBool: true; 
+}
+
+/* End C:\Users\Wahib\Desktop\untitled\css\theme.css */

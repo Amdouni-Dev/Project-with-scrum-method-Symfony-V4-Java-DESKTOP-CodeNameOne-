@@ -1,0 +1,183 @@
+
+{% extends 'views/layouts/contentLayoutMaster.html.twig' %}
+
+{% block title %} Post List {% endblock %}
+
+{% block vendor_style %}
+    <link rel="stylesheet" href="{{ asset('vendors/css/forms/select/select2.min.css') }}">
+{% endblock %}
+
+
+{% block page_style %}
+    <link rel="stylesheet" href="{{ asset('css/base/plugins/forms/form-validation.css') }}">
+{% endblock %}
+
+
+{% block content %}
+
+        <div class="card">
+            <div class="card-header">
+                <h4 class="card-title">Gerer les publications</h4>
+            </div>
+
+            <div class="container text-center ">
+                <button id="MyButton" class="btn btn-warning mb-4">Actualiser</button>
+                <div id="refreshDivID">
+                    <div class="reloaded-divs">
+
+
+                        <div class="alert alert-primary  show" role="alert">
+                            <strong>{{ pubs }}</strong> publication(s) non validée(s)!
+
+
+                        </div>
+
+
+
+                    </div>
+                </div>
+            </div>
+
+
+
+            <div class="card-body">
+                <div class="d-flex justify-content-between align-items-center mb-1">
+
+                    <a class="btn btn-primary waves-effect waves-float waves-light" href="{{ url('newpost') }}">Ajouter</a>
+                </div>
+                <div class="table-responsive row">
+                    <table class="table table-hover">
+                        <thead>
+                        <tr>
+                            <th>
+                               numero de post
+                            </th>
+
+                            <th>
+                                Annonceur Post
+                            </th>
+                            <th>
+                                Titre
+                            </th>
+
+                            <th>
+                                Contenue
+                            </th>
+                            <th>
+                                Images
+                            </th>
+                            <th>
+                                date de creation
+                            </th>
+
+                            <th>Actions</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        {% for post in posts |sort|reverse %}
+                            <tr>
+                                <td>
+
+
+                                                <span class="fw-bolder fs-6">{{ post.id }}</span>
+
+
+
+
+
+
+
+
+                                </td>
+
+                                <td>
+                                    <small class="emp_post text-muted">{{ post.user.firstName }}</small>
+
+                                </td>
+                                <td>
+                                    <small class="emp_post text-muted">{{ post.title }}</small>
+
+                                </td>
+
+                                <td><small class="emp_post text-muted">{{ post.content }}</small></td>
+<td>
+    <div style="   display: flex;
+  flex-wrap: wrap;
+  list-style: none;
+  margin: 0;
+  padding: 0;">
+                                {% for image in post.images  %}
+
+                                    <figure itemprop="associatedMedia" itemscope
+                                            itemtype="http://schema.org/ImageObject">
+                                        <a href="{{ asset('/uploads/brochures/'~image.name) }}"
+                                           itemprop="contentUrl" data-size="964x1024">
+                                            <div class="inner">
+                                                <img class="rounded"
+                                                     src="{{ asset('/uploads/brochures/'~image.name) }}"
+                                                     style="width: 50px;height: 50px;"
+                                                     itemprop="thumbnail" alt="Image description"/>
+                                            </div>
+                                        </a>
+                                    </figure>
+
+                                {% endfor %}
+    </div>
+</td>
+
+                                <td><small class="emp_post text-muted">{{ post.createdAt ? post.createdAt|date('Y-m-d H:i:s') : '' }}</small></td>
+                                <td>
+                                    <div class="d-flex">
+                                        <a href="{{ path('editpost', {'id': post.id}) }}" onclick="return confirm('Etes-vous sure de modifier ce post ?! ')">
+                                            <i data-feather="edit-2" class="me-50"></i>
+                                        </a>
+                                        <a href="{{ path('deletepost_admin', {'id': post.id}) }}" onclick="return confirm('Etes-vous sure de supprimer ce post?! ')">
+                                            <i data-feather="trash" class="me-50"></i>
+                                        </a>
+                                        {%  if post.isValid %}
+                                            <a  href="{{ path('changevalidite_post', {'id': post.id}) }}">     <i data-feather="check" class="me-50"></i></a>
+                                        {% else %}
+                                            <a  href="{{ path('changevalidite_post', {'id': post.id}) }}" onclick="return confirm('Voulez-vous vraiment approuver ce post  ?! ')"> <i data-feather="x" class="me-50"></i></a>
+                                        {% endif %}
+                                    </div>
+                                </td>
+                            </tr>
+                        {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+
+
+            </div>
+        </div>
+    <!-- users list ends -->
+
+
+    {{ knp_pagination_render(posts) }}
+{% endblock %}
+
+
+{% block vendor_script %}
+    <script src="{{ asset('vendors/js/forms/select/select2.full.min.js') }}"></script>
+    <script src="{{ asset('vendors/js/tables/datatable/jszip.min.js') }}"></script>
+    <script src="{{ asset('vendors/js/tables/datatable/vfs_fonts.js') }}"></script>
+    <script src="{{ asset('vendors/js/tables/datatable/buttons.html5.min.js') }}"></script>
+    <script src="{{ asset('vendors/js/tables/datatable/buttons.print.min.js') }}"></script>
+    <script src="{{ asset('vendors/js/forms/validation/jquery.validate.min.js') }}"></script>
+    <script src="{{ asset('vendors/js/forms/cleave/cleave.min.js') }}"></script>
+    <script src="{{ asset('vendors/js/forms/cleave/addons/cleave-phone.us.js') }}"></script>
+{% endblock %}
+
+
+{% block page_script %}
+
+        <script>
+            $("#MyButton").click(function() {
+            alert('Actualiser ?');
+            $("#refreshDivID").load("#refreshDivID .reloaded-divs > *");
+        });
+
+    </script>
+    <script src="{{ asset('js/scripts/pages/app-user-list.js') }}"></script>
+{% endblock %}
+

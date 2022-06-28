@@ -1,0 +1,196 @@
+{% extends 'views/layouts/contentLayoutMaster.html.twig' %}
+
+{% block title %} User List {% endblock %}
+
+{% block vendor_style %}
+  <link rel="stylesheet" href="{{ asset('vendors/css/forms/select/select2.min.css') }}">
+{% endblock %}
+
+
+{% block page_style %}
+  <link rel="stylesheet" href="{{ asset('css/base/plugins/forms/form-validation.css') }}">
+{% endblock %}
+
+
+{% block content %}
+  <!-- users list start -->
+  <section class="app-user-list">
+    <div class="row">
+      <div class="col-lg-3 col-sm-6">
+        <div class="card">
+          <div class="card-body d-flex align-items-center justify-content-between">
+            <div>
+              <h3 class="fw-bolder mb-75">{{ (statusStatistics.total is defined) ?  statusStatistics.total : 0 }}</h3>
+              <span>Total Users</span>
+            </div>
+            <div class="avatar bg-light-primary p-50">
+            <span class="avatar-content">
+              <i data-feather="user" class="font-medium-4"></i>
+            </span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-3 col-sm-6">
+        <div class="card">
+          <div class="card-body d-flex align-items-center justify-content-between">
+            <div>
+              <h3 class="fw-bolder mb-75">{{ (statusStatistics.restricted is defined) ?  statusStatistics.restricted : 0 }}</h3>
+              <span>Restricted Users</span>
+            </div>
+            <div class="avatar bg-light-danger p-50">
+            <span class="avatar-content">
+              <i data-feather="user-plus" class="font-medium-4"></i>
+            </span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-3 col-sm-6">
+        <div class="card">
+          <div class="card-body d-flex align-items-center justify-content-between">
+            <div>
+              {% set activeUsers = (statusStatistics.active is defined) ? statusStatistics.active : 0 %}
+              {% set alumniUsers = (statusStatistics.alumnus is defined) ? statusStatistics.alumnus : 0 %}
+              <h3 class="fw-bolder mb-75">{{ activeUsers + alumniUsers }}</h3>
+              <span>Active/Alumni Users</span>
+            </div>
+            <div class="avatar bg-light-success p-50">
+            <span class="avatar-content">
+              <i data-feather="user-check" class="font-medium-4"></i>
+            </span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-3 col-sm-6">
+        <div class="card">
+          <div class="card-body d-flex align-items-center justify-content-between">
+            <div>
+              <h3 class="fw-bolder mb-75">{{ (statusStatistics.restricted is defined) ?  statusStatistics.restricted : 0 }}</h3>
+              <span>Pending Users</span>
+            </div>
+            <div class="avatar bg-light-warning p-50">
+            <span class="avatar-content">
+              <i data-feather="user-x" class="font-medium-4"></i>
+            </span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- list and filter start -->
+    <div class="card">
+      <div class="card-header">
+        <h4 class="card-title">Manage users</h4>
+      </div>
+      <div class="card-body">
+        <div class="d-flex justify-content-between align-items-center mb-1">
+        <span class="card-text">
+          You can view, create or update users in the table below.
+        </span>
+          <a class="btn btn-primary waves-effect waves-float waves-light" href="{{ url('user_create') }}">Add</a>
+        </div>
+        <div class="table-responsive row">
+          <table class="table table-hover">
+            <thead>
+            <tr>
+              <th{% if pagination.isSorted('u.email') %} class="sorted"{% endif %}>
+                {{ knp_pagination_sortable(pagination, 'Name', 'u.email') }}
+              </th>
+
+              <th{% if pagination.isSorted('u.userStatus') %} class="sorted"{% endif %}>
+                {{ knp_pagination_sortable(pagination, 'User Status', 'u.userStatus') }}
+              </th>
+
+              <th>
+                Groups
+              </th>
+
+              <th>Actions</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for user in pagination %}
+              <tr>
+                <td>
+                  <!-- BEGIN: Avatar, email & name -->
+                  <div class="d-flex justify-content-left align-items-center">
+                    <div class="avatar-wrapper" style="margin-right: 10px;">
+                      {% include "views/content/_partials/_fragments/user-avatar.html.twig" with {'user': user} %}
+                    </div>
+                    <div class="d-flex flex-column">
+                      <a href="{{ url("show_user_profile", {"id": user.id}) }}"
+                         class="user_name text-truncate text-body">
+                        <span class="fw-bolder fs-6">{{ user.firstName ~ " " ~ user.lastName }}</span>
+                      </a>
+                      <small class="emp_post text-muted">{{ user.email }}</small>
+                    </div>
+                  </div>
+                  <!-- END: Avatar, email & name -->
+                </td>
+                <td>
+                  <!-- BEGIN: UserStatus -->
+                  {{ include('views/content/_partials/_fragments/user-status-pill.html.twig', {'userstatus': user.userstatus}) }}
+                  <!-- END: UserStatus -->
+                </td>
+                <td>
+                  <!-- BEGIN: UserGroups -->
+                  <div class="d-flex flex-column">
+                    {% for group in user.groups %}
+                      {{ include('views/content/_partials/_fragments/group-type-badge.html.twig',
+                        {'grouptype': group.groupType, 'displayname': group.displayName}) }}
+                    {% endfor %}
+                  </div>
+                  <!-- END: UserGroups -->
+                </td>
+                <td>
+                  <div class="d-flex">
+                    <a href="{{ url("user_edit", {id: user.id}) }}">
+                      <i data-feather="edit-2" class="me-50"></i>
+                    </a>
+                    <a href="{{ url("user_delete", {id: user.id}) }}?_token={{ csrf_token("delete"~user.id) }}">
+                      <i data-feather="trash" class="me-50"></i>
+                    </a>
+                  </div>
+                </td>
+              </tr>
+            {% endfor %}
+            </tbody>
+          </table>
+        </div>
+
+        <div class="d-flex justify-content-between my-2">
+          <div class="col-sm-12 col-md-6 text-muted">
+            Showing {{ ((pagination.currentPageNumber - 1) * pagination.itemNumberPerPage) + 1 }}
+            to {{ min(pagination.currentPageNumber * pagination.itemNumberPerPage, pagination.getTotalItemCount) }}
+            of {{ pagination.getTotalItemCount }} entries
+          </div>
+          <div class="col-sm-12 col-md-6 navigation d-flex justify-content-end">
+            {{ knp_pagination_render(pagination) }}
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- list and filter end -->
+  </section>
+  <!-- users list ends -->
+{% endblock %}
+
+
+{% block vendor_script %}
+  <script src="{{ asset('vendors/js/forms/select/select2.full.min.js') }}"></script>
+  <script src="{{ asset('vendors/js/tables/datatable/jszip.min.js') }}"></script>
+  <script src="{{ asset('vendors/js/tables/datatable/vfs_fonts.js') }}"></script>
+  <script src="{{ asset('vendors/js/tables/datatable/buttons.html5.min.js') }}"></script>
+  <script src="{{ asset('vendors/js/tables/datatable/buttons.print.min.js') }}"></script>
+  <script src="{{ asset('vendors/js/forms/validation/jquery.validate.min.js') }}"></script>
+  <script src="{{ asset('vendors/js/forms/cleave/cleave.min.js') }}"></script>
+  <script src="{{ asset('vendors/js/forms/cleave/addons/cleave-phone.us.js') }}"></script>
+{% endblock %}
+
+
+{% block page_script %}
+  <script src="{{ asset('js/scripts/pages/app-user-list.js') }}"></script>
+{% endblock %}
+
